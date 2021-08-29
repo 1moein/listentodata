@@ -14,7 +14,19 @@
 #    permission of the author.                            #
 ###########################################################
 
-Segment_Target <- function(df_seg,df_targ,HowManySegments, larger = 1) {
+#' This function runs a segmentation and targeting analysis and produces results
+#' in a pdf file.
+#'
+#' @param df_seg 
+#' @param df_targ 
+#' @param HowManySegments 
+#' @param larger 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+Run_SegmentTarget <- function(df_seg,df_targ,HowManySegments, larger = 1) {
 #
 # # Remove all variables from memory to start fresh
 # rm(list=ls())

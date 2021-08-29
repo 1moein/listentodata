@@ -2,7 +2,7 @@
 % Please edit documentation in R/Run_RFM_Analysis.R
 \name{Run_RFM_Analysis}
 \alias{Run_RFM_Analysis}
-\title{Runs an RFM Analysis}
+\title{RFM Analysis}
 \usage{
 Run_RFM_Analysis(mydata)
 }
@@ -13,5 +13,5 @@ Run_RFM_Analysis(mydata)
 
 }
 \description{
-Runs an RFM Analysis
+RFM Analysis
 }
