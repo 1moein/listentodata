@@ -1,0 +1,11 @@
+Package: listentodata
+Type: Package
+Title: A package for mktg763
+Version: 0.1.0
+Author: Dr. Moein Khanlari <khanlari@ualberta.ca>
+Maintainer: Dr. Moein Khanlari <khanlari@ualberta.ca>
+Description: Provides the functions needed for the mktg763 course at Paul College.  
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
