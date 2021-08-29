@@ -204,17 +204,14 @@ Run_RFM_Analysis <- function(mydata){
     cat("\nRFM analysis was successfully performed on these data!\n")
     
     if (!is.null(res)){
-        cat(
-            
-            "\n Warning:\n We were not able to save the results to RFM_Analysis_Results.csv" %+%
-                " \n If a file with the same name is already open, make sure you close\n it, and then re-run the analysis." %+%
-                " \n Otherwise, make sure you have permission to create new\n files in the folder where your data file is located.\n" %+%
-                " If you do not need to save the results to a file,\n you can safely ignore this warning.\n"
-        )
+        cat("\n Warning:\n We were not able to save the results to RFM_Analysis_Results.csv")
+        cat(" \n If a file with the same name is already open, make sure you close\n it, and then re-run the analysis.")
+        cat(" \n Otherwise, make sure you have permission to create new\n files in the folder where your data file is located.\n")
+        cat(" If you do not need to save the results to a file,\n you can safely ignore this warning.\n")
         
     } else {
         cat("\n Results are displayed below and also saved in a \n file named: RFM_Analysis_Results.csv\n")
-        cat(" Note that the customers have been sorted\n from highest RFM scores to lowest.\n\n")
+        cat(" Note that the results have been sorted\n based on RFM Scores from highest to lowest.\n\n")
         
     }
     

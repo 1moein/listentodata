@@ -208,15 +208,19 @@ grid.arrange(top="Targeting Analysis: Main Results", tableGrob(calculate_segment
 ################# save results in a pdf file ############
 
 # Decide what to call your file name; make sure to put .pdf at the end of the name
-filename  =  "Segmentation and Targeting Analysis Results.pdf"
+filename  =  "Results_Segment_Target.pdf"
 
-# This has become a function input
+# next line to be used in later versions to check if the file is open
+fileisopen = suppressWarnings("try-error" %in% class(try(file(filename, open = "w"), silent = TRUE)))
+
+
+# larger has become a function input in the listentodata package.
 # If the tables are nod displayed properly in the pdf pages, change the
 # value for "larger" below to 1.5, 1.7, 1.8, 2, or larger values for larger
 # page sizes
 # larger =  1
 
-pdf(filename, height=larger*8.5, width=larger*11)
+suppressWarnings(res2 <- try(pdf(filename, height=larger*8.5, width=larger*11), silent = TRUE))
 
 head(df_seg)
 summary(df_seg)
@@ -249,5 +253,20 @@ grid.arrange(top="Segmentation Analysis: Main Results", tableGrob(calculate_segm
 grid.arrange(top="Targeting Analysis: Main Results", tableGrob(calculate_segment_means(df_targ)[[2]], theme=mytheme))
 
 dev.off()
-
 }
+
+
+if (!is.null(res2)){
+  cat("\n ERROR:\n The analysis was performed, but we were not able to\n save the results in Results_Segment_Target.pdf")
+  cat(" \n This is probably due to a file with the same name being open.\n")
+  cat(" Make sure you close that file, and then run the last line of code again.")
+  
+} else {
+  cat("\n Success!\n Segmentation and Targeting analysis was performed on these data!\n")
+  cat("\n Results have been saved in a file named: Results_Segment_Target.pdf\n")
+  cat(" You can find this PDF file in the folder where your data files are located.\n")
+  
+}
+
+
+
