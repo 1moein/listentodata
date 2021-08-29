@@ -263,7 +263,7 @@ if (!is.null(res2)){
   cat(" Make sure you close that file, and then run the last line of code again.")
   
 } else {
-  cat("\n Success!\n Segmentation and Targeting analysis was performed on these data!\n")
+  cat("\n Segmentation and Targeting analysis has been performed on these data!\n")
   cat("\n Results have been saved in a file named: Results_Segment_Target.pdf\n")
   cat(" You can find this PDF file in the folder where your data files are located.\n")
   

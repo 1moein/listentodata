@@ -201,7 +201,7 @@ Run_RFM_Analysis <- function(mydata){
     suppressWarnings(res <- try(write.csv(df, file ="RFM_Analysis_Results.csv", row.names = FALSE), silent = TRUE))
     
     
-    cat("\nRFM analysis was successfully performed on these data!\n")
+    cat("\nRFM analysis has been performed on these data!\n")
     
     if (!is.null(res)){
         cat("\n Warning:\n We were not able to save the results to RFM_Analysis_Results.csv")
