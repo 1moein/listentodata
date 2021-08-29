@@ -219,8 +219,9 @@ fileisopen = suppressWarnings("try-error" %in% class(try(file(filename, open = "
 # value for "larger" below to 1.5, 1.7, 1.8, 2, or larger values for larger
 # page sizes
 # larger =  1
-
-suppressWarnings(res2 <- try(pdf(filename, height=larger*8.5, width=larger*11), silent = TRUE))
+library(grDevices)
+suppressWarnings(res2 <- try(pdf("Results_Segment_Target.pdf", height=larger*8.5, width=larger*11), silent = TRUE))
+# suppressWarnings(res <- try(write.csv(df, file ="RFM_Analysis_Results.csv", row.names = FALSE), silent = TRUE))
 
 head(df_seg)
 summary(df_seg)
@@ -253,7 +254,7 @@ grid.arrange(top="Segmentation Analysis: Main Results", tableGrob(calculate_segm
 grid.arrange(top="Targeting Analysis: Main Results", tableGrob(calculate_segment_means(df_targ)[[2]], theme=mytheme))
 
 dev.off()
-}
+
 
 
 if (!is.null(res2)){
@@ -269,4 +270,4 @@ if (!is.null(res2)){
 }
 
 
-
+}
