@@ -7,8 +7,8 @@
 #' df = getdata()
 getdata <- function(){
 
-  cat("\n Please select the appropriate .csv data file!", "I'm waiting ...\n\n")
-  cat(" Can't see the file selector dialog?\n Look for it behind your other open apps/windows.\n")
+  print("\n Please select the appropriate .csv data file!", "I'm waiting ...\n\n", quote = FALSE)
+  print(" Can't see the file selector dialog?\n Look for it behind your other open apps/windows.\n", quote = FALSE)
 
   filename = file.choose(new = FALSE)
   setwd(dirname(filename))
