@@ -202,7 +202,7 @@ df = df[order(-df$RFM_Score),]
 suppressWarnings(res <- try(write.csv(df, file ="RFM_Analysis_Results.csv", row.names = FALSE), silent = TRUE))
 
 
-cat("RFM analysis was successfully performed!")
+cat("\nRFM analysis was successfully performed on these data!\n")
 
 if (!is.null(res)){
     cat(
@@ -214,12 +214,12 @@ if (!is.null(res)){
         )
 
 } else {
-    cat("Results are displayed below and also saved \n in a file named: RFM_Analysis_Results.csv")
-    cat("Note that the customers have been sorted\n from highest RFM scores to lowest.")
+    cat("\n Results are displayed below and saved in a \n file named: RFM_Analysis_Results.csv\n")
+    cat(" Note that the customers have been sorted\n from highest RFM scores to lowest.\n")
 
 }
 
-cat("                      RFM Analysis Results ")
+cat("                    RFM Analysis Results ")
 
 
 
