@@ -96,14 +96,14 @@ Run_RFM_Analysis <- function(mydata){
     df <- mydata
 
     if ((!("Recency" %in% names(df))) | (!("Frequency" %in% names(df))) | (!("Monetary" %in% names(df)))){
-        stop(' \n You have not selected a valid data file:\n Your data file must be a csv file containing\n three columns named: Recency, Frequency, and Monetary\n with numeric values in each column.\n\n          Sorry! NO Analysis Was Done!')
+        stop(' \n You have not selected a valid data file:\n Your data file must be a csv file containing\n three columns named: Recency, Frequency, and\n Monetary with numeric values in each column.\n\n          Sorry! NO Analysis Was Done!')
         return()
     } else {
         bad1 = suppressWarnings(any(is.na(as.numeric(df$Recency))))
         bad2 = suppressWarnings(any(is.na(as.numeric(df$Frequency))))
         bad3 = suppressWarnings(any(is.na(as.numeric(df$Monetary))))
         if (bad1 | bad2 | bad3){
-            stop(' \n Your Recency/Frequency/Monetary data contain non-numeric value(s). \n\n          Sorry! NO Analysis Was Done!')
+            stop(' \n Your Recency/Frequency/Monetary data contain non-numeric value(s). \n\n          NO Analysis Was Performed!\n\n')
             return()
         }
     }
@@ -214,12 +214,12 @@ if (!is.null(res)){
         )
 
 } else {
-    cat("\n Results are displayed below and saved in a \n file named: RFM_Analysis_Results.csv\n")
-    cat(" Note that the customers have been sorted\n from highest RFM scores to lowest.\n")
+    cat("\n Results are displayed below and also saved in a \n file named: RFM_Analysis_Results.csv\n")
+    cat(" Note that the customers have been sorted\n from highest RFM scores to lowest.\n\n")
 
 }
 
-cat("                    RFM Analysis Results ")
+cat("                    RFM Analysis Results \n")
 
 
 
