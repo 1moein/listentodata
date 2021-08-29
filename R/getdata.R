@@ -14,14 +14,14 @@ getdata <- function(){
   setwd(dirname(filename))
   extension = tolower(substr(filename, nchar(filename)-2, nchar(filename)))
   if (extension=="csv"){
-    cat("Thank you! Your selected .csv file has been recieved!")
-    cat("You now need to run your next line of Code...")
+    cat("Thank you! Your selected .csv file has been recieved!\n")
+    cat("You now need to run your next line of Code...\n")
     mydata = read.csv(file=filename)
 
   } else {
-    cat("ERROR:")
-    cat("      We can't use the file you have selected.")
-    cat("      It is not a CSV data file. Please try again...")
+    cat("ERROR:\n")
+    cat("      We can't use the file you have selected.\n")
+    cat("      It is not a CSV data file. Please try again...\n")
 }
 
   if (extension=="csv"){

@@ -81,6 +81,14 @@
 # df = read.csv(file="Yourdatafilename.csv")
 
 
+#' Runs an RFM Analysis
+#'
+#' @param mydata
+#'
+#' @return
+#' @export
+#'
+#' @examples
 Run_RFM_Analysis <- function(mydata){
 
     # cat("\014")
