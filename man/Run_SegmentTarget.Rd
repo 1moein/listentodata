@@ -17,9 +17,12 @@ Run_SegmentTarget(df_seg, df_targ, HowManySegments, larger = 1)
 \item{larger}{}
 }
 \value{
-
+a pdf file
 }
 \description{
 This function runs a segmentation and targeting analysis and produces results
 in a pdf file.
+}
+\examples{
+Run_SegmentTarget(segdata, targdata, 3, 1)
 }

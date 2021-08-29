@@ -4,6 +4,7 @@
 #' @export
 #'
 #' @examples
+#' clearconsole()
 clearconsole <- function(){
 
   cat("\014")

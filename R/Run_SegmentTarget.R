@@ -22,10 +22,18 @@
 #' @param HowManySegments 
 #' @param larger 
 #'
-#' @return
+#' @return a pdf file
 #' @export
+#' 
+#' @importFrom factoextra fviz_cluster
+#' @importFrom gridExtra grid.arrange
+#' @importFrom gridExtra tableGrob
+#' @importFrom gridExtra ttheme_minimal
+#' @importFrom flexclust barchart
+#' @importFrom grDevices pdf
 #'
 #' @examples
+#' Run_SegmentTarget(segdata, targdata, 3, 1)
 Run_SegmentTarget <- function(df_seg,df_targ,HowManySegments, larger = 1) {
 #
 # # Remove all variables from memory to start fresh
@@ -134,9 +142,9 @@ Assigned_Segment = cutree(hc, k = HowManySegments)
 df_seg$segment = Assigned_Segment
 df_targ$segment = Assigned_Segment
 
-# Visualize cluster plots by drawing the first two principal components
-if (!require(factoextra)) install.packages("factoextra")
-library(factoextra)
+# # Visualize cluster plots by drawing the first two principal components
+# if (!require(factoextra)) install.packages("factoextra")
+# library(factoextra)
 fviz_cluster(list(data = df, cluster = Assigned_Segment))
 
 
@@ -160,9 +168,9 @@ segment_sizes = round(segment_sizes,2)
 segment_sizes
 
 
-# Create a theme for formatting our tables
-if (!require(gridExtra)) install.packages("gridExtra")
-library(gridExtra)
+# # Create a theme for formatting our tables
+# if (!require(gridExtra)) install.packages("gridExtra")
+# library(gridExtra)
 mytablecolors = c("#e5f5e0","#fff7dc")
 mytheme = ttheme_minimal(
   core=list(bg_params = list(fill =  mytablecolors, col=NA),
@@ -185,11 +193,11 @@ grid.arrange(tableGrob(segment_sizes, theme=mytheme))
 grid.arrange(top="Segmentation Analysis: Main Results", tableGrob(calculate_segment_means(df_seg)[[2]], theme=mytheme))
 
 
-# Visualizing the means of segmentation variable for each segment
-
-if (!require(flexclust)) install.packages("flexclust")
-library(flexclust)
-barchart(hc, df, k = HowManySegments,
+# # Visualizing the means of segmentation variable for each segment
+# 
+# if (!require(flexclust)) install.packages("flexclust")
+# library(flexclust)
+flexclust::barchart(hc, df, k = HowManySegments,
          shade = TRUE,
          main = "Bar Chart of Standardized Segmentation Variable Means \n Dots show population means \n Bars show segment means \n Difference of means between a segment and the population\n help us describe each segment",
          xlab = paste("Segment ", as.character(rep(1:HowManySegments)))
@@ -219,7 +227,7 @@ fileisopen = suppressWarnings("try-error" %in% class(try(file(filename, open = "
 # value for "larger" below to 1.5, 1.7, 1.8, 2, or larger values for larger
 # page sizes
 # larger =  1
-library(grDevices)
+# library(grDevices)
 suppressWarnings(res2 <- try(pdf("Results_Segment_Target.pdf", height=larger*8.5, width=larger*11), silent = TRUE))
 # suppressWarnings(res <- try(write.csv(df, file ="RFM_Analysis_Results.csv", row.names = FALSE), silent = TRUE))
 

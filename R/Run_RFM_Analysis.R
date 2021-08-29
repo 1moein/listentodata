@@ -88,6 +88,7 @@
 #' @export
 #'
 #' @examples
+#' Run_RFM_Analysis(yourRFMdataset)
 Run_RFM_Analysis <- function(mydata){
     
     # cat("\014")

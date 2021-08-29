@@ -12,3 +12,6 @@ clearconsole()
 \description{
 Clears the Console
 }
+\examples{
+clearconsole()
+}

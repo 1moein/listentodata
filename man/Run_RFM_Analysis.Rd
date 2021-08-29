@@ -15,3 +15,6 @@ Run_RFM_Analysis(mydata)
 \description{
 RFM Analysis
 }
+\examples{
+Run_RFM_Analysis(yourRFMdataset)
+}
