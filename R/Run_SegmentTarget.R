@@ -28,7 +28,7 @@
 #' @importFrom factoextra fviz_cluster
 #' @importFrom gridExtra ttheme_minimal grid.arrange tableGrob
 #' @importFrom flexclust barchart
-#' @importFrom grDevices pdf
+#' @importFrom grDevices pdf rainbow
 #' @importFrom stats dist hclust rect.hclust cutree
 #'
 #' @examples
@@ -87,7 +87,7 @@ Run_SegmentTarget <- function(df_seg,df_targ,HowManySegments, larger = 1) {
 # summary(df_targ)
 
 # copy the segmentation data frame into df
-df = df_seg
+df_orig = df_seg
 # Standardize the segmentation data in the df data set
 # Note that using scale() on a data frame converts it into a matrix.
 # We have to convert it back to a data frame, because the code
@@ -143,8 +143,39 @@ df_targ$segment = Assigned_Segment
 
 # # Visualize cluster plots by drawing the first two principal components
 # if (!require(factoextra)) install.packages("factoextra")
-# library(factoextra)
-fviz_cluster(list(data = df, cluster = Assigned_Segment))
+
+segmentmap = fviz_cluster(list(data = df, cluster = Assigned_Segment), ellipse.type = "norm")
+
+plot(segmentmap)
+
+#########################################################################
+# ##testing something from this source
+# # https://www.datanovia.com/en/blog/cluster-analysis-in-r-simplified-and-enhanced/
+# res.km <- eclust(df, "kmeans", nstart = 25)
+# # Enhanced hierarchical clustering
+# res.hc <- eclust(df, "hclust") # compute hclust
+# fviz_dend(res.hc, rect = TRUE) # dendrogam
+# fviz_cluster(res.hc) # scatter plot
+# set.seed(123)
+# # Data preparation
+# # +++++++++++++++
+# data("iris")
+# head(iris)
+# # Remove species column (5) and scale the data
+# iris.scaled <- scale(iris[, -5])
+# 
+# # K-means clustering
+# # +++++++++++++++++++++
+# km.res <- kmeans(df, 3, nstart = 10)
+# 
+# # Visualize kmeans clustering
+# # use repel = TRUE to avoid overplotting
+# fviz_cluster(km.res, df, ellipse.type = "norm")
+#####################################################
+
+
+
+
 
 
 #---------- Find Segment Sizes---------------
@@ -196,12 +227,12 @@ grid.arrange(top="Segmentation Analysis: Main Results", tableGrob(calculate_segm
 # 
 # if (!require(flexclust)) install.packages("flexclust")
 # library(flexclust)
-barchart(hc, df, k = HowManySegments,
+seg_Results = barchart(hc, df, k = HowManySegments,
          shade = TRUE,
          main = "Bar Chart of Standardized Segmentation Variable Means \n Dots show population means \n Bars show segment means \n Difference of means between a segment and the population\n help us describe each segment",
          xlab = paste("Segment ", as.character(rep(1:HowManySegments)))
 )
-
+plot(seg_Results)
 
 #--------- Targeting Analysis --------------
 # For targeting analysis, we only calculate the mean of the targeting variables
@@ -247,18 +278,16 @@ plot(x[1:20], type="b", col="navy",
      ylab="Measure of Within-Cluster Sum of Squared Errors (SSE)",
      xlab="Number of clusters")
 
-# only commented out in this version
-# fviz_cluster(list(data = df, cluster = Assigned_Segment))
+plot(segmentmap)
 
 grid.arrange(tableGrob(segment_sizes, theme=mytheme))
-barchart(hc, df, k = HowManySegments,
-         shade = TRUE,
-         main = "*Bar Chart of Standardized Segmentation Variable Means* \n Dots show population means. \n Bars show segment means. \n Differences between population and segment means\n help us describe each segment."
-)
+
+plot(seg_Results)
 
 grid.arrange(top="Segmentation Analysis: Main Results", tableGrob(calculate_segment_means(df_seg)[[2]], theme=mytheme))
 
 grid.arrange(top="Targeting Analysis: Main Results", tableGrob(calculate_segment_means(df_targ)[[2]], theme=mytheme))
+
 
 suppressWarnings(dev.off())
 
