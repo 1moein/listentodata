@@ -245,7 +245,7 @@ plot(seg_Results)
 ################# save results in a pdf file ############
 
 # Decide what to call your file name; make sure to put .pdf at the end of the name
-filename  =  "Results_Segment_Target.pdf"
+filename  =  "! Results_Segment_Target.pdf"
 
 # next line to be used in later versions to check if the file is open
 fileisopen = suppressWarnings("try-error" %in% class(try(file(filename, open = "w"), silent = TRUE)))
@@ -257,7 +257,7 @@ fileisopen = suppressWarnings("try-error" %in% class(try(file(filename, open = "
 # page sizes
 # larger =  1
 # library(grDevices)
-suppressWarnings(res2 <- try(pdf("Results_Segment_Target.pdf", height=larger*8.5, width=larger*11), silent = TRUE))
+suppressWarnings(res2 <- try(pdf("! Results_Segment_Target.pdf", height=larger*8.5, width=larger*11), silent = TRUE))
 # suppressWarnings(res <- try(write.csv(df, file ="RFM_Analysis_Results.csv", row.names = FALSE), silent = TRUE))
 
 head(df_seg)
@@ -298,13 +298,13 @@ suppressWarnings(dev.off())
 
 
 if (!is.null(res2)){
-  cat("\n ERROR:\n The analysis was performed, but we were not able to\n save the results in Results_Segment_Target.pdf")
+  cat("\n ERROR:\n The analysis was performed, but we were not able to\n save the results in \"! Results_Segment_Target.pdf\"")
   cat(" \n This is probably due to a file with the same name being open.\n")
   cat(" Make sure you close that file, and then run the last line of code again.")
   
 } else {
   cat("\n Segmentation and Targeting analysis has been performed on these data!\n")
-  cat("\n Results have been saved in a file named: Results_Segment_Target.pdf\n")
+  cat("\n Results have been saved in a file named: \"! Results_Segment_Target.pdf\"\n")
   cat(" You can find this PDF file in the folder where your data files are here:\n ")
   cat(as.character(getwd()))
   cat(" \n\n ")
