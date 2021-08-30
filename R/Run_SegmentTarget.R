@@ -308,6 +308,7 @@ if (!is.null(res2)){
   cat(" You can find this PDF file in the folder where your data files are here:\n ")
   cat(as.character(getwd()))
   cat(" \n\n ")
+  cat(" If you see any warnings below, simply disregard them.\n\n ")
   
 }
 
