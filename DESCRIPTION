@@ -13,4 +13,8 @@ Imports:
     factoextra,
     flexclust,
     grDevices,
-    gridExtra
+    gridExtra,
+    ggplot2,
+    stats
+
+

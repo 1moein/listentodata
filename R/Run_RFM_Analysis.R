@@ -212,7 +212,9 @@ Run_RFM_Analysis <- function(mydata){
         
     } else {
         cat("\n Results are displayed below and also saved in a \n file named: RFM_Analysis_Results.csv\n")
-        cat(" Note that the results have been sorted\n based on RFM Scores from highest to lowest.\n\n")
+        cat(" located in this folder:\n")
+        cat(as.character(getwd()))
+        cat("\n Note that the results have been sorted\n based on RFM Scores from highest to lowest.\n\n")
         
     }
     

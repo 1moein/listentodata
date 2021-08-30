@@ -26,11 +26,10 @@
 #' @export
 #' 
 #' @importFrom factoextra fviz_cluster
-#' @importFrom gridExtra grid.arrange
-#' @importFrom gridExtra tableGrob
-#' @importFrom gridExtra ttheme_minimal
+#' @importFrom gridExtra ttheme_minimal grid.arrange tableGrob
 #' @importFrom flexclust barchart
 #' @importFrom grDevices pdf
+#' @importFrom stats dist hclust rect.hclust cutree
 #'
 #' @examples
 #' Run_SegmentTarget(segdata, targdata, 3, 1)
@@ -197,7 +196,7 @@ grid.arrange(top="Segmentation Analysis: Main Results", tableGrob(calculate_segm
 # 
 # if (!require(flexclust)) install.packages("flexclust")
 # library(flexclust)
-flexclust::barchart(hc, df, k = HowManySegments,
+barchart(hc, df, k = HowManySegments,
          shade = TRUE,
          main = "Bar Chart of Standardized Segmentation Variable Means \n Dots show population means \n Bars show segment means \n Difference of means between a segment and the population\n help us describe each segment",
          xlab = paste("Segment ", as.character(rep(1:HowManySegments)))
@@ -209,9 +208,8 @@ flexclust::barchart(hc, df, k = HowManySegments,
 # for each segment and determine if they are different from the population on those variables.
 
 # How are the segments different in how we can reach/target them?
-grid.arrange(top="Targeting Analysis: Main Results", tableGrob(calculate_segment_means(df_targ)[[2]], theme=mytheme))
 
-
+# if (length(dev.list())!= 0) dev.off()
 
 ################# save results in a pdf file ############
 
@@ -249,7 +247,8 @@ plot(x[1:20], type="b", col="navy",
      ylab="Measure of Within-Cluster Sum of Squared Errors (SSE)",
      xlab="Number of clusters")
 
-fviz_cluster(list(data = df, cluster = Assigned_Segment))
+# only commented out in this version
+# fviz_cluster(list(data = df, cluster = Assigned_Segment))
 
 grid.arrange(tableGrob(segment_sizes, theme=mytheme))
 barchart(hc, df, k = HowManySegments,
@@ -261,8 +260,7 @@ grid.arrange(top="Segmentation Analysis: Main Results", tableGrob(calculate_segm
 
 grid.arrange(top="Targeting Analysis: Main Results", tableGrob(calculate_segment_means(df_targ)[[2]], theme=mytheme))
 
-dev.off()
-
+suppressWarnings(dev.off())
 
 
 if (!is.null(res2)){
@@ -273,7 +271,9 @@ if (!is.null(res2)){
 } else {
   cat("\n Segmentation and Targeting analysis has been performed on these data!\n")
   cat("\n Results have been saved in a file named: Results_Segment_Target.pdf\n")
-  cat(" You can find this PDF file in the folder where your data files are located.\n")
+  cat(" You can find this PDF file in the folder where your data files are here:\n ")
+  cat(as.character(getwd()))
+  cat(" \n\n ")
   
 }
 
