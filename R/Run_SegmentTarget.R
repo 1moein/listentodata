@@ -28,8 +28,6 @@
 #' @importFrom factoextra fviz_cluster
 #' @importFrom gridExtra ttheme_minimal grid.arrange tableGrob
 #' @importFrom flexclust barchart
-#' @importFrom grDevices pdf rainbow
-#' @importFrom stats dist hclust rect.hclust cutree
 #'
 #' @examples
 #' Run_SegmentTarget(segdata, targdata, 3, 1)
@@ -278,6 +276,7 @@ plot(x[1:20], type="b", col="navy",
      ylab="Measure of Within-Cluster Sum of Squared Errors (SSE)",
      xlab="Number of clusters")
 
+segmentmap = fviz_cluster(list(data = df, cluster = Assigned_Segment), ellipse.type = "norm")
 plot(segmentmap)
 
 grid.arrange(tableGrob(segment_sizes, theme=mytheme))
@@ -299,13 +298,13 @@ suppressWarnings(dev.off())
 
 if (!is.null(res2)){
   cat("\n ERROR:\n The analysis was performed, but we were not able to\n save the results in \"! Results_Segment_Target.pdf\"")
-  cat(" \n This is probably due to a file with the same name being open.\n")
+  cat(" \n This is probably due to a PDF file with the same name being open.\n")
   cat(" Make sure you close that file, and then run the last line of code again.")
   
 } else {
   cat("\n Segmentation and Targeting analysis has been performed on these data!\n")
   cat("\n Results have been saved in a file named: \"! Results_Segment_Target.pdf\"\n")
-  cat(" You can find this PDF file in the folder where your data files are here:\n ")
+  cat(" You can find this file in the same folder as your data files, which is here:\n ")
   cat(as.character(getwd()))
   cat(" \n\n ")
   cat(" If you see any warnings below, simply disregard them.\n\n ")

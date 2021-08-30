@@ -17,15 +17,16 @@ runtimequote <- function(){
 
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage("                  ")
-  packageStartupMessage(" Welcome to Marketing Analytics v.1.0")
-  packageStartupMessage(" by: Dr. MK for MKTG763 @ UNH-Paul College")
+  packageStartupMessage(" Welcome to listentodata v.1.0 - Fall 2021")
+  packageStartupMessage(" An R Package for Marketing Analytics")
+  packageStartupMessage(" by: Dr. MK for MKTG763 @ UNH - Paul College")
   packageStartupMessage("                  ")
   packageStartupMessage("                  ")
-  packageStartupMessage("-----A Small Dose of Inspiration-----")
+  packageStartupMessage("----- A Small Dose of Inspiration before We Start -----")
   packageStartupMessage("                  ")
   packageStartupMessage(runtimequote())
   packageStartupMessage("                  ")
-  packageStartupMessage("-------------------------------------")
+  packageStartupMessage("-------------------------------------------------------")
   packageStartupMessage("                  ")
 
 }

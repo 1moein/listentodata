@@ -12,9 +12,6 @@ RoxygenNote: 7.1.1
 Imports:
     factoextra,
     flexclust,
-    grDevices,
     gridExtra,
-    ggplot2,
-    stats
-
+    ggplot2
 
