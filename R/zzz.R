@@ -15,7 +15,7 @@ runtimequote <- function(){
 }
 
 
-.onLoad <- function(libname, pkgname) {
+.onAttach <- function(libname, pkgname) {
   packageStartupMessage("                  ")
   packageStartupMessage(" Welcome to Marketing Analytics v.1.0")
   packageStartupMessage(" by: Dr. MK for MKTG763 @ UNH-Paul College")
