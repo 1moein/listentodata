@@ -229,7 +229,7 @@ grid.arrange(top="Segmentation Analysis: Main Results", tableGrob(calculate_segm
 # library(flexclust)
 seg_Results = barchart(hc, df, k = HowManySegments,
          shade = TRUE,
-         main = "Bar Chart of Standardized Segmentation Variable Means \n Dots show population means \n Bars show segment means \n Difference of means between a segment and the population\n help us describe each segment",
+         main = "Bar Chart of Standardized Segmentation Variable Means \n Dots show population means \n Bars show segment means \n Difference of means between a segment and the population helps us describe each segment",
          xlab = paste("Segment ", as.character(rep(1:HowManySegments)))
 )
 plot(seg_Results)
@@ -282,6 +282,11 @@ plot(segmentmap)
 
 grid.arrange(tableGrob(segment_sizes, theme=mytheme))
 
+seg_Results = barchart(hc, df, k = HowManySegments,
+                       shade = TRUE,
+                       main = "Bar Chart of Standardized Segmentation Variable Means \n Dots show population means \n Bars show segment means \n Difference of means between a segment and the population helps us describe each segment",
+                       xlab = paste("Segment ", as.character(rep(1:HowManySegments)))
+)
 plot(seg_Results)
 
 grid.arrange(top="Segmentation Analysis: Main Results", tableGrob(calculate_segment_means(df_seg)[[2]], theme=mytheme))
