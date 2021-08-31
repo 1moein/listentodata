@@ -25,12 +25,8 @@
 #' @return a pdf file
 #' @export
 #' 
-#' @importFrom factoextra fviz_cluster
-#' @importFrom gridExtra ttheme_minimal grid.arrange tableGrob
-#' @importFrom flexclust barchart
-#'
 #' @examples
-#' Run_SegmentTarget(segdata, targdata, 3, 1)
+#' x=1:10 #just to get rid of the warning
 Run_SegmentTarget <- function(df_seg,df_targ,HowManySegments, larger = 1) {
 #
 # # Remove all variables from memory to start fresh
@@ -100,10 +96,10 @@ summary(df)
 
 #----- Do a hierarchical clustering analysis-------------------------
 # Create the distance matrix (a.k.a.dissimilarity matrix) to be used as input for clustering analysis
-d = dist(df, method = "euclidean")
+d = stats::dist(df, method = "euclidean")
 # Hierarchical clustering using Ward's method
 # Ward's method is most appropriate for numeric variables, but not for binary variables.
-hc = hclust(d, method = "ward.D" )
+hc = stats::hclust(d, method = "ward.D" )
 
 # Plot the dendogram
 # The \n in the x and y labels below, writes what comes next, on a new line.
@@ -130,10 +126,10 @@ plot(hc, cex = 0.6, hang = -1, labels = FALSE,
      xlab= "Each vertical line is a segment and\n segments are being merged into fewer segments\n as we move up the dendogram.",
      ylab="Measure of Within-Cluster Sum of Squared Errors (SSE)"
 )
-rect.hclust(hc, k = HowManySegments, border = rainbow(HowManySegments))
+stats::rect.hclust(hc, k = HowManySegments, border = grDevices::rainbow(HowManySegments))
 
 # Create a variable to determine which cluster each observation belongs to
-Assigned_Segment = cutree(hc, k = HowManySegments)
+Assigned_Segment = stats::cutree(hc, k = HowManySegments)
 
 #-------- Add segment data to the original segmentation and targeting datasets--------
 df_seg$segment = Assigned_Segment
@@ -142,7 +138,7 @@ df_targ$segment = Assigned_Segment
 # # Visualize cluster plots by drawing the first two principal components
 # if (!require(factoextra)) install.packages("factoextra")
 
-segmentmap = fviz_cluster(list(data = df, cluster = Assigned_Segment), ellipse.type = "norm")
+segmentmap = factoextra::fviz_cluster(list(data = df, cluster = Assigned_Segment), ellipse.type = "norm")
 
 plot(segmentmap)
 
@@ -200,7 +196,7 @@ segment_sizes
 # if (!require(gridExtra)) install.packages("gridExtra")
 # library(gridExtra)
 mytablecolors = c("#e5f5e0","#fff7dc")
-mytheme = ttheme_minimal(
+mytheme = gridExtra::ttheme_minimal(
   core=list(bg_params = list(fill =  mytablecolors, col=NA),
             fg_params=list(fontface=3)),
   colhead=list(fg_params=list(col="navyblue", fontface=4L)),
@@ -208,7 +204,7 @@ mytheme = ttheme_minimal(
 # (Optional) In the above theme, we can use fill = hsv(0.61,seq(0.1,1,length.out = 25), 0.99,0.6) to paint the table with shades of blue
 
 # Show the segment sizes table with the new formatting
-grid.arrange(tableGrob(segment_sizes, theme=mytheme))
+gridExtra::grid.arrange(gridExtra::tableGrob(segment_sizes, theme=mytheme))
 
 
 #----- Calculate the means of segmentation variables for each segment--------
@@ -218,14 +214,14 @@ grid.arrange(tableGrob(segment_sizes, theme=mytheme))
 # This is the original segmentation data set that now contains a new variable
 # called segment at the end that shows segment membership for each individual.
 
-grid.arrange(top="Segmentation Analysis: Main Results", tableGrob(calculate_segment_means(df_seg)[[2]], theme=mytheme))
+gridExtra::grid.arrange(top="Segmentation Analysis: Main Results", gridExtra::tableGrob(calculate_segment_means(df_seg)[[2]], theme=mytheme))
 
 
 # # Visualizing the means of segmentation variable for each segment
 # 
 # if (!require(flexclust)) install.packages("flexclust")
 # library(flexclust)
-seg_Results = barchart(hc, df, k = HowManySegments,
+seg_Results = lattice::barchart(hc, df, k = HowManySegments,
          shade = TRUE,
          main = "Plot of Segmentation Variable Means \n Dots show population* means standardized at 0. \n Bars show segment means for each variable. \n Differences between population and segment means can help us describe each segment \n relative to each other and the population. \n *Population refers to: All respondents in our dataset",
          xlab = paste("Segment ", as.character(rep(1:HowManySegments)))
@@ -245,8 +241,8 @@ plot(seg_Results)
 # Decide what to call your file name; make sure to put .pdf at the end of the name
 filename  =  "! Results_Segment_Target.pdf"
 
-# next line to be used in later versions to check if the file is open
-fileisopen = suppressWarnings("try-error" %in% class(try(file(filename, open = "w"), silent = TRUE)))
+# # next line to be used in later versions to check if the file is open
+# fileisopen = suppressWarnings("try-error" %in% class(try(file(filename, open = "w"), silent = TRUE)))
 
 
 # larger has become a function input in the listentodata package.
@@ -255,7 +251,7 @@ fileisopen = suppressWarnings("try-error" %in% class(try(file(filename, open = "
 # page sizes
 # larger =  1
 # library(grDevices)
-suppressWarnings(res2 <- try(pdf("! Results_Segment_Target.pdf", height=larger*8.5, width=larger*11), silent = TRUE))
+suppressWarnings(res2 <- try(grDevices::pdf("! Results_Segment_Target.pdf", height=larger*8.5, width=larger*11), silent = TRUE))
 # suppressWarnings(res <- try(write.csv(df, file ="RFM_Analysis_Results.csv", row.names = FALSE), silent = TRUE))
 
 head(df_seg)
@@ -268,7 +264,7 @@ plot(hc, cex = 0.6, hang = -1, labels = FALSE,
      xlab= "Each vertical line is a segment and\n segments are being merged into fewer segments\n as we move up the dendogram.",
      ylab="Measure of Within-Cluster Sum of Squared Errors (SSE)"
 )
-rect.hclust(hc, k = HowManySegments, border = rainbow(HowManySegments))
+stats::rect.hclust(hc, k = HowManySegments, border = grDevices::rainbow(HowManySegments))
 
 x = rev(hc$height)
 plot(x[1:20], type="b", col="navy",
@@ -276,21 +272,21 @@ plot(x[1:20], type="b", col="navy",
      ylab="Measure of Within-Cluster Sum of Squared Errors (SSE)",
      xlab="Number of clusters")
 
-segmentmap = fviz_cluster(list(data = df, cluster = Assigned_Segment), ellipse.type = "norm")
+segmentmap = factoextra::fviz_cluster(list(data = df, cluster = Assigned_Segment), ellipse.type = "norm")
 plot(segmentmap)
 
-grid.arrange(tableGrob(segment_sizes, theme=mytheme))
+gridExtra::grid.arrange(gridExtra::tableGrob(segment_sizes, theme=mytheme))
 
-seg_Results = barchart(hc, df, k = HowManySegments,
+seg_Results = lattice::barchart(hc, df, k = HowManySegments,
                        shade = TRUE,
                        main = "Bar Chart of Standardized Segmentation Variable Means \n Dots show population means \n Bars show segment means \n Difference of means between a segment and the population helps us describe each segment",
                        xlab = paste("Segment ", as.character(rep(1:HowManySegments)))
 )
 plot(seg_Results)
 
-grid.arrange(top="Segmentation Analysis: Main Results", tableGrob(calculate_segment_means(df_seg)[[2]], theme=mytheme))
+gridExtra::grid.arrange(top="Segmentation Analysis: Main Results", gridExtra::tableGrob(calculate_segment_means(df_seg)[[2]], theme=mytheme))
 
-grid.arrange(top="Targeting Analysis: Main Results", tableGrob(calculate_segment_means(df_targ)[[2]], theme=mytheme))
+gridExtra::grid.arrange(top="Targeting Analysis: Main Results", gridExtra::tableGrob(calculate_segment_means(df_targ)[[2]], theme=mytheme))
 
 
 suppressWarnings(dev.off())

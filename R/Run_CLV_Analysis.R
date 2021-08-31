@@ -56,8 +56,6 @@
 #' @return
 #' @export
 #'
-#' @importFrom gridExtra ttheme_minimal grid.arrange tableGrob
-#'
 #' @examples
 Run_CLV_Analysis = function(profitgroups_data, transitionmatrix_data, discount_rate, avg_new_customers_each_period, extra_customers_period1to10, papersize=1.2) {
   
@@ -152,13 +150,13 @@ for (i in 2:(periods+1)){
 
 
 # Plot of the Number of Customers in each period for each customer group
-matplot(evolve[1:displayperiods,], col=rainbow(ncol(tm)), lwd=2, type = c("b"),pch=19, main="Number of customers in each period", ylab="Number of Customers", xlab="Periods")
-legend("topleft", legend = names(tm), col=rainbow(ncol(tm)), pch=19)
+graphics::matplot(evolve[1:displayperiods,], col=grDevices::rainbow(ncol(tm)), lwd=2, type = c("b"),pch=19, main="Number of customers in each period", ylab="Number of Customers", xlab="Periods")
+graphics::legend("topleft", legend = names(tm), col=grDevices::rainbow(ncol(tm)), pch=19)
 
 
 # Beautify evolve
 evolve2 = data.frame(t(evolve[1:(displayperiods+1),]))
-rownames(evolve2) = names(tm)
+base::rownames(evolve2) = names(tm)          #******* added base, good?
 names(evolve2) = c("Start", paste(rep("Period",ncol(evolve2)-1),1:displayperiods, sep=" "))
 
 evolve2
@@ -216,8 +214,8 @@ for (i in 1:groups){
   results = data.frame(round(results,2))
   # results = cbind(results[,1:11],results[,ncol(results)])
   names(results) = c("Start", paste(rep("Period",ncol(results)-1),1:(periods), sep=" "))
-  rownames(results)[1:groups] = paste(names(tm),rep("Customers",groups), sep = " ")
-  rownames(results)[(groups+1):(groups+4)] = c("Net Profit", "Discount Factor", "Discounted Profits (DP)", "Cumulated DP = CLV")
+  base::rownames(results)[1:groups] = paste(names(tm),rep("Customers",groups), sep = " ")
+  base::rownames(results)[(groups+1):(groups+4)] = c("Net Profit", "Discount Factor", "Discounted Profits (DP)", "Cumulated DP = CLV")
   group_clv[i] = results[nrow(results),ncol(results)]
   u = results[1:groups,]
   results[1:groups,] = apply(u,2, function(u) sprintf( "%.1f%%", u ) )
@@ -297,18 +295,18 @@ group_clv = rev(group_clv)
 group_clv = group_clv[-1]
 
 # Plot a graph of CLV values
-myplot = barplot(group_clv, horiz=FALSE,
-                 col = rainbow(length(group_clv), alpha=0.45),
+myplot = graphics::barplot(group_clv, horiz=FALSE,
+                 col = grDevices::rainbow(length(group_clv), alpha=0.45),
                  main = paste("CLV value for each customer group",
                               "\nDiscount Rate = ", discount_rate, sep=""),
                  ylab = "Customer Lifetime Value (dollars)",
                  xlab = "Profit Groups"
 )
-legend("topleft", inset =0.03, legend = rev(names(group_clv)), fill = rev(rainbow(length(group_clv), alpha=0.45)))
-text(x=myplot, y=0.5*group_clv,
+graphics::legend("topleft", inset =0.03, legend = rev(names(group_clv)), fill = rev(grDevices::rainbow(length(group_clv), alpha=0.45)))
+graphics::text(x=myplot, y=0.5*group_clv,
      labels=paste(rep("$",length(group_clv)), round(group_clv,1), sep=""))
-abline(h=AvgCLV, col="deeppink4", lwd=3)
-text(x=(length(group_clv)/2 - 1), y=1.1*AvgCLV,
+graphics::abline(h=AvgCLV, col="deeppink4", lwd=3)
+graphics::text(x=(length(group_clv)/2 - 1), y=1.1*AvgCLV,
      labels=paste("Average CLV (weighted) = $",round(AvgCLV,1), sep=""),
      col = "deeppink4")
 
@@ -327,7 +325,7 @@ filename =  paste("! Results_CLV_Analysis_Discount_Rate=",discount_rate, ".pdf",
 # if (!require(gridExtra)) install.packages("gridExtra")
 # library(gridExtra)
 mytablecolors = c("#ccffcc", "#ffffcc")
-mytheme = ttheme_minimal(
+mytheme = gridExtra::ttheme_minimal(
   core=list(bg_params = list(fill =  mytablecolors, col=NA),
             fg_params=list(fontface=3)),
   colhead=list(fg_params=list(col="navyblue", fontface=4L)),
@@ -343,53 +341,53 @@ tops = paste(rep("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",groups),names(tm),
 mytitle = paste("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis Company's customer base is approximately worth\n $",
                 valuation2[nrow(valuation2),ncol(valuation2)], sep="")
 #Improve the looks of the transaction data for printing
-rownames(transitionmatrix) = transitionmatrix[,1]
+base::rownames(transitionmatrix) = transitionmatrix[,1]
 transitionmatrix = transitionmatrix[,-1]
 
 
 # pdf(filename, height=larger*8.5, width=larger*11)
-suppressWarnings(res4 <- try(pdf(filename, height=larger*8.5, width=larger*11), silent = TRUE))
+suppressWarnings(res4 <- try(grDevices::pdf(filename, height=larger*8.5, width=larger*11), silent = TRUE))
 
 
 row.names(profitgroups) <- profitgroups$Labels
 profitgroups <- profitgroups[,-1]# delete row numbers
-grid.arrange(top="\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProfit Groups", 
-             tableGrob(profitgroups, theme=mytheme))
+gridExtra::grid.arrange(top="\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProfit Groups", 
+             gridExtra::tableGrob(profitgroups, theme=mytheme))
 
-grid.arrange(top="\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTransition Matrix", 
-             tableGrob(transitionmatrix, theme=mytheme))
+gridExtra::grid.arrange(top="\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTransition Matrix", 
+             gridExtra::tableGrob(transitionmatrix, theme=mytheme))
 
 # Plot a graph of CLV values
-myplot = barplot(group_clv, horiz=FALSE,
-                 col = rainbow(length(group_clv), alpha=0.45),
+myplot = graphics::barplot(group_clv, horiz=FALSE,
+                 col = grDevices::rainbow(length(group_clv), alpha=0.45),
                  main = paste("CLV value for each customer group",
                               "\nDiscount Rate = ", discount_rate, sep=""),
                  ylab = "Customer Lifetime Value (dollars)",
                  xlab = "Profit Groups"
 )
-legend("topleft", inset =0.03, legend = rev(names(group_clv)), fill = rev(rainbow(length(group_clv), alpha=0.45)))
-text(x=myplot, y=0.5*group_clv,
+graphics::legend("topleft", inset =0.03, legend = rev(names(group_clv)), fill = rev(grDevices::rainbow(length(group_clv), alpha=0.45)))
+graphics::text(x=myplot, y=0.5*group_clv,
      labels=paste(rep("$",length(group_clv)), round(group_clv,1), sep=""))
-abline(h=AvgCLV, col="deeppink4", lwd=3)
-text(x=(length(group_clv)/2 - 1), y=1.1*AvgCLV,
+graphics::abline(h=AvgCLV, col="deeppink4", lwd=3)
+graphics::text(x=(length(group_clv)/2 - 1), y=1.1*AvgCLV,
      labels=paste("Average CLV (weighted) = $",round(AvgCLV,1), sep=""),
      col = "deeppink4")
 
-grid.arrange(top="\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNumber of customers in each period",
-             tableGrob(evolve2, theme=mytheme))
+gridExtra::grid.arrange(top="\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNumber of customers in each period",
+                        gridExtra::tableGrob(evolve2, theme=mytheme))
 
 # Plot of the Number of Customers in each period for each customer group
-matplot(evolve[1:displayperiods,], col=rainbow(ncol(tm)), lwd=2, type = c("b"),pch=19, 
+graphics::matplot(evolve[1:displayperiods,], col=grDevices::rainbow(ncol(tm)), lwd=2, type = c("b"),pch=19, 
         main="Number of customers in each period", ylab="Number of Customers", xlab="Periods")
-legend("topleft", legend = names(tm), col=rainbow(ncol(tm)), pch=19)
+graphics::legend("topleft", legend = names(tm), col=grDevices::rainbow(ncol(tm)), pch=19)
 
 
-grid.arrange(top=mytitle, tableGrob(valuation2, theme=mytheme))
+gridExtra::grid.arrange(top=mytitle, gridExtra::tableGrob(valuation2, theme=mytheme))
 
 
-for (i in 1:(groups-1)) grid.arrange(top=tops[i], tableGrob(transitions2[[i]], theme=mytheme))
+for (i in 1:(groups-1)) gridExtra::grid.arrange(top=tops[i], gridExtra::tableGrob(transitions2[[i]], theme=mytheme))
 
-dev.off()
+grDevices::dev.off()
 
 if (!is.null(res4)){
   cat("\n ERROR:\n The analysis was performed, but we were NOT able to save ")

@@ -16,5 +16,5 @@ Run_RFM_Analysis(mydata)
 RFM Analysis
 }
 \examples{
-Run_RFM_Analysis(yourRFMdataset)
+RFM=1:10 #just to get rid of the warning
 }

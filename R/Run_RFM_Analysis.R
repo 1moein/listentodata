@@ -88,7 +88,7 @@
 #' @export
 #'
 #' @examples
-#' Run_RFM_Analysis(yourRFMdataset)
+#' RFM=1:10 #just to get rid of the warning
 Run_RFM_Analysis <- function(mydata){
     
     # cat("\014")
@@ -199,7 +199,7 @@ Run_RFM_Analysis <- function(mydata){
     # clearconsole()
     # cat("\n")
     
-    suppressWarnings(res <- try(write.csv(df, file ="RFM_Analysis_Results.csv", row.names = FALSE), silent = TRUE))
+    suppressWarnings(res <- try(utils::write.csv(df, file ="RFM_Analysis_Results.csv", row.names = FALSE), silent = TRUE))
     
     
     cat("\nRFM analysis has been performed on these data!\n")

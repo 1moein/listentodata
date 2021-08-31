@@ -5,35 +5,17 @@
 #' This function allows you to group every three digits in a number using a comma.
 #' @param x The number you wish to add commas to.
 #' @keywords comma
-#' @export
-#' @examples
-#' addcomma(23564715565)
 #'
 addcomma <- function(x){
   y <- prettyNum(x,big.mark=",",scientific=FALSE)
   return(y)
 }
 
-#' Fix rlang package
-#'
-#' This function removes and installs rlang to update it to the newest version so that the broom package can be installed
-#' @keywords rlang
-#' @export
-#' @examples
-#' fix.rlang()
-#'
-fix.rlang = function(){
-  remove.packages("rlang")
-  install.packages("rlang")
-}
-
-#' Fix rlang package
+#' Get sign
 #'
 #' This function extracts the sign of a number
 #' @keywords sign
-#' @export
-#' @examples
-#' getsign(-10)
+
 
 getsign = function(x){
   if (x>=0) {
@@ -52,12 +34,7 @@ getsign = function(x){
 #' @param x vector to be compared with y in a two-sided T-test
 #' @param y vector to be compared with x in a two-sided T-test
 #' @keywords calculate averages
-#' @export
 #' @return 1 if significant difference in means, 0 if no sig. difference in means
-#' @examples
-#' x <- 1:20
-#' y <- 20:30
-#' is.sig(x,y)
 #'
 is.sig <- function(x,y){
   # This functions takes vectors x, and y; then itreturns 0 when there's NOT a significant difference between means of x and y
@@ -72,11 +49,7 @@ is.sig <- function(x,y){
 #' based on the segment memberships uncovered in the cluster analysis.
 #' @param df The data frame of segmentation variables that also inclueds a segment column for segment membership
 #' @keywords calculate averages
-#' @export
-#' @examples
-#' mydf <- data.frame(age=c(23,45,64,56,55,32,23,45,31,60), wealth=c(1,2,3,3,3,2,1,2,2,3),segment=c(1,2,2,2,2,1,1,2,1,2))
-#' calculate_segment_means(mydf)
-#'
+
 calculate_segment_means <- function(df){
   # This function takes a data frame consisting of segmentation variables and segment memberships
   # the segment memberships is the last column of the said dataframe and is called segment.
@@ -153,7 +126,6 @@ calculate_segment_means <- function(df){
 #' @param ratings customer ratings of products
 #' @param products description table of products
 #' @keywords partworth utilities
-#' @export
 #'
 
 Estimate_Partworth_Utilities <- function(ratings,products){
@@ -256,7 +228,6 @@ Estimate_Partworth_Utilities <- function(ratings,products){
 #' @param product_alternatives product alternatives
 #' @param pws  partworths table
 #' @keywords market shares
-#' @export
 
 Estimate_Market_Shares_old <- function(product_alternatives,pws){
   
@@ -328,7 +299,6 @@ Estimate_Market_Shares_old <- function(product_alternatives,pws){
 #' @param product_alternatives product alternatives
 #' @param pws  partworths table
 #' @keywords market shares
-#' @export
 Estimate_Market_Shares <- function(product_alternatives,pws){
   
   # Ensure pws variable names and product_alternatives attributes are the same
@@ -404,7 +374,6 @@ Estimate_Market_Shares <- function(product_alternatives,pws){
 #' @param rule decision rule
 #' @param n n is Max_No_of_products_to_return
 #' @keywords optimal products
-#' @export
 #'
 Find_Optimal_Products <- function (MS,rule,n){
   #Rule can only be 1, 2, or 3
@@ -424,7 +393,6 @@ Find_Optimal_Products <- function (MS,rule,n){
 #' @param MS Market share
 #' @param mytext message
 #' @keywords plot market shares
-#' @export
 #'
 Plot_MS_rule1 <- function(MS, mytext=""){
   # pass any additional info fro plot title using the mytext argument
@@ -449,7 +417,6 @@ Plot_MS_rule1 <- function(MS, mytext=""){
 #' @param MS Market share
 #' @param mytext message
 #' @keywords plot market shares
-#' @export
 #'
 
 Plot_MS_rule2 <- function(MS, mytext=""){
@@ -476,7 +443,6 @@ Plot_MS_rule2 <- function(MS, mytext=""){
 #' @param MS Market share
 #' @param mytext message
 #' @keywords plot market shares
-#' @export
 #'
 Plot_MS_rule3 <- function(MS, mytext=""){
   # pass any additional info fro plot title using the mytext argument
@@ -501,7 +467,6 @@ Plot_MS_rule3 <- function(MS, mytext=""){
 #' @param MS Market share
 #' @param mytext message
 #' @keywords plot market shares
-#' @export
 #'
 
 Plot_MS <- function(MS,rule){
@@ -522,7 +487,6 @@ Plot_MS <- function(MS,rule){
 #'
 #' @param thisobject name of the object
 #' @keywords object defined
-#' @export
 #'
 is.defined <- function(thisobject) {
   sym <- deparse(substitute(thisobject))
@@ -533,7 +497,6 @@ is.defined <- function(thisobject) {
 #' detach packages
 #'
 #' @keywords object defined
-#' @export
 #'
 detach.packages <- function(){
   #Detaches all additional packages from the environment

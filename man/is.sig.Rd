@@ -17,11 +17,5 @@ is.sig(x, y)
 \description{
 This function checks for significant difference in means of two vectors
 }
-\examples{
-x <- 1:20
-y <- 20:30
-is.sig(x,y)
-
-}
 \keyword{averages}
 \keyword{calculate}

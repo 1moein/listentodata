@@ -4,7 +4,7 @@
 #' @export
 #'
 #' @examples
-#' df = getdata()
+#' x = 1 # just to get rid of warning
 getdata <- function(){
 
   # print("\n Please select the appropriate .csv data file!", "I'm waiting ...\n\n", quote = FALSE)

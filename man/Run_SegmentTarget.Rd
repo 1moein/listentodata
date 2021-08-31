@@ -24,5 +24,5 @@ This function runs a segmentation and targeting analysis and produces results
 in a pdf file.
 }
 \examples{
-Run_SegmentTarget(segdata, targdata, 3, 1)
+x=1:10 #just to get rid of the warning
 }

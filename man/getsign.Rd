@@ -2,14 +2,11 @@
 % Please edit documentation in R/initial_functions.R
 \name{getsign}
 \alias{getsign}
-\title{Fix rlang package}
+\title{Get sign}
 \usage{
 getsign(x)
 }
 \description{
 This function extracts the sign of a number
-}
-\examples{
-getsign(-10)
 }
 \keyword{sign}

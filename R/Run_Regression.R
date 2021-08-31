@@ -91,9 +91,6 @@
 #'
 #' @return
 #' @export
-#'
-#' @importFrom jtools summ plot_summs 
-#' @importFrom corrplot corrplot
 #' 
 #' @examples
 Run_Regression = function(mydata,myformula) {
@@ -115,10 +112,10 @@ nums <- unlist(lapply(d1, is.numeric))
 numcols <- d1[ , nums]
 
 
-pairs(numcols, lower.panel = NULL, pch=16,cex=0.3)
+graphics::pairs(numcols, lower.panel = NULL, pch=16,cex=0.3)
 
 #Visualize the correlations among numeric variables as numbers or pie charts
-correlations = cor(numcols)
+correlations = stats::cor(numcols)
 corrplot::corrplot(correlations, method="pie")
 corrplot::corrplot(correlations, method="number")
 
@@ -131,7 +128,7 @@ corrplot::corrplot(correlations, method="number")
 # m3 = lm(Sales ~ CompPrice + Income + Advertising, data=d1)
 # m4 = lm(Sales ~ CompPrice + Income + Advertising + Population, data=d1)
 # m5 = lm(Sales ~ CompPrice + Income + Advertising + Population + Price, data=d1)
-  m6 = lm(myformula, data=d1)
+  m6 = stats::lm(myformula, data=d1)
 
 # Display the results
 
@@ -149,13 +146,15 @@ jtools::summ(m6)
 # # tab_model(m1, m2, m3, m4, m5, m6)
 
 # Visual summary
-jtools::plot_summs(m6, scale = TRUE, plot.distributions = TRUE, inner_ci_level = .95)
+suppressWarnings(jtools::plot_summs(m6, scale = TRUE, plot.distributions = TRUE, inner_ci_level = .95))
 
 
 # Find the best model using stepwise regression.
 # What variables should remain and what variables should be deleted
-# from the equation?
+# from the equation?\
+
 # selected_model = step(m6)
+
 
 # # Display the best model
 # jtools::summ(selected_model)
@@ -206,13 +205,13 @@ jtools::plot_summs(m6, scale = TRUE, plot.distributions = TRUE, inner_ci_level =
 # Decide what to call your file name; make sure to put .pdf at the end of the name
 filename =  "! Results_Regression_Analysis.pdf"
 larger =  1
-pdf(filename, height=larger*8.5, width=larger*11)
+grDevices::pdf(filename, height=larger*8.5, width=larger*11)
 
 # A scatterplot matrix of numeric variables
-capture.output(datasummary)
-pairs(numcols, lower.panel = NULL, pch=16,cex=0.3)
+datasummary
+graphics::pairs(numcols, lower.panel = NULL, pch=16,cex=0.3)
 
-correlations = cor(numcols)
+correlations = stats::cor(numcols)
 corrplot::corrplot(correlations, method="pie")
 corrplot::corrplot(correlations, method="number")
 
@@ -227,9 +226,11 @@ jtools::summ(selected_model)
 jtools::plot_summs(selected_model, scale = TRUE, plot.distributions = TRUE, inner_ci_level = .95)
 
 # Model Diagnostics for the Best model
-par(mfrow=c(2,2))
-plot(selected_model, main  = "Diagnostics for the Best Model")
-par(mfrow=c(1,1))
+selected_model = stats::step(m6)
+
+graphics::par(mfrow=c(2,2))
+graphics::plot(selected_model, main  = "Diagnostics for the Best Model")
+graphics::par(mfrow=c(1,1))
 
 # # Relative impact of variables
 # jtools::summ(selected_model_s)

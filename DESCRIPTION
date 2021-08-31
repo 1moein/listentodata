@@ -13,5 +13,10 @@ Imports:
     factoextra,
     flexclust,
     gridExtra,
-    ggplot2
-
+    ggplot2,
+    AlgDesign,
+    corrplot,
+    jtools
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

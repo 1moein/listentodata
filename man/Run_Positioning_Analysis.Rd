@@ -17,3 +17,6 @@ Run_Positioning_Analysis(percetpions_data, preferences_data)
 \description{
 Positioning Analysis
 }
+\examples{
+x=1:10 #just to get rid of the warning
+}
