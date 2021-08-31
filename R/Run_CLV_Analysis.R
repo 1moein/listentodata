@@ -395,7 +395,7 @@ if (!is.null(res4)){
   cat("\n ERROR:\n The analysis was performed, but we were NOT able to save ")
   cat(paste("\n the results in: ", filename))
   cat(" \n This is probably due to a PDF file with the same name being open.\n")
-  cat(" Make sure you close that file, and then run the last line of code again.")
+  cat(" Make sure you close that file, and then run the previous line of code again.")
 } else {
   cat("\n CLV analysis has been performed on these data!\n")
   cat("\n Results have been saved in a PDF file named: \n ")

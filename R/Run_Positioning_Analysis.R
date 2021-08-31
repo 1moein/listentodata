@@ -479,7 +479,7 @@ dev.off()
 if (!is.null(res3)){
   cat("\n ERROR:\n The analysis was performed, but we were not able to\n save the results in \"! Results_Positioning_Analysis.pdf\"")
   cat(" \n This is probably due to a PDF file with the same name being open.\n")
-  cat(" Make sure you close that file, and then run the last line of code again.")
+  cat(" Make sure you close that file, and then run the previous line of code again.")
   
 } else {
   cat("\n Positioning analysis has been performed on these data!\n")

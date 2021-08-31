@@ -9,7 +9,8 @@ Run_CLV_Analysis(
   transitionmatrix_data,
   discount_rate,
   avg_new_customers_each_period,
-  extra_customers_period1to10
+  extra_customers_period1to10,
+  papersize = 1.2
 )
 }
 \arguments{
