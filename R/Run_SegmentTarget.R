@@ -71,12 +71,12 @@ Run_SegmentTarget <- function(df_seg,df_targ,HowManySegments, larger = 1) {
 ####################################################
 
 # # View the segmentation data set and its summary statistics
-# head(df_seg)
+# utils::head(df_seg)
 # str(df_seg)
 # summary(df_seg)
 #
 # # View the targeting data set and its summary statistics
-# head(df_targ)
+# utils::head(df_targ)
 # str(df_targ)
 # summary(df_targ)
 
@@ -154,7 +154,7 @@ plot(segmentmap)
 # # Data preparation
 # # +++++++++++++++
 # data("iris")
-# head(iris)
+# utils::head(iris)
 # # Remove species column (5) and scale the data
 # iris.scaled <- scale(iris[, -5])
 # 
@@ -254,10 +254,10 @@ filename  =  "! Results_Segment_Target.pdf"
 suppressWarnings(res2 <- try(grDevices::pdf("! Results_Segment_Target.pdf", height=larger*8.5, width=larger*11), silent = TRUE))
 # suppressWarnings(res <- try(write.csv(df, file ="RFM_Analysis_Results.csv", row.names = FALSE), silent = TRUE))
 
-head(df_seg)
+utils::head(df_seg)
 summary(df_seg)
 
-head(df_targ)
+utils::head(df_targ)
 summary(df_targ)
 
 plot(hc, cex = 0.6, hang = -1, labels = FALSE,
@@ -289,7 +289,7 @@ gridExtra::grid.arrange(top="Segmentation Analysis: Main Results", gridExtra::ta
 gridExtra::grid.arrange(top="Targeting Analysis: Main Results", gridExtra::tableGrob(calculate_segment_means(df_targ)[[2]], theme=mytheme))
 
 
-suppressWarnings(dev.off())
+suppressWarnings(grDevices::dev.off())
 
 
 if (!is.null(res2)){

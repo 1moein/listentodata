@@ -30,3 +30,6 @@ Run_CLV_Analysis(
 \description{
 CLV Analysis
 }
+\examples{
+x=10
+}

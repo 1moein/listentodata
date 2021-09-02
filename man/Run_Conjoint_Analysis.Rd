@@ -32,3 +32,6 @@ Run_Conjoint_Analysis(
 \description{
 Title
 }
+\examples{
+x=10
+}

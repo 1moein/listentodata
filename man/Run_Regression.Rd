@@ -17,3 +17,6 @@ Run_Regression(mydata, myformula)
 \description{
 Title
 }
+\examples{
+x=10
+}

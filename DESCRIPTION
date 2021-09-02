@@ -16,7 +16,8 @@ Imports:
     ggplot2,
     AlgDesign,
     corrplot,
-    jtools
+    jtools,
+    graphics
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

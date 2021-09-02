@@ -118,9 +118,12 @@ comp3 = as.matrix(d1[,-1])%*%(pca$x[,3])
 # create an aribitrary scale to shorten the length of preference vectors
 # we call this number ss and divide all mapped preferences by it.
 ss = max(comp1,comp2,comp3)
-map1 = data.frame(c1=comp1/ss, c2=comp2/ss)
-map2 = data.frame(c1=comp1/ss, c3=comp3/ss)
-map3 = data.frame(c2=comp2/ss, c3=comp3/ss)
+c1=comp1/ss
+c2=comp2/ss
+c3=comp3/ss
+map1 = data.frame(c1, c2)
+map2 = data.frame(c1, c3)
+map3 = data.frame(c2, c3)
 
 
 # Create the perceptual map(s)
@@ -252,7 +255,7 @@ plot(p3_full)
 
 # Only plot the super-attributes
 ####################################################
-biplot1s = fviz_pca_biplot(pca, axes = c(1, 2),
+biplot1s = factoextra::fviz_pca_biplot(pca, axes = c(1, 2),
                 repel = TRUE,
                 invisible = "var",
                 col.var = "darkblue",
@@ -318,7 +321,7 @@ filename =  "! Results_Positioning_Analysis.pdf"
 
 
 # pdf(filename, paper="USr", height=7, width=7)
-suppressWarnings(res3 <- try(pdf(filename, paper="USr", height=7, width=7), silent = TRUE))
+suppressWarnings(res3 <- try(grDevices::pdf(filename, paper="USr", height=7, width=7), silent = TRUE))
 
 
 bp = graphics::barplot(height = AvP$Avg,

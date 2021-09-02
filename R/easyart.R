@@ -48,7 +48,7 @@ easyart <- function(n=2,mycolor="deeppink", m=0){
 
     # draw the circle using the x-y coordinates
   plot(x,y, type="l", ann=FALSE , xaxt='n', yaxt='n', axes = FALSE, col=mycolor)
-  title(main=paste0("n = ",n))
+  graphics::title(main=paste0("n = ",n))
   
   # create 200 angles between 0.01 and 2pi
   a <- seq(0.01,2, by=0.01) 

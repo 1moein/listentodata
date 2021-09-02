@@ -15,3 +15,6 @@ Run_Conjoint_Study_Design(designparameters)
 \description{
 Title
 }
+\examples{
+x=10
+}

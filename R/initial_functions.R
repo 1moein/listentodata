@@ -38,7 +38,7 @@ getsign = function(x){
 #'
 is.sig <- function(x,y){
   # This functions takes vectors x, and y; then itreturns 0 when there's NOT a significant difference between means of x and y
-  temp <- t.test(x, y, alternative = "two.sided", conf.level=0.95, var.equal = FALSE)
+  temp <- stats::t.test(x, y, alternative = "two.sided", conf.level=0.95, var.equal = FALSE)
   if (temp$p.value >= 0.05) return(0) else return(1)
 }
 
@@ -78,7 +78,7 @@ calculate_segment_means <- function(df){
   # population refers to the "entire sample" in this script.
   df_means <- colMeans(df, na.rm = TRUE, dims = 1)
   # Now calculate segment means
-  segment_means <- t(aggregate(df[,1:(ncol(df))], list(segment=df$segment), mean))
+  segment_means <- t(stats::aggregate(df[,1:(ncol(df))], list(segment=df$segment), mean))
   # The next line is to simply avoid a duplicate row.name warning.
   row.names(segment_means)[1] <- paste(row.names(segment_means)[1],"__")
   segment_means <- data.frame(segment_means)
@@ -138,7 +138,7 @@ Estimate_Partworth_Utilities <- function(ratings,products){
   num_of_attributes <- dim(products)[2]
   mylist <- list()
   for (i in 1:ncol(ratings)){
-    thislm <- lm(ratings[,i]~ ., data = products)
+    thislm <- stats::lm(ratings[,i]~ ., data = products)
     mylist[[i]] <- thislm$coefficients
   }
   ncoeff=length(thislm$coefficients)
@@ -406,7 +406,7 @@ Plot_MS_rule1 <- function(MS, mytext=""){
   if (rule==1){ custommain <- paste("Market shares using First Choice Rule\n",mytext)}
   if (rule==2){ custommain <- paste("Market shares using Preference Share Rule\n",mytext)}
   if (rule==3){ custommain <- paste("Market shares using Logit Choice Rule\n",mytext)}
-  pie(slices, labels = mylabels, main=custommain)
+  graphics::pie(slices, labels = mylabels, main=custommain)
   # pie3D(slices,labels=mylabels,explode=0.1, main="Market Shares using First Choice rule")
 }
 
@@ -431,7 +431,7 @@ Plot_MS_rule2 <- function(MS, mytext=""){
   if (rule==1){ custommain <- paste("Market shares using First Choice Rule\n",mytext)}
   if (rule==2){ custommain <- paste("Market shares using Preference Share Rule\n",mytext)}
   if (rule==3){ custommain <- paste("Market shares using Logit Choice Rule\n",mytext)}
-  pie(slices, labels = mylabels, main=custommain)
+  graphics::pie(slices, labels = mylabels, main=custommain)
   # pie3D(slices,labels=mylabels,explode=0.1, main="Market Shares using First Choice rule")
 }
 
@@ -456,7 +456,7 @@ Plot_MS_rule3 <- function(MS, mytext=""){
   if (rule==1){ custommain <- paste("Market shares using First Choice Rule\n",mytext)}
   if (rule==2){ custommain <- paste("Market shares using Preference Share Rule\n",mytext)}
   if (rule==3){ custommain <- paste("Market shares using Logit Choice Rule\n",mytext)}
-  pie(slices, labels = mylabels, main=custommain)
+  graphics::pie(slices, labels = mylabels, main=custommain)
   # pie3D(slices,labels=mylabels,explode=0.1, main="Market Shares using First Choice rule")
 }
 
@@ -478,7 +478,7 @@ Plot_MS <- function(MS,rule){
   if (rule==1){ custommain <- "Market shares using First Choice Rule"}
   if (rule==2){ custommain <- "Market shares using Preference Share Rule"}
   if (rule==3){ custommain <- "Market shares using Logit Choice Rule"}
-  pie(slices, labels = mylabels, main=custommain)
+  graphics::pie(slices, labels = mylabels, main=custommain)
   # pie3D(slices,labels=mylabels,explode=0.1, main="Market Shares using First Choice rule")
 }
 
@@ -500,5 +500,5 @@ is.defined <- function(thisobject) {
 #'
 detach.packages <- function(){
   #Detaches all additional packages from the environment
-  lapply(paste('package:',names(sessionInfo()$otherPkgs),sep=""),detach,character.only=TRUE,unload=TRUE)
+  lapply(paste('package:',names(utils::sessionInfo()$otherPkgs),sep=""),detach,character.only=TRUE,unload=TRUE)
 }

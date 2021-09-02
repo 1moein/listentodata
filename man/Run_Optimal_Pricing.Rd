@@ -27,3 +27,6 @@ Run_Optimal_Pricing(
 \description{
 Optimal Pricing
 }
+\examples{
+x=10
+}

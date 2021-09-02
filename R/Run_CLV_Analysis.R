@@ -57,6 +57,7 @@
 #' @export
 #'
 #' @examples
+#' x=10
 Run_CLV_Analysis = function(profitgroups_data, transitionmatrix_data, discount_rate, avg_new_customers_each_period, extra_customers_period1to10, papersize=1.2) {
   
 larger = papersize

@@ -102,6 +102,7 @@
 #' @export
 #'
 #' @examples
+#' x=10
 Run_Conjoint_Analysis = function(design, products, ratings, alternatives, competitors, resize_page=1) {
   
 cat(".\n")
@@ -128,7 +129,7 @@ cat("1. Pre-processing data... ")
 # df_ratings =  read.csv(file="Tablet_survey_ratings.csv")             # READ RATINGS DATA
 
 myratings = data.frame(t(df_ratings))
-head(myratings)
+utils::head(myratings)
 
 # # Load New product alternative
 # (alternatives = read.csv(file="Tablet_New_Product_Alternatives.csv"))
@@ -157,7 +158,7 @@ cat("2. Calculating Partial utilities...")
 # Estimate Partial Utilities
 pws = Estimate_Partworth_Utilities(myratings,myproducts)
 # View the top rows of pws
-head(pws)
+utils::head(pws)
 cat("Done!\n")
 
 ################# Conduct Market share Analysis using partial utilities ##############
@@ -241,7 +242,7 @@ cat("6. Estimating MS for all potential products...")
 
 Attributes = list()
 for (i in 1:(ncol(DesignTable)-1)){
-  Attributes[[i]] = (na.omit(DesignTable[,i+1]))
+  Attributes[[i]] = (stats::na.omit(DesignTable[,i+1]))
 }
 
 All_combinations = expand.grid(Attributes)
@@ -258,7 +259,7 @@ cat("Done!\n")
 
 cat("7. Finding optimal product(OP) in the market of all products...")
 
-head(MS)
+utils::head(MS)
 dim(MS)
 
 # Sort market shares for each choice rule from highest to lowest
@@ -367,14 +368,14 @@ filename =  "! Results_Conjoint_Analysis.pdf"
 # larger =  1
 
 # pdf(filename, height=larger*8.5, width=larger*11)
-suppressWarnings(res7 <- try(pdf(filename, height=larger*8.5, width=larger*11), silent = TRUE))
+suppressWarnings(res7 <- try(grDevices::pdf(filename, height=larger*8.5, width=larger*11), silent = TRUE))
 
 
-# Create a theme for formatting our tables
-if (!require(gridExtra)) install.packages("gridExtra")
-library(gridExtra)
+# # Create a theme for formatting our tables
+# if (!require(gridExtra)) install.packages("gridExtra")
+# library(gridExtra)
 mytablecolors = c("#e5f5e0","#fff7dc")
-mytheme = ttheme_minimal(
+mytheme = gridExtra::ttheme_minimal(
   core=list(bg_params = list(fill =  mytablecolors, col=NA),
             fg_params=list(fontface=3)),
   colhead=list(fg_params=list(col="navyblue", fontface=4L)),
@@ -382,8 +383,8 @@ mytheme = ttheme_minimal(
 # (Optional) In the above theme, we can use fill = hsv(0.61,seq(0.1,1,length.out = 25), 0.99,0.6) to paint the table with shades of blue
 
 # Tables
-grid.arrange(tableGrob(alts_with_names, theme=mytheme))
-grid.arrange(tableGrob(comps_with_names, theme=mytheme))
+gridExtra::grid.arrange(gridExtra::tableGrob(alts_with_names, theme=mytheme))
+gridExtra::grid.arrange(gridExtra::tableGrob(comps_with_names, theme=mytheme))
 
 # Plots
 Plot_MS_rule1(ourMarketShares0, "Only for our alternatives in the absence of competition")
@@ -427,7 +428,7 @@ Plot_MS_rule2(bestproductMS, paste("For the STRONGEST potential product out of a
 Plot_MS_rule3(bestproductMS, paste("For the STRONGEST potential product out of all",dim(All_products)[2],"products \n against the current competitors"))
 
 
-dev.off()
+grDevices::dev.off()
 if (!is.null(res7)) cat(" ***Failed!*** :\"-( \n")
 if (is.null(res7)) cat("Done! :D \n")
 

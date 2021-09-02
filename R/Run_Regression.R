@@ -93,6 +93,7 @@
 #' @export
 #' 
 #' @examples
+#' x=10
 Run_Regression = function(mydata,myformula) {
 
 # mydata = getdata()  
@@ -247,7 +248,7 @@ graphics::par(mfrow=c(1,1))
 # effect_plot(m6, pred = US, interval = TRUE, plot.points = TRUE)
 # effect_plot(m6, pred = ShelfLoc, interval = TRUE, plot.points = TRUE)
 
-dev.off()
+grDevices::dev.off()
 
 
 }

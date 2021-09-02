@@ -75,9 +75,9 @@
 #' @return
 #' @export
 #'
-#' @importFrom AlgDesign optFederov
 #' 
 #' @examples
+#' x=10
 Run_Conjoint_Study_Design = function(designparameters) {
   
 mylist = designparameters
@@ -96,7 +96,7 @@ mylist = designparameters
 any_number = 12345
 set.seed(any_number)
 
-Select_candidates = optFederov( ~ ., data = All_product_candidates, criterion = "D")
+Select_candidates = AlgDesign::optFederov( ~ ., data = All_product_candidates, criterion = "D")
 profiles = Select_candidates$design
 m = nrow(profiles)
 row.names(profiles) = paste(rep("product",m),1:m)
@@ -123,7 +123,7 @@ filename =  "! Results_Conjoint_Study.csv"
 # pdf(filename, height=larger*8.5, width=larger*11)
 
 
-suppressWarnings(res6 <- try(write.csv(profiles, filename, row.names = FALSE), silent = TRUE))
+suppressWarnings(res6 <- try(utils::write.csv(profiles, filename, row.names = FALSE), silent = TRUE))
 
 
 if (!is.null(res6)){

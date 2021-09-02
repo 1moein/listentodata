@@ -16,7 +16,7 @@ getdata <- function(){
   if (extension=="csv"){
     cat("Thank you! Your selected .csv file has been recieved!\n")
     cat("You now need to run your next line of Code...\n")
-    mydata = read.csv(file=filename)
+    mydata = utils::read.csv(file=filename)
 
   } else {
     cat("ERROR:\n")
