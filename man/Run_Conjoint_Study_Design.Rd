@@ -9,6 +9,9 @@ Run_Conjoint_Study_Design(designparameters)
 \arguments{
 \item{designparameters}{list of attributes and values}
 }
+\value{
+a csv file and Console output
+}
 \description{
 Title
 }

@@ -11,6 +11,9 @@ Run_Regression(mydata, myformula)
 
 \item{myformula}{formula for the lm model}
 }
+\value{
+a pdf file
+}
 \description{
 Title
 }

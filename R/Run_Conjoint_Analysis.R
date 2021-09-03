@@ -98,6 +98,9 @@
 #' @param competitors list of competitors' products in the market
 #' @param resizepaper how much larger should the report paper be to fit everything?
 #'
+#' @return a pdf file
+#' @export
+#' 
 #' @examples
 #' x=1:10 #just to get rid of the warning
 Run_Conjoint_Analysis = function(design, products, ratings, alternatives, competitors, resizepaper=1) {

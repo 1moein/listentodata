@@ -89,6 +89,9 @@
 #' @param mydata csv data file
 #' @param myformula formula for the lm model
 #'
+#' @return a pdf file
+#' @export
+#' 
 #' @examples
 #' x=1:10 #just to get rid of the warning
 Run_Regression = function(mydata,myformula) {

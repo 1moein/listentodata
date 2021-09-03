@@ -11,6 +11,9 @@ Run_Positioning_Analysis(percetpions_data, preferences_data)
 
 \item{preferences_data}{Preferences data}
 }
+\value{
+a pdf file
+}
 \description{
 Run Positioning Analysis
 }

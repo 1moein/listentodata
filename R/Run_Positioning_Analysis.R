@@ -57,6 +57,9 @@
 #' @param percetpions_data Perceptual data
 #' @param preferences_data Preferences data
 #'
+#' @return a pdf file
+#' @export
+#' 
 #' @examples
 #' x=1:10 #just to get rid of the warning
 Run_Positioning_Analysis = function(percetpions_data, preferences_data) {

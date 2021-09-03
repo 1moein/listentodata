@@ -54,6 +54,9 @@
 #' @param marketsize total size of the market
 #' @param resizepaper How much larger should the pdf paper size be to fit everything?
 #'
+#' @return a pdf file
+#' @export
+#' 
 #' @examples
 #' x=1:10 #just to get rid of the warning
 Run_Optimal_Pricing = function(survey_data, prices, probabilities, marketsize =10000, resizepaper=1.2) {

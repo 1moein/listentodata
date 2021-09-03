@@ -23,6 +23,9 @@ Run_Optimal_Pricing(
 
 \item{resizepaper}{How much larger should the pdf paper size be to fit everything?}
 }
+\value{
+a pdf file
+}
 \description{
 Run Optimal Pricing
 }

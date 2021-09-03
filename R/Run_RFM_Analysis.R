@@ -84,6 +84,9 @@
 #'
 #' @param mydata a csv data file containing at least three columns for R, F, and M
 #'
+#' @return a csv file
+#' @export
+#' 
 #' @examples
 #' RFM=1:10 #just to get rid of the warning
 Run_RFM_Analysis <- function(mydata){

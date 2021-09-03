@@ -54,6 +54,8 @@
 #' @param avg_new_customers_each_period Number of new customers added on avg. in each period
 #' @param extra_customers_period1to10 Number of extra customers added due to promotions in certain period.
 #' @param resizepaper How much larger should the pdf paper be for the results to fit?
+#' @export
+#' 
 #' @examples
 #' x=1:10 #just to get rid of the warning
 Run_CLV_Analysis = function(profitgroups_data, transitionmatrix_data, discount_rate, avg_new_customers_each_period, extra_customers_period1to10, resizepaper=1.2) {

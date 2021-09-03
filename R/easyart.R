@@ -25,6 +25,8 @@
 #'
 #' @param m optional argument that defaults to 0. If a value for it is provided, you will see all the patterns from n=1 upto n=m. For example, setting m=200, shows you all the pattern from 1 to 200")
 #' 
+#' @export
+#' 
 easyart <- function(n=2,mycolor="deeppink", m=0){
   
   drawit = function(n=2,mycolor="black", m=0){

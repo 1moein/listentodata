@@ -26,6 +26,9 @@ Run_Conjoint_Analysis(
 
 \item{resizepaper}{how much larger should the report paper be to fit everything?}
 }
+\value{
+a pdf file
+}
 \description{
 Title
 }

@@ -1,5 +1,7 @@
 #' Opens a dialog for user to select a csv data file
 #'
+#' @export
+#' 
 #' @examples
 #' x = 1 # just to get rid of warning
 getdata <- function(){

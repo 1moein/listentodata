@@ -1,4 +1,7 @@
 #' Clears the Console
+#' 
+#' @export
+#' 
 #'
 clear <- function(){
 

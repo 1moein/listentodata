@@ -72,6 +72,9 @@
 #'
 #' @param designparameters list of attributes and values
 #' 
+#' @return a csv file and Console output
+#' @export
+#' 
 #' @examples
 #' x=1:10 #just to get rid of the warning
 Run_Conjoint_Study_Design = function(designparameters) {
