@@ -154,7 +154,7 @@ suppressWarnings(jtools::plot_summs(m6, scale = TRUE, plot.distributions = TRUE,
 # What variables should remain and what variables should be deleted
 # from the equation?\
 
-# selected_model = step(m6)
+selected_model = stats::step(m6)
 
 
 # # Display the best model
