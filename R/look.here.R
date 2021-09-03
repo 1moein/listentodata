@@ -8,7 +8,7 @@ look.here = function() {
   if (exists('utils::choose.dir')) {
     thisdir = utils::choose.dir(caption = caption) 
   } else {
-    thisdir = easycsv::choose_dir(caption = caption)
+    thisdir = easycsv::choose_dir()
   }
   setwd(thisdir)
 }
