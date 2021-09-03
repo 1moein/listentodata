@@ -45,22 +45,20 @@
 # profitgroups = read.csv("ProfitGroups_onlinestore.csv", header = TRUE)
 # transitionmatrix = read.csv("TransitionMatrix_onlinestore.csv", header = TRUE)
 
-#' CLV Analysis
+
+#' Run CLV Analysis
 #'
-#' @param profitgroups_data 
-#' @param transitionmatrix_data 
-#' @param discount_rate 
-#' @param avg_new_customers_each_period 
-#' @param extra_customers_period1to10 
-#'
-#' @return
-#' @export
-#'
+#' @param profitgroups_data data on profit groups
+#' @param transitionmatrix_data  transition matrix
+#' @param discount_rate discount rate
+#' @param avg_new_customers_each_period Number of new customers added on avg. in each period
+#' @param extra_customers_period1to10 Number of extra customers added due to promotions in certain period.
+#' @param resizepaper How much larger should the pdf paper be for the results to fit?
 #' @examples
-#' x=10
-Run_CLV_Analysis = function(profitgroups_data, transitionmatrix_data, discount_rate, avg_new_customers_each_period, extra_customers_period1to10, papersize=1.2) {
+#' x=1:10 #just to get rid of the warning
+Run_CLV_Analysis = function(profitgroups_data, transitionmatrix_data, discount_rate, avg_new_customers_each_period, extra_customers_period1to10, resizepaper=1.2) {
   
-larger = papersize
+larger = resizepaper
 avg_new_customers_each_period = avg_new_customers_each_period
 discount_rate = discount_rate
 extra = extra_customers_period1to10

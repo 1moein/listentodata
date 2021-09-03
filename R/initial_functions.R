@@ -11,12 +11,12 @@ addcomma <- function(x){
   return(y)
 }
 
-#' Get sign
+
+
+#' Get sign of a number
 #'
-#' This function extracts the sign of a number
-#' @keywords sign
-
-
+#' @param x any real number
+#'
 getsign = function(x){
   if (x>=0) {
     return("+")
@@ -461,14 +461,12 @@ Plot_MS_rule3 <- function(MS, mytext=""){
 }
 
 
-#' Plot market shares
-#'
-#' This function plots market shares
-#' @param MS Market share
-#' @param mytext message
-#' @keywords plot market shares
-#'
 
+#' Plot Market Shares in a pie chart
+#'
+#' @param MS Market Share
+#' @param rule (1 = First Choice, 2 = Preference Share, 3 = Logit)
+#'
 Plot_MS <- function(MS,rule){
   # if (!require("plotrix")) install.packages("plotrix")
   optimals1 <- Find_Optimal_Products(MS,rule,5)

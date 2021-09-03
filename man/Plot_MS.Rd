@@ -2,18 +2,15 @@
 % Please edit documentation in R/initial_functions.R
 \name{Plot_MS}
 \alias{Plot_MS}
-\title{Plot market shares}
+\title{Plot Market Shares in a pie chart}
 \usage{
 Plot_MS(MS, rule)
 }
 \arguments{
-\item{MS}{Market share}
+\item{MS}{Market Share}
 
-\item{mytext}{message}
+\item{rule}{(1 = First Choice, 2 = Preference Share, 3 = Logit)}
 }
 \description{
-This function plots market shares
+Plot Market Shares in a pie chart
 }
-\keyword{market}
-\keyword{plot}
-\keyword{shares}

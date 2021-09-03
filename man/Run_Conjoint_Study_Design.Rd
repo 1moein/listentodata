@@ -7,14 +7,11 @@
 Run_Conjoint_Study_Design(designparameters)
 }
 \arguments{
-\item{designparameters}{}
-}
-\value{
-
+\item{designparameters}{list of attributes and values}
 }
 \description{
 Title
 }
 \examples{
-x=10
+x=1:10 #just to get rid of the warning
 }

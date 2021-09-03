@@ -7,10 +7,7 @@
 Run_RFM_Analysis(mydata)
 }
 \arguments{
-\item{mydata}{}
-}
-\value{
-
+\item{mydata}{a csv data file containing at least three columns for R, F, and M}
 }
 \description{
 RFM Analysis

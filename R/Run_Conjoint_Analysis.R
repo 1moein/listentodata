@@ -91,19 +91,16 @@
 
 #' Title
 #'
-#' @param design 
-#' @param products 
-#' @param ratings 
-#' @param alternatives 
-#' @param competitors 
-#' @param resize_page 
-#'
-#' @return
-#' @export
+#' @param design the design table csv file
+#' @param products the list of tested products
+#' @param ratings ratings of the products in the conjoint survey
+#' @param alternatives list of proposed product alternatives
+#' @param competitors list of competitors' products in the market
+#' @param resizepaper how much larger should the report paper be to fit everything?
 #'
 #' @examples
-#' x=10
-Run_Conjoint_Analysis = function(design, products, ratings, alternatives, competitors, resize_page=1) {
+#' x=1:10 #just to get rid of the warning
+Run_Conjoint_Analysis = function(design, products, ratings, alternatives, competitors, resizepaper=1) {
   
 cat(".\n")
 cat("..\n")
@@ -117,7 +114,7 @@ cat("1. Pre-processing data... ")
   df_ratings = ratings
   alternatives = alternatives
   competitors = competitors
-  larger = resize_page
+  larger = resizepaper
   
 
 # # Let's take a look at the design matrix

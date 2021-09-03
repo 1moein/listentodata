@@ -70,14 +70,10 @@
 
 #' Title
 #'
-#' @param designparameters 
-#'
-#' @return
-#' @export
-#'
+#' @param designparameters list of attributes and values
 #' 
 #' @examples
-#' x=10
+#' x=1:10 #just to get rid of the warning
 Run_Conjoint_Study_Design = function(designparameters) {
   
 mylist = designparameters

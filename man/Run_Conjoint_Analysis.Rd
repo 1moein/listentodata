@@ -10,28 +10,25 @@ Run_Conjoint_Analysis(
   ratings,
   alternatives,
   competitors,
-  resize_page = 1
+  resizepaper = 1
 )
 }
 \arguments{
-\item{design}{}
+\item{design}{the design table csv file}
 
-\item{products}{}
+\item{products}{the list of tested products}
 
-\item{ratings}{}
+\item{ratings}{ratings of the products in the conjoint survey}
 
-\item{alternatives}{}
+\item{alternatives}{list of proposed product alternatives}
 
-\item{competitors}{}
+\item{competitors}{list of competitors' products in the market}
 
-\item{resize_page}{}
-}
-\value{
-
+\item{resizepaper}{how much larger should the report paper be to fit everything?}
 }
 \description{
 Title
 }
 \examples{
-x=10
+x=1:10 #just to get rid of the warning
 }

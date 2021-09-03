@@ -5,16 +5,16 @@
 \title{This function runs a segmentation and targeting analysis and produces results
 in a pdf file.}
 \usage{
-Run_SegmentTarget(df_seg, df_targ, HowManySegments, larger = 1)
+Run_SegmentTarget(df_seg, df_targ, HowManySegments, paperresize = 1)
 }
 \arguments{
-\item{df_seg}{}
+\item{df_seg}{segmentation data csv file}
 
-\item{df_targ}{}
+\item{df_targ}{targeting data csv file}
 
-\item{HowManySegments}{}
+\item{HowManySegments}{selected number of segments}
 
-\item{larger}{}
+\item{paperresize}{How much larger should the pdf paper size be to fit everything?}
 }
 \value{
 a pdf file

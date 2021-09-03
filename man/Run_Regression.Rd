@@ -7,16 +7,13 @@
 Run_Regression(mydata, myformula)
 }
 \arguments{
-\item{mydata}{}
+\item{mydata}{csv data file}
 
-\item{myformula}{}
-}
-\value{
-
+\item{myformula}{formula for the lm model}
 }
 \description{
 Title
 }
 \examples{
-x=10
+x=1:10 #just to get rid of the warning
 }

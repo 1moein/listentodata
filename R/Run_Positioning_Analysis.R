@@ -51,13 +51,11 @@
 # df = read.csv("cars_positioning.csv", header = TRUE)
 # d1 = read.csv("cars_preferences.csv", header = TRUE)
 
-#' Positioning Analysis
+
+#' Run Positioning Analysis
 #'
-#' @param perceptions_data 
-#' @param preferences_data 
-#'
-#' @return
-#' @export
+#' @param percetpions_data Perceptual data
+#' @param preferences_data Preferences data
 #'
 #' @examples
 #' x=1:10 #just to get rid of the warning

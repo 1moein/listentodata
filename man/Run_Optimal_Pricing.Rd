@@ -2,7 +2,7 @@
 % Please edit documentation in R/Run_Optimal_Pricing.R
 \name{Run_Optimal_Pricing}
 \alias{Run_Optimal_Pricing}
-\title{Optimal Pricing}
+\title{Run Optimal Pricing}
 \usage{
 Run_Optimal_Pricing(
   survey_data,
@@ -13,20 +13,19 @@ Run_Optimal_Pricing(
 )
 }
 \arguments{
-\item{survey_data}{}
+\item{survey_data}{pricing survey data}
 
-\item{prices}{}
+\item{prices}{vector of tested prices}
 
-\item{probabilities}{}
+\item{probabilities}{actual purchase probabilities}
 
-\item{resizepaper}{}
-}
-\value{
+\item{marketsize}{total size of the market}
 
+\item{resizepaper}{How much larger should the pdf paper size be to fit everything?}
 }
 \description{
-Optimal Pricing
+Run Optimal Pricing
 }
 \examples{
-x=10
+x=1:10 #just to get rid of the warning
 }

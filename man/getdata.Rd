@@ -6,9 +6,6 @@
 \usage{
 getdata()
 }
-\value{
-
-}
 \description{
 Opens a dialog for user to select a csv data file
 }

@@ -82,17 +82,14 @@
 
 #' RFM Analysis
 #'
-#' @param mydata
-#'
-#' @return
-#' @export
+#' @param mydata a csv data file containing at least three columns for R, F, and M
 #'
 #' @examples
 #' RFM=1:10 #just to get rid of the warning
 Run_RFM_Analysis <- function(mydata){
     
     # cat("\014")
-    clearconsole()
+    clear()
     df <- mydata
     
     if ((!("Recency" %in% names(df))) | (!("Frequency" %in% names(df))) | (!("Monetary" %in% names(df)))){
@@ -196,7 +193,7 @@ Run_RFM_Analysis <- function(mydata){
     # library(crayon) #Colored Terminal Output
     
     # cat("\014")
-    # clearconsole()
+    # clear()
     # cat("\n")
     
     suppressWarnings(res <- try(utils::write.csv(df, file ="RFM_Analysis_Results.csv", row.names = FALSE), silent = TRUE))

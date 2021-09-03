@@ -1,11 +1,6 @@
 #' Clears the Console
 #'
-#' @return
-#' @export
-#'
-#' @examples
-#' clearconsole()
-clearconsole <- function(){
+clear <- function(){
 
   cat("\014")
   cat("\f")

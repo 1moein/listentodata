@@ -12,9 +12,6 @@
 
 # For the math behind it all, see https://youtu.be/qhbuKbxJsk8
 
-
-easyart <- function(n=2,mycolor="deeppink", m=0){
-  
 #' Easy Math Art: Times table on a Circle
 #' 
 #' This function draws a circle, places 1000 equi-distanced dots on it
@@ -28,12 +25,8 @@ easyart <- function(n=2,mycolor="deeppink", m=0){
 #'
 #' @param m optional argument that defaults to 0. If a value for it is provided, you will see all the patterns from n=1 upto n=m. For example, setting m=200, shows you all the pattern from 1 to 200")
 #' 
-#' @return
-#' @export
-#'
-#' @examples
-#' easyart(2)
-#' easyart(60,"darkblue")
+easyart <- function(n=2,mycolor="deeppink", m=0){
+  
   drawit = function(n=2,mycolor="black", m=0){
     
   # set plot area (parameter: pty) equal to square

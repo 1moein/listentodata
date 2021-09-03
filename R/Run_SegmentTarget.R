@@ -17,17 +17,17 @@
 #' This function runs a segmentation and targeting analysis and produces results
 #' in a pdf file.
 #'
-#' @param df_seg 
-#' @param df_targ 
-#' @param HowManySegments 
-#' @param larger 
+#' @param df_seg segmentation data csv file
+#' @param df_targ targeting data csv file
+#' @param HowManySegments selected number of segments
+#' @param paperresize How much larger should the pdf paper size be to fit everything? 
 #'
 #' @return a pdf file
 #' @export
 #' 
 #' @examples
 #' x=1:10 #just to get rid of the warning
-Run_SegmentTarget <- function(df_seg,df_targ,HowManySegments, larger = 1) {
+Run_SegmentTarget <- function(df_seg,df_targ,HowManySegments, paperresize = 1) {
 #
 # # Remove all variables from memory to start fresh
 # rm(list=ls())
@@ -90,6 +90,7 @@ df_orig = df_seg
 # the next two lines should be commentd out.
 df = scale(df_seg)
 df = data.frame(df)
+larger = paperresize
 
 # Let's see what these data look like now:
 summary(df)

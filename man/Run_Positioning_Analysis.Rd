@@ -2,20 +2,17 @@
 % Please edit documentation in R/Run_Positioning_Analysis.R
 \name{Run_Positioning_Analysis}
 \alias{Run_Positioning_Analysis}
-\title{Positioning Analysis}
+\title{Run Positioning Analysis}
 \usage{
 Run_Positioning_Analysis(percetpions_data, preferences_data)
 }
 \arguments{
-\item{preferences_data}{}
+\item{percetpions_data}{Perceptual data}
 
-\item{perceptions_data}{}
-}
-\value{
-
+\item{preferences_data}{Preferences data}
 }
 \description{
-Positioning Analysis
+Run Positioning Analysis
 }
 \examples{
 x=1:10 #just to get rid of the warning

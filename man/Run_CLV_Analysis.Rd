@@ -2,7 +2,7 @@
 % Please edit documentation in R/Run_CLV_Analysis.R
 \name{Run_CLV_Analysis}
 \alias{Run_CLV_Analysis}
-\title{CLV Analysis}
+\title{Run CLV Analysis}
 \usage{
 Run_CLV_Analysis(
   profitgroups_data,
@@ -10,26 +10,25 @@ Run_CLV_Analysis(
   discount_rate,
   avg_new_customers_each_period,
   extra_customers_period1to10,
-  papersize = 1.2
+  resizepaper = 1.2
 )
 }
 \arguments{
-\item{profitgroups_data}{}
+\item{profitgroups_data}{data on profit groups}
 
-\item{transitionmatrix_data}{}
+\item{transitionmatrix_data}{transition matrix}
 
-\item{discount_rate}{}
+\item{discount_rate}{discount rate}
 
-\item{avg_new_customers_each_period}{}
+\item{avg_new_customers_each_period}{Number of new customers added on avg. in each period}
 
-\item{extra_customers_period1to10}{}
-}
-\value{
+\item{extra_customers_period1to10}{Number of extra customers added due to promotions in certain period.}
 
+\item{resizepaper}{How much larger should the pdf paper be for the results to fit?}
 }
 \description{
-CLV Analysis
+Run CLV Analysis
 }
 \examples{
-x=10
+x=1:10 #just to get rid of the warning
 }

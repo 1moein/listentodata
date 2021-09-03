@@ -15,15 +15,8 @@ defaults to mycolor = "deeppink"}
 
 \item{m}{optional argument that defaults to 0. If a value for it is provided, you will see all the patterns from n=1 upto n=m. For example, setting m=200, shows you all the pattern from 1 to 200")}
 }
-\value{
-
-}
 \description{
 This function draws a circle, places 1000 equi-distanced dots on it
 and then connects them by a pattern determined by the value of n.
 For the interesting math behind it all, watch: https://youtu.be/qhbuKbxJsk8
-}
-\examples{
-easyart(2)
-easyart(60,"darkblue")
 }

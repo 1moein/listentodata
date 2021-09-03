@@ -45,18 +45,17 @@
 # # Specify the actual purchase probabilities
 # app = c(0, 0, 0, 0.2, 0.5) #subjective estimate of actual purchase probabilities
 
-#' Optimal Pricing
+
+#' Run Optimal Pricing
 #'
-#' @param survey_data 
-#' @param prices 
-#' @param probabilities 
-#' @param resizepaper 
-#'
-#' @return
-#' @export
+#' @param survey_data pricing survey data
+#' @param prices  vector of tested prices
+#' @param probabilities actual purchase probabilities
+#' @param marketsize total size of the market
+#' @param resizepaper How much larger should the pdf paper size be to fit everything?
 #'
 #' @examples
-#' x=10
+#' x=1:10 #just to get rid of the warning
 Run_Optimal_Pricing = function(survey_data, prices, probabilities, marketsize =10000, resizepaper=1.2) {
   
 s = survey_data

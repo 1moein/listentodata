@@ -2,11 +2,13 @@
 % Please edit documentation in R/initial_functions.R
 \name{getsign}
 \alias{getsign}
-\title{Get sign}
+\title{Get sign of a number}
 \usage{
 getsign(x)
 }
-\description{
-This function extracts the sign of a number
+\arguments{
+\item{x}{any real number}
 }
-\keyword{sign}
+\description{
+Get sign of a number
+}
