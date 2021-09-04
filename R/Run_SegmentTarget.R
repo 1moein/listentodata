@@ -222,7 +222,7 @@ gridExtra::grid.arrange(top="Segmentation Analysis: Main Results", gridExtra::ta
 # 
 # if (!require(flexclust)) install.packages("flexclust")
 # library(flexclust)
-seg_Results = lattice::barchart(hc, df, k = HowManySegments,
+seg_Results = flexclust::barchart(hc, df, k = HowManySegments,
          shade = TRUE,
          main = "Plot of Segmentation Variable Means \n Dots show population* means standardized at 0. \n Bars show segment means for each variable. \n Differences between population and segment means can help us describe each segment \n relative to each other and the population. \n *Population refers to: All respondents in our dataset",
          xlab = paste("Segment ", as.character(rep(1:HowManySegments)))
@@ -278,7 +278,7 @@ plot(segmentmap)
 
 gridExtra::grid.arrange(gridExtra::tableGrob(segment_sizes, theme=mytheme))
 
-seg_Results = lattice::barchart(hc, df, k = HowManySegments,
+seg_Results = flexclust::barchart(hc, df, k = HowManySegments,
                        shade = TRUE,
                        main = "Bar Chart of Standardized Segmentation Variable Means \n Dots show population means \n Bars show segment means \n Difference of means between a segment and the population helps us describe each segment",
                        xlab = paste("Segment ", as.character(rep(1:HowManySegments)))

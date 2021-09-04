@@ -154,9 +154,11 @@ suppressWarnings(jtools::plot_summs(m6, scale = TRUE, plot.distributions = TRUE,
 # What variables should remain and what variables should be deleted
 # from the equation?\
 
-selected_model = stats::step(m6)
+# selected_model = stats::step(m6)
 
-
+utils::capture.output({
+  selected_model = stats::step(m6)
+})
 # # Display the best model
 # jtools::summ(selected_model)
 
@@ -206,7 +208,9 @@ selected_model = stats::step(m6)
 # Decide what to call your file name; make sure to put .pdf at the end of the name
 filename =  "! Results_Regression_Analysis.pdf"
 larger =  1
-grDevices::pdf(filename, height=larger*8.5, width=larger*11)
+# grDevices::pdf(filename, height=larger*8.5, width=larger*11)
+suppressWarnings(res0 <- try(grDevices::pdf(filename, height=larger*8.5, width=larger*11), silent = TRUE))
+
 
 # A scatterplot matrix of numeric variables
 datasummary
@@ -227,7 +231,10 @@ jtools::summ(selected_model)
 jtools::plot_summs(selected_model, scale = TRUE, plot.distributions = TRUE, inner_ci_level = .95)
 
 # Model Diagnostics for the Best model
-selected_model = stats::step(m6)
+# selected_model = stats::step(m6)
+utils::capture.output({
+  selected_model = stats::step(m6)
+})
 
 graphics::par(mfrow=c(2,2))
 graphics::plot(selected_model, main  = "Diagnostics for the Best Model")
@@ -247,8 +254,27 @@ graphics::par(mfrow=c(1,1))
 # effect_plot(m6, pred = Urban, interval = TRUE, plot.points = TRUE)
 # effect_plot(m6, pred = US, interval = TRUE, plot.points = TRUE)
 # effect_plot(m6, pred = ShelfLoc, interval = TRUE, plot.points = TRUE)
-
+utils::capture.output({
+  
 grDevices::dev.off()
+})
+
+
+if (!is.null(res0)){
+  cat("\n ERROR:\n The analysis was performed, but we were not able to\n save the results in \"! Results_Positioning_Analysis.pdf\"")
+  cat(" \n This is probably due to a PDF file with the same name being open.\n")
+  cat(" Make sure you close that file, and then run the previous line of code again.")
+  
+} else {
+  cat("\n Regression analysis has been performed on these data!\n")
+  cat("\n Results have been saved in a file named: \"! Results_Regression_Analysis.pdf\"\n")
+  cat(" You can find this file in the same folder as your data files, which is here:\n ")
+  cat(as.character(getwd()))
+  cat(" \n\n ")
+  cat(" If you see any warnings below, simply disregard them.\n\n ")
+  
+}
+
 
 
 }
