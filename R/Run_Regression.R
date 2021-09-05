@@ -97,12 +97,40 @@
 Run_Regression = function(mydata,myformula) {
 
 # mydata = getdata()  
+mydata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats.csv")
 d1 = mydata
 
-datasummary = summary(d1)
+ds = summary(d1)
+showable = dim(d1)[2]
+if (showable>14){
+  showable = 14
+}
+dsample = d1[1:10,1:showable]
 
 options(scipen=999) # to prevent the use of scientific notation in results
   
+
+# # Create a theme for formatting our tables
+# if (!require(gridExtra)) install.packages("gridExtra")
+# library(gridExtra)
+mytablecolors = c("#e5f5e0","#fff7dc")
+mytheme = gridExtra::ttheme_minimal(
+  core=list(bg_params = list(fill =  mytablecolors, col=NA),
+            fg_params=list(fontface=3)),
+  colhead=list(fg_params=list(col="navyblue", fontface=4L)),
+  rowhead=list(fg_params=list(col="black", fontface=3L)))
+# (Optional) In the above theme, we can use fill = hsv(0.61,seq(0.1,1,length.out = 25), 0.99,0.6) to paint the table with shades of blue
+
+# Show the segment sizes table with the new formatting
+fullcols = dim(ds)[2]
+firsthalf = ceiling(fullcols/2)
+secondhalf = firsthalf + 1
+
+gridExtra::grid.arrange(top="\n\n\n\n\n\n View the first 10 rows of the data set \n a max. of 14 columns can be shown here.", gridExtra::tableGrob(dsample, theme=mytheme))
+gridExtra::grid.arrange(top="\n\n\n\n\n\n Summary Statistics for the variables \n Page 1 of 2", gridExtra::tableGrob(ds[,1:firsthalf], theme=mytheme))
+gridExtra::grid.arrange(top="\n\n\n\n\n\n Summary Statistics for the variables \n Page 2 of 2", gridExtra::tableGrob(ds[,(secondhalf:fullcols)], theme=mytheme))
+
+
 # Regression Analysis
 
 # This is a data set of car seat sales in different stores.
@@ -129,12 +157,19 @@ corrplot::corrplot(correlations, method="number")
 # m3 = lm(Sales ~ CompPrice + Income + Advertising, data=d1)
 # m4 = lm(Sales ~ CompPrice + Income + Advertising + Population, data=d1)
 # m5 = lm(Sales ~ CompPrice + Income + Advertising + Population + Price, data=d1)
-  m6 = stats::lm(myformula, data=d1)
+m6 = stats::lm(myformula, data=d1)
 
 # Display the results
 
 # summary of results from the full model
-jtools::summ(m6)
+summary(m6)
+regsum1 = jtools::summ(m6)
+gridExtra::grid.table(gridExtra::tableGrob(round(regsum1$coeftable,3), theme=mytheme))
+gridExtra::grid.table(regsum1)
+
+
+gridExtra::grid.arrange(top="\n Regression Results", gridExtra::tableGrob(round(regsum1$coeftable,3), theme=mytheme))
+gridExtra::grid.arrange(top="\n Regression Results", gridExtra::tableGrob(regsum1$model, theme=mytheme))
 
 # # Comparative table of all models
 # jtools::export_summs(m1, m2, m3, m4, m5, m6)
@@ -212,14 +247,25 @@ larger =  1
 suppressWarnings(res0 <- try(grDevices::pdf(filename, height=larger*8.5, width=larger*11), silent = TRUE))
 
 
-# A scatterplot matrix of numeric variables
-datasummary
+
+gridExtra::grid.arrange(top="\n\n\n\n\n\n The ananlyzed data set:\n A look at the first 6 rows of the data", gridExtra::tableGrob(d1[,1:10], theme=mytheme))
+
+gridExtra::grid.arrange()
+
+gridExtra::grid.arrange(gridExtra::tableGrob(ds[,1:firsthalf], theme=mytheme))
+gridExtra::grid.arrange(gridExtra::tableGrob(ds[,(secondhalf:fullcols)], theme=mytheme))
+
+
+
+
+
 graphics::pairs(numcols, lower.panel = NULL, pch=16,cex=0.3)
 
 correlations = stats::cor(numcols)
 corrplot::corrplot(correlations, method="pie")
 corrplot::corrplot(correlations, method="number")
 
+summary(m6)
 jtools::summ(m6)
 # jtools::export_summs(m1, m2, m3, m4, m5, m6)
 jtools::plot_summs(m6, scale = TRUE, plot.distributions = TRUE, inner_ci_level = .95)
