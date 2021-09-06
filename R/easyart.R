@@ -53,7 +53,7 @@ easyart <- function(n=2,mycolor="deeppink", m=0){
   # Now let's write a loop over possible values of n: Classroom activity
   
   # Write a loop over the values in the vecto "interesting"
-  interesting <- c(2,3,4,5,21,29,33, 34, 49, 51, 66, 67, 68, 73, 75, 76, 79, 80, 81, 86, 91, 99, 200)
+  interesting <- c(2,3,4,5,21,26, 29,33, 34, 49, 41, 51, 66, 67, 68, 73, 75, 76, 79, 80, 81, 86, 91, 99, 101, 102, 134, 161,  176, 199,200)
   cat("\014")
   allcolors = c("#9E0142", "#3288BD", "#0DA907" , "#F46D43", "#3288BD", "#EC2055", "#FDAE61", "#ABDDA4", "#5E4FA2", "#66C2A5", "#D53E4F", "981285")
   # #check colors
@@ -62,17 +62,17 @@ easyart <- function(n=2,mycolor="deeppink", m=0){
     # if (length(dev.list())!= 0) dev.off()
     for (i in 1:length(interesting)){
     cat("\014")
-      cat("Now showing a few interesting ones! ")
-      cat("\nif the images are not changing, your computer\n can't handle the graphical load.")
-      cat("\nYou can click the red stop sign at the top right\n corner of this pane to stop code execution.")
-      # readline(prompt="Press [enter] to continue")
+      cat("Now showing a few interesting ones in the Plots Panel! ")
+      cat("\nif the images are not changing, your computer\n may be slow.")
+      cat("\nYou can always click the red stop sign at the top right\n corner of this panel to stop code execution.")
+      
     drawit(interesting[i], allcolors[sample(1:12,1)])
     Sys.sleep(0.5)
     }
     cat("\nEnd of Show!\n")
     } else if (n<0)  {
       n=2
-      cat(" Nice try!\n But I can't draw with negative numbers!\n How about n=2?\n")
+      cat(" Nice try!\n But I can't draw with negative numbers!\n I'll give you n=2?\n")
       drawit(n, mycolor)
     } else if (m!=0){
       # if (length(dev.list())!= 0) dev.off()
@@ -106,7 +106,7 @@ easyart <- function(n=2,mycolor="deeppink", m=0){
   
   
   if (!is.null(resres)){
-    cat("\n\n ERROR:\n The analysis was performed, but we were not able to\n save the results in \"! Results_easyart200.pdf\"")
+    cat("\n\n ERROR:\n We were not able to\n save the 200 patterns in \"! Results_easyart200.pdf\"")
     cat(" \n This is probably due to a PDF file with the same name being open.\n")
     cat(" Make sure you close that file, and then run the previous line of code again.")
     

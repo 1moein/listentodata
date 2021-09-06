@@ -12,9 +12,6 @@ get_codes = function(){
   
 clear_console()
 
-  cat("Copy everything under this line, paste into a new R Script and call it Analysis_hub.R\n\n")
-  
-  
   cat("##########################################################\n")
   cat("#                     Analysis Hub                       #\n")
   cat("##########################################################\n")
@@ -36,7 +33,7 @@ clear_console()
   cat("# must be prepared as taught in this course for these    #\n")
   cat("# scripts to function probably.                          # \n")
   cat("##########################################################\n")
-  cat("# ---------------    Setup & Update ----------------------\n")
+  cat("# ---------------    Setup / Update ----------------------\n")
   cat("# Run the next three lines each time you open this Script\n")
   cat("if (!require(devtools)) install.packages('devtools', dependencies = TRUE)\n")
   cat("devtools::install_github('1moein/listentodata', force=TRUE, dependencies=TRUE)\n")
