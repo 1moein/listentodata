@@ -16,7 +16,7 @@ clear_console()
   
   # Copy Everything below this line and above the
   # Other guide at the bottom.
-  
+ print(" 
   
   # ##########################################################
   # #                     Analysis Hub                       #
@@ -27,7 +27,7 @@ clear_console()
   # #    Copyright© 2021, Moein Khanlari All rights reserved.#
   # #    The listentodata R package and this accompanying    #
   # #    R Script are provided to the students at the        #
-  # #    University of New Hampshire on an "AS IS" BASIS,    #
+  # #    University of New Hampshire on an 'AS IS' BASIS,    #
   # #    WITH ABSOLUTELY NO WARRANTIES either expressed or   #
   # #    implied. The package and this script may not be     #
   # #    redistributed in whole or part without the express  #
@@ -41,8 +41,8 @@ clear_console()
   # ##########################################################
   # # ---------------    Setup & Update ----------------------
   # # Run the next three lines each time you open this Script
-  # if (!require(devtools)) install.packages("devtools", dependencies = TRUE)
-  # devtools::install_github("1moein/listentodata", force=TRUE, dependencies=TRUE)
+  # if (!require(devtools)) install.packages('devtools', dependencies = TRUE)
+  # devtools::install_github('1moein/listentodata', force=TRUE, dependencies=TRUE)
   # library(listentodata)
   # # ---------------- Course Setup Complete!---------------
   # 
@@ -83,7 +83,7 @@ clear_console()
   # clear_console() 
   # 
   # select_folder()
-  # mycolor ="darkblue"
+  # mycolor ='darkblue'
   # n = 10
   # easyart(n, mycolor)
   # 
@@ -305,7 +305,7 @@ clear_console()
   # mydata = load_csv_data()
   # head(mydata)
   # str(mydata)
-  # myformula = "Sales ~ ."
+  # myformula = 'Sales ~ .'
   # Run_Regression(mydata, myformula)
   # newdata = load_csv_data()
   # Run_Regression_Prediction(mydata, newdata, myformula)
@@ -343,7 +343,7 @@ clear_console()
   # mydata = load_csv_data()
   # head(mydata)
   # str(mydata)
-  # myformula = "visited ~ ."
+  # myformula = 'visited ~ .'
   # Run_Logistic(mydata, myformula)
   # newdata = load_csv_data()
   # Run_Logistic_Prediction(mydata, newdata, myformula)
@@ -381,12 +381,12 @@ clear_console()
   # clear_console()
   # select_folder()
   # designparameters = list(
-  #   NameOfAttribute1 = c("$100","$200","$300","500"),
-  #   NameOfAttribute2 = c("A","B","C","D","E"),
-  #   NameOfAttribute3 = c("Low","Medium","High"),
-  #   NameOfAttribute4 = c("Yes","No"),
-  #   NameOfAttribute5 = c("option1", "option2", "option3", "option4"),
-  #   NameOfAttribute6 = c("option11", "option22", "option33", "option44")
+  #   NameOfAttribute1 = c('$100','$200','$300','500'),
+  #   NameOfAttribute2 = c('A','B','C','D','E'),
+  #   NameOfAttribute3 = c('Low','Medium','High'),
+  #   NameOfAttribute4 = c('Yes','No'),
+  #   NameOfAttribute5 = c('option1', 'option2', 'option3', 'option4'),
+  #   NameOfAttribute6 = c('option11', 'option22', 'option33', 'option44')
   #   
   # )
   # Run_Conjoint_Study_Design(designparameters)  
@@ -423,11 +423,11 @@ clear_console()
   # library(listentodata)
   # clear_console()
   # select_folder()  #Select the folder where your data files are
-  # design = read.csv("Tablet_levels_attributes.csv", na.strings=c("","NA")) #design table
-  # products = read.csv("Tablet_survey_products.csv")    # READ PRODUCT PROFILES DATA
-  # ratings =  read.csv("Tablet_survey_ratings.csv")    # READ RATINGS DATA
-  # alternatives = read.csv("Tablet_New_Product_Alternatives.csv") # Load New product alternative
-  # competitors = read.csv("Tablet_competitors.csv")  # Load competitors products
+  # design = read.csv('Tablet_levels_attributes.csv', na.strings=c('','NA')) #design table
+  # products = read.csv('Tablet_survey_products.csv')    # READ PRODUCT PROFILES DATA
+  # ratings =  read.csv('Tablet_survey_ratings.csv')    # READ RATINGS DATA
+  # alternatives = read.csv('Tablet_New_Product_Alternatives.csv') # Load New product alternative
+  # competitors = read.csv('Tablet_competitors.csv')  # Load competitors products
   # resizepaper = 1
   # Run_Conjoint_Analysis(design,
   #                       products,
@@ -455,15 +455,16 @@ clear_console()
   #                       resizepaper)
   # 
 
-  
+ ")
+ 
   # The guide at the bottom! Copy everything above this line
   
 
-  cat("To get the Analysis Hub R Script, first type getcodes in the console\n")
-  cat("with no parentheses at the end, and then press Enter/Return. \n")
-  cat("Then copy all the commented text and paste them into a new R Script.\n")
-  cat("Then selcet all the commented codes in that script and uncomment them\n")
-  cat("by simultaneously pressing CTRL+SHIFT+C on your keyboard\n")
+  cat('To get the Analysis Hub R Script, first type getcodes in the console\n')
+  cat('with no parentheses at the end, and then press Enter/Return. \n')
+  cat('Then copy all the commented text and paste them into a new R Script.\n')
+  cat('Then selcet all the commented codes in that script and uncomment them\n')
+  cat('by simultaneously pressing CTRL+SHIFT+C on your keyboard\n')
   
 
 
