@@ -46,27 +46,40 @@
 # transitionmatrix = read.csv("TransitionMatrix_onlinestore.csv", header = TRUE)
 
 
-#' Run CLV Analysis
+#' CLV Analysis
 #'
-#' @param profitgroups_data data on profit groups
-#' @param transitionmatrix_data  transition matrix
-#' @param discount_rate discount rate
-#' @param avg_new_customers_each_period Number of new customers added on avg. in each period
-#' @param extra_customers_period1to10 Number of extra customers added due to promotions in certain period.
-#' @param resizepaper How much larger should the pdf paper be for the results to fit?
+#' This function conducts a CLV analysis on two csv data files containing data on profit groups and their transition matrix.
+#' 
+#' @param profitgroups_data Profit groups data csv file
+#' @param transitionmatrix_data  Transition matrix data csv file
+#' @param discount_rate Discount rate
+#' @param new_customers Number of new customers added on avg. in each period
+#' @param more_customers Number of extra customers added due to promotions in any of the first 10 periods.
+#' @param resizepaper How much larger should the pdf paper size be for the results to fit?
 #' @export
 #' 
 #' @examples
-#' x=1:10 #just to get rid of the warning
-Run_CLV_Analysis = function(profitgroups_data, transitionmatrix_data, discount_rate, avg_new_customers_each_period, extra_customers_period1to10, resizepaper=1.2) {
-  
-larger = resizepaper
-avg_new_customers_each_period = avg_new_customers_each_period
-discount_rate = discount_rate
-extra = extra_customers_period1to10
+#' \dontrun{
+#' # This is the sample code to be copied and used in a new R Script:
+#' library(listentodata)
+#' clear_console()
+#' profitgroups_data = load_csv_data()
+#' transitionmatrix_data = load_csv_data()
+#' discount_rate = 0.15
+#' new_customers = 0
+#' more_customers = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+#' resizepaper = 1.2
+#' Run_CLV_Analysis(profitgroups_data, transitionmatrix_data, discount_rate, new_customers, more_customers, resizepaper)
+#' }
 
+Run_CLV_Analysis = function(profitgroups_data, transitionmatrix_data, discount_rate, new_customers, more_customers, resizepaper=1.2) {
+  
 profitgroups = profitgroups_data
 transitionmatrix = transitionmatrix_data
+discount_rate = discount_rate
+avg_new_customers_each_period = new_customers
+extra = more_customers
+larger = resizepaper
 
 
 # Set the parameters of the analysis

@@ -46,19 +46,33 @@
 # app = c(0, 0, 0, 0.2, 0.5) #subjective estimate of actual purchase probabilities
 
 
-#' Run Optimal Pricing
+#' Optimal Pricing
 #'
-#' @param survey_data pricing survey data
+#' This function conducts a uniform optimal pricing analysis on price survey data, the list of tested prices,
+#' and discounted purchase probabilities.
+#' 
+#' @param survey_data pricing survey data csv file
 #' @param prices  vector of tested prices
-#' @param probabilities actual purchase probabilities
-#' @param marketsize total size of the market
-#' @param resizepaper How much larger should the pdf paper size be to fit everything?
+#' @param probabilities discounted purchase probabilities; one probability for each Likert point on the pricing survey questions.
+#' @param marketsize numeric value showing total size of the market, default value = 10000
+#' @param resizepaper How much larger should the pdf paper size be to fit everything?, default value = 1.2
 #'
-#' @return a pdf file
 #' @export
 #' 
 #' @examples
-#' x=1:10 #just to get rid of the warning
+#' \dontrun{
+#' # This is the sample code to be copied and used in a new R Script:
+#' # Make sure to change the prices vector to match the tested prices.
+#' library(listentodata)
+#' clear_console()
+#' survey_data = load_csv_data()
+#' prices = c(1.99,3.99,7.99,10.99,15.99,21.99,26.99)
+#' probabilities = c(0, 0, 0, 0.2, 0.5)
+#' marketsize = 10000
+#' resizepaper = 1.2
+#' Run_Optimal_Pricing(survey_data, prices, probabilities, marketsize, resizepaper)
+#' }
+
 Run_Optimal_Pricing = function(survey_data, prices, probabilities, marketsize =10000, resizepaper=1.2) {
   
 s = survey_data

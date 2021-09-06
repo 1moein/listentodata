@@ -14,20 +14,31 @@
 #    permission of the author.                            #
 ###########################################################
 
-#' This function runs a segmentation and targeting analysis and produces results
-#' in a pdf file.
+#' Segmentation and Targeting Analysis
 #'
+#' This function conducts a segmentation and targeting analysis on two
+#' segmentation and targeting data sets
+#' 
 #' @param df_seg segmentation data csv file
 #' @param df_targ targeting data csv file
-#' @param HowManySegments selected number of segments
-#' @param paperresize How much larger should the pdf paper size be to fit everything? 
+#' @param segments selected number of segments
+#' @param resizepaper How much larger should the pdf paper size be to fit everything? 
 #'
-#' @return a pdf file
 #' @export
 #' 
 #' @examples
-#' x=1:10 #just to get rid of the warning
-Run_SegmentTarget <- function(df_seg,df_targ,HowManySegments, paperresize = 1) {
+#' \dontrun{
+#' # This is the sample code to be copied and used in a new R Script:
+#' library(listentodata)
+#' clear_console()
+#' segmentation_data = load_csv_data()
+#' targeting_data = load_csv_data()
+#' segments = 3
+#' resizepaper = 1
+#' Run_SegmentTarget(segmentation_data, targeting_data, segments, resizepaper)
+#' }
+
+Run_SegmentTarget <- function(df_seg, df_targ, segments, resizepaper = 1) {
 #
 # # Remove all variables from memory to start fresh
 # rm(list=ls())
@@ -90,7 +101,8 @@ df_orig = df_seg
 # the next two lines should be commentd out.
 df = scale(df_seg)
 df = data.frame(df)
-larger = paperresize
+larger = resizepaper
+HowManySegments  = segments
 
 # Let's see what these data look like now:
 summary(df)

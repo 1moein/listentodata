@@ -52,16 +52,26 @@
 # d1 = read.csv("cars_preferences.csv", header = TRUE)
 
 
-#' Run Positioning Analysis
+#' Positioning Analysis
+#' 
+#' This function conducts a positioning analysis using two data sets 
+#' of perceptual and preferences data
 #'
-#' @param percetpions_data Perceptual data
-#' @param preferences_data Preferences data
+#' @param percetpions_data Perceptual data csv file
+#' @param preferences_data Preferences data csv file
 #'
-#' @return a pdf file
 #' @export
 #' 
 #' @examples
-#' x=1:10 #just to get rid of the warning
+#' \dontrun{
+#' # This is the sample code to be copied and used in a new R Script:
+#' library(listentodata)
+#' clear_console()
+#' perceptions_data = load_csv_data()
+#' preferences_data = load_csv_data()
+#' Run_Positioning_Analysis(perceptions_data,preferences_data)
+#' }
+
 Run_Positioning_Analysis = function(percetpions_data, preferences_data) {
 
 

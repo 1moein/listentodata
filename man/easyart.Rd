@@ -2,21 +2,28 @@
 % Please edit documentation in R/easyart.R
 \name{easyart}
 \alias{easyart}
-\title{Easy Math Art: Times table on a Circle}
+\title{Create patterns on a circle using the times table}
 \usage{
 easyart(n = 2, mycolor = "deeppink", m = 0)
 }
 \arguments{
 \item{n}{Can be a positive integer, or even a real number - defaults to n = 2.
-Choosing n=0 shows 23 interesting patterns.}
+Choosing n=0 shows a demo of 23 interesting patterns ant their n values.}
 
 \item{mycolor}{Any color name in R. To get color names try colors() in the Console.
 defaults to mycolor = "deeppink"}
 
-\item{m}{optional argument that defaults to 0. If a value for it is provided, you will see all the patterns from n=1 upto n=m. For example, setting m=200, shows you all the pattern from 1 to 200")}
+\item{m}{optional argument that defaults to 0. If a positive non-zero value is provided for m, all patterns from n=1 upto n=m will be displayed. For example, setting m=10 displays all the patterns from n=1 to n=10, effectively ignoring the values for n and mycolor.")}
 }
 \description{
 This function draws a circle, places 1000 equi-distanced dots on it
-and then connects them by a pattern determined by the value of n.
-For the interesting math behind it all, watch: https://youtu.be/qhbuKbxJsk8
+and then connects them by multiples of n. The patterns are repeated after n=200 such 
+that for every n, n+200 will generate an identical pattern. 
+For the math behind these patterns, watch this video on YouTube: https://youtu.be/qhbuKbxJsk8
+}
+\examples{
+easyart(n=51)
+easyart(n=0)
+easyart(m=15)
+
 }

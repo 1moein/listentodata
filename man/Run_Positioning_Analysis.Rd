@@ -2,21 +2,26 @@
 % Please edit documentation in R/Run_Positioning_Analysis.R
 \name{Run_Positioning_Analysis}
 \alias{Run_Positioning_Analysis}
-\title{Run Positioning Analysis}
+\title{Positioning Analysis}
 \usage{
 Run_Positioning_Analysis(percetpions_data, preferences_data)
 }
 \arguments{
-\item{percetpions_data}{Perceptual data}
+\item{percetpions_data}{Perceptual data csv file}
 
-\item{preferences_data}{Preferences data}
-}
-\value{
-a pdf file
+\item{preferences_data}{Preferences data csv file}
 }
 \description{
-Run Positioning Analysis
+This function conducts a positioning analysis using two data sets 
+of perceptual and preferences data
 }
 \examples{
-x=1:10 #just to get rid of the warning
+\dontrun{
+# This is the sample code to be copied and used in a new R Script:
+library(listentodata)
+clear_console()
+perceptions_data = load_csv_data()
+preferences_data = load_csv_data()
+Run_Positioning_Analysis(perceptions_data,preferences_data)
+}
 }

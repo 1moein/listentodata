@@ -2,7 +2,7 @@
 % Please edit documentation in R/Run_Conjoint_Analysis.R
 \name{Run_Conjoint_Analysis}
 \alias{Run_Conjoint_Analysis}
-\title{Title}
+\title{Conjoint Analysis}
 \usage{
 Run_Conjoint_Analysis(
   design,
@@ -16,22 +16,31 @@ Run_Conjoint_Analysis(
 \arguments{
 \item{design}{the design table csv file}
 
-\item{products}{the list of tested products}
+\item{products}{the list of tested products as a csv file}
 
-\item{ratings}{ratings of the products in the conjoint survey}
+\item{ratings}{ratings of the products in the conjoint survey in a csv file}
 
-\item{alternatives}{list of proposed product alternatives}
+\item{alternatives}{list of proposed product alternatives as a csv file}
 
-\item{competitors}{list of competitors' products in the market}
+\item{competitors}{list of competitors' products in the market as a csv file}
 
 \item{resizepaper}{how much larger should the report paper be to fit everything?}
 }
-\value{
-a pdf file
-}
 \description{
-Title
+This function conducts a conjoint analysis. It requires five csv data files that are listed below.
 }
 \examples{
-x=1:10 #just to get rid of the warning
+\dontrun{
+# This is the sample code to be copied and used in a new R Script:
+library(listentodata)
+clear_console()
+select_folder()  #Select the folder where your data files are
+design = read.csv("Tablet_levels_attributes.csv", na.strings=c("","NA")) #design table
+products = read.csv("Tablet_survey_products.csv")    # READ PRODUCT PROFILES DATA
+ratings =  read.csv("Tablet_survey_ratings.csv")    # READ RATINGS DATA
+alternatives = read.csv("Tablet_New_Product_Alternatives.csv") # Load New product alternative
+competitors = read.csv("Tablet_competitors.csv")  # Load competitors products
+resizepaper = 1
+Run_Conjoint_Analysis(design, products, ratings, alternatives, competitors, resizepaper)
+}
 }

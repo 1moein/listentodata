@@ -2,27 +2,32 @@
 % Please edit documentation in R/Run_SegmentTarget.R
 \name{Run_SegmentTarget}
 \alias{Run_SegmentTarget}
-\title{This function runs a segmentation and targeting analysis and produces results
-in a pdf file.}
+\title{Segmentation and Targeting Analysis}
 \usage{
-Run_SegmentTarget(df_seg, df_targ, HowManySegments, paperresize = 1)
+Run_SegmentTarget(df_seg, df_targ, segments, resizepaper = 1)
 }
 \arguments{
 \item{df_seg}{segmentation data csv file}
 
 \item{df_targ}{targeting data csv file}
 
-\item{HowManySegments}{selected number of segments}
+\item{segments}{selected number of segments}
 
-\item{paperresize}{How much larger should the pdf paper size be to fit everything?}
-}
-\value{
-a pdf file
+\item{resizepaper}{How much larger should the pdf paper size be to fit everything?}
 }
 \description{
-This function runs a segmentation and targeting analysis and produces results
-in a pdf file.
+This function conducts a segmentation and targeting analysis on two
+segmentation and targeting data sets
 }
 \examples{
-x=1:10 #just to get rid of the warning
+\dontrun{
+# This is the sample code to be copied and used in a new R Script:
+library(listentodata)
+clear_console()
+segmentation_data = load_csv_data()
+targeting_data = load_csv_data()
+segments = 3
+resizepaper = 1
+Run_SegmentTarget(segmentation_data, targeting_data, segments, resizepaper)
+}
 }

@@ -89,20 +89,33 @@
 # For example a Bluetooth with Yes and No as its levels would be renamed to
 # "bluetoothYes", "bluetoothNo".
 
-#' Title
-#'
+#' Conjoint Analysis
+#' 
+#' This function conducts a conjoint analysis. It requires five csv data files that are listed below.
+#' 
 #' @param design the design table csv file
-#' @param products the list of tested products
-#' @param ratings ratings of the products in the conjoint survey
-#' @param alternatives list of proposed product alternatives
-#' @param competitors list of competitors' products in the market
+#' @param products the list of tested products as a csv file
+#' @param ratings ratings of the products in the conjoint survey in a csv file
+#' @param alternatives list of proposed product alternatives as a csv file
+#' @param competitors list of competitors' products in the market as a csv file
 #' @param resizepaper how much larger should the report paper be to fit everything?
 #'
-#' @return a pdf file
 #' @export
 #' 
 #' @examples
-#' x=1:10 #just to get rid of the warning
+#' \dontrun{
+#' # This is the sample code to be copied and used in a new R Script:
+#' library(listentodata)
+#' clear_console()
+#' select_folder()  #Select the folder where your data files are
+#' design = read.csv("Tablet_levels_attributes.csv", na.strings=c("","NA")) #design table
+#' products = read.csv("Tablet_survey_products.csv")    # READ PRODUCT PROFILES DATA
+#' ratings =  read.csv("Tablet_survey_ratings.csv")    # READ RATINGS DATA
+#' alternatives = read.csv("Tablet_New_Product_Alternatives.csv") # Load New product alternative
+#' competitors = read.csv("Tablet_competitors.csv")  # Load competitors products
+#' resizepaper = 1
+#' Run_Conjoint_Analysis(design, products, ratings, alternatives, competitors, resizepaper)
+#' }
 Run_Conjoint_Analysis = function(design, products, ratings, alternatives, competitors, resizepaper=1) {
   
 cat(".\n")

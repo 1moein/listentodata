@@ -7,14 +7,17 @@
 Run_RFM_Analysis(mydata)
 }
 \arguments{
-\item{mydata}{a csv data file containing at least three columns for R, F, and M}
-}
-\value{
-a csv file
+\item{mydata}{a csv data file containing at least three numeric columns called Recency, Frequency, and Monetary that hold the R, F, and M data respectively}
 }
 \description{
 RFM Analysis
 }
 \examples{
-RFM=1:10 #just to get rid of the warning
+\dontrun{
+# This is the sample code to be copied and used in a new R Script:
+library(listentodata)
+clear_console()
+df = load_csv_data()
+Run_RFM_Analysis(df)
+}
 }

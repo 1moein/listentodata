@@ -2,33 +2,44 @@
 % Please edit documentation in R/Run_CLV_Analysis.R
 \name{Run_CLV_Analysis}
 \alias{Run_CLV_Analysis}
-\title{Run CLV Analysis}
+\title{CLV Analysis}
 \usage{
 Run_CLV_Analysis(
   profitgroups_data,
   transitionmatrix_data,
   discount_rate,
-  avg_new_customers_each_period,
-  extra_customers_period1to10,
+  new_customers,
+  more_customers,
   resizepaper = 1.2
 )
 }
 \arguments{
-\item{profitgroups_data}{data on profit groups}
+\item{profitgroups_data}{Profit groups data csv file}
 
-\item{transitionmatrix_data}{transition matrix}
+\item{transitionmatrix_data}{Transition matrix data csv file}
 
-\item{discount_rate}{discount rate}
+\item{discount_rate}{Discount rate}
 
-\item{avg_new_customers_each_period}{Number of new customers added on avg. in each period}
+\item{new_customers}{Number of new customers added on avg. in each period}
 
-\item{extra_customers_period1to10}{Number of extra customers added due to promotions in certain period.}
+\item{more_customers}{Number of extra customers added due to promotions in any of the first 10 periods.}
 
-\item{resizepaper}{How much larger should the pdf paper be for the results to fit?}
+\item{resizepaper}{How much larger should the pdf paper size be for the results to fit?}
 }
 \description{
-Run CLV Analysis
+This function conducts a CLV analysis on two csv data files containing data on profit groups and their transition matrix.
 }
 \examples{
-x=1:10 #just to get rid of the warning
+\dontrun{
+# This is the sample code to be copied and used in a new R Script:
+library(listentodata)
+clear_console()
+profitgroups_data = load_csv_data()
+transitionmatrix_data = load_csv_data()
+discount_rate = 0.15
+new_customers = 0
+more_customers = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+resizepaper = 1.2
+Run_CLV_Analysis(profitgroups_data, transitionmatrix_data, discount_rate, new_customers, more_customers, resizepaper)
+}
 }

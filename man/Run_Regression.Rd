@@ -2,21 +2,31 @@
 % Please edit documentation in R/Run_Regression.R
 \name{Run_Regression}
 \alias{Run_Regression}
-\title{Title}
+\title{Regression Analysis}
 \usage{
 Run_Regression(mydata, myformula)
 }
 \arguments{
 \item{mydata}{csv data file}
 
-\item{myformula}{formula for the lm model}
-}
-\value{
-a pdf file
+\item{myformula}{formula for the lm() model}
 }
 \description{
-Title
+This function conducts a regression analysis and provides the results in a pdf file.
 }
 \examples{
-x=1:10 #just to get rid of the warning
+\dontrun{
+# This is the sample code to be copied and used in a new R Script:
+library(listentodata)
+clear_console()
+library(listentodata)
+clear_console()
+mydata = load_csv_data()
+head(mydata)
+str(mydata)
+myformula = "Sales ~ ."
+or
+myformula = "Sales ~ Compprice + Income + Advertising + Population + Price + Age + Education + Urban + US + ShelfLoc"
+Run_Regression(mydata, myformula)
+}
 }

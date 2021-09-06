@@ -1,10 +1,22 @@
-#' Opens a dialog for user to select a csv data file
-#'
+#' Open a dialog to select a csv data file
+#' 
+#' This function opens a file selection dialog and
+#'  allows user to select a file. Any file can be 
+#'  selected, but only csv files will be accepted.
+#'  The working directory will also be set to the
+#'  folder that contains the selected file. The working
+#'  directory is the directory where the R session looks for data 
+#'  files or saves the results.
+#' 
 #' @export
 #' 
 #' @examples
-#' x = 1 # just to get rid of warning
-getdata <- function(){
+#' \dontrun{
+#' 
+#' df = load_csv_data()
+#' }
+#' 
+load_csv_data <- function(){
 
   # print("\n Please select the appropriate .csv data file!", "I'm waiting ...\n\n", quote = FALSE)
   # print(" Can't see the file selector dialog?\n Look for it behind your other open apps/windows.\n", quote = FALSE)

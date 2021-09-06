@@ -2,7 +2,7 @@
 % Please edit documentation in R/Run_Optimal_Pricing.R
 \name{Run_Optimal_Pricing}
 \alias{Run_Optimal_Pricing}
-\title{Run Optimal Pricing}
+\title{Optimal Pricing}
 \usage{
 Run_Optimal_Pricing(
   survey_data,
@@ -13,22 +13,31 @@ Run_Optimal_Pricing(
 )
 }
 \arguments{
-\item{survey_data}{pricing survey data}
+\item{survey_data}{pricing survey data csv file}
 
 \item{prices}{vector of tested prices}
 
-\item{probabilities}{actual purchase probabilities}
+\item{probabilities}{discounted purchase probabilities; one probability for each Likert point on the pricing survey questions.}
 
-\item{marketsize}{total size of the market}
+\item{marketsize}{numeric value showing total size of the market, default value = 10000}
 
-\item{resizepaper}{How much larger should the pdf paper size be to fit everything?}
-}
-\value{
-a pdf file
+\item{resizepaper}{How much larger should the pdf paper size be to fit everything?, default value = 1.2}
 }
 \description{
-Run Optimal Pricing
+This function conducts a uniform optimal pricing analysis on price survey data, the list of tested prices,
+and discounted purchase probabilities.
 }
 \examples{
-x=1:10 #just to get rid of the warning
+\dontrun{
+# This is the sample code to be copied and used in a new R Script:
+# Make sure to change the prices vector to match the tested prices.
+library(listentodata)
+clear_console()
+survey_data = load_csv_data()
+prices = c(1.99,3.99,7.99,10.99,15.99,21.99,26.99)
+probabilities = c(0, 0, 0, 0.2, 0.5)
+marketsize = 10000
+resizepaper = 1.2
+Run_Optimal_Pricing(survey_data, prices, probabilities, marketsize, resizepaper)
+}
 }

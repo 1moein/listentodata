@@ -68,15 +68,35 @@
 # )
 ########## End of Attribute Definitions ###########
 
-#' Title
+#' Conjoint Study Design
+#' 
+#' This function takes a set of conjoint design attributes and their values and
+#' returns the set of profiles (hypothetical products) to be used in a conjoint
+#' study survey. The results will be displayed in the Console and also saved in
+#' a csv file.
 #'
 #' @param designparameters list of attributes and values
 #' 
-#' @return a csv file and Console output
 #' @export
 #' 
 #' @examples
-#' x=1:10 #just to get rid of the warning
+#' \dontrun{
+#' # This is the sample code to be copied and used in a new R Script:
+#' library(listentodata)
+#' clear_console()
+#' designparameters = list(
+#'   NameOfAttribute1 = c("$100","$200","$300","500"),
+#'   NameOfAttribute2 = c("A","B","C","D","E"),
+#'   NameOfAttribute3 = c("Low","Medium","High"),
+#'   NameOfAttribute4 = c("Yes","No"),
+#'   NameOfAttribute5 = c("option1", "option2", "option3", "option4"),
+#'   NameOfAttribute6 = c("option11", "option22", "option33", "option44")
+#'   
+#' )
+#' select_folder()
+#' Run_Conjoint_Study_Design(designparameters) 
+#' }
+
 Run_Conjoint_Study_Design = function(designparameters) {
   
 mylist = designparameters

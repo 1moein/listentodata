@@ -82,17 +82,23 @@
 
 #' RFM Analysis
 #'
-#' @param mydata a csv data file containing at least three columns for R, F, and M
+#' @param mydata a csv data file containing at least three numeric columns called Recency, Frequency, and Monetary that hold the R, F, and M data respectively
 #'
-#' @return a csv file
 #' @export
 #' 
 #' @examples
-#' RFM=1:10 #just to get rid of the warning
+#' \dontrun{
+#' # This is the sample code to be copied and used in a new R Script:
+#' library(listentodata)
+#' clear_console()
+#' df = load_csv_data()
+#' Run_RFM_Analysis(df)
+#' }
+
 Run_RFM_Analysis <- function(mydata){
     
-    # cat("\014")
-    clear()
+    cat("\014")
+    cat("\f")
     df <- mydata
     
     if ((!("Recency" %in% names(df))) | (!("Frequency" %in% names(df))) | (!("Monetary" %in% names(df)))){

@@ -1,9 +1,23 @@
-#' Clears the Console
+#' Clear the Console
+#' 
+#' @description 
+#' This function clears the console. 
+#' 
+#' In RStudio, Console is located in the lower 
+#' 
+#' left panel where previously-executed codes
+#' 
+#' and their outputs are displayed. 
 #' 
 #' @export
 #' 
-#'
-clear <- function(){
+#' @examples
+#' \dontrun{
+#' 
+#' clear_console()
+#' }
+#' 
+clear_console <- function(){
 
   cat("\014")
   cat("\f")
