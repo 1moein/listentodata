@@ -4,7 +4,8 @@
 #'
 #' @param mydata csv data file
 #' @param myformula formula for the lm() model
-#' @param newdata csv data file without DV intended for prediction
+#' @param newdata csv data file without DV intended for prediction, defaults to 0, 
+#' to indicate that no prediction data set is needed as default.
 #'
 #' @export
 #' 
@@ -24,9 +25,9 @@
 #' Run_Regression(mydata, myformula)
 #' }
 
-Run_Regression = function(mydata,myformula, newdata) {
+Run_Regression = function(mydata,myformula, newdata=0) {
 
-# mydata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats.csv")
+ mydata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats.csv")
 # myformula = "Sales ~ ."
 # 
 # newdata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats_predict.csv")
@@ -179,11 +180,11 @@ utils::capture.output({
 
 
 # Prediction with multiple regression
-# if 
-# predictedSales = predict(selected_model, newdata)
-# predictions = cbind(newdata, predictedSales)
-# suppressWarnings(res001 <- try(utils::write.csv(predictions, file ="! Results_Regression_Predictions.csv", row.names = FALSE), silent = TRUE))
-
+if (typeof(newdata)!="double"){
+predictedSales = predict(selected_model, newdata)
+predictions = cbind(newdata, predictedSales)
+suppressWarnings(res001 <- try(utils::write.csv(predictions, file ="! Results_Regression_Predictions.csv", row.names = FALSE), silent = TRUE))
+}
 
 
 ################# save results in a pdf file ############
@@ -258,7 +259,7 @@ grDevices::dev.off()
 
 
 if (!is.null(res0)){
-  cat("\n ERROR:\n The analysis was performed, but we were not able to\n save the results in \"! Results_Positioning_Analysis.pdf\"")
+  cat("\n ERROR:\n Rgression analysis was performed, but we were not able to\n save the results in \"! Results_Positioning_Analysis.pdf\"")
   cat(" \n This is probably due to a PDF file with the same name being open.\n")
   cat(" Make sure you close that file, and then run the previous line of code again.")
   
@@ -272,7 +273,21 @@ if (!is.null(res0)){
   
 }
 
-if (is.null(newdata)) print("nothing here")
-
+if (typeof(newdata)!="double"){
+  if (!is.null(res001)){
+  cat("\n ERROR:\n Prediction for the new data set was also performed,\n but we were not able to save the results in:\n \"! Results_Regression_Predictions.csv\"")
+  cat(" \n This is probably due to a CSV file with the same name being open.\n")
+  cat(" Make sure you close that file, and then run the previous line of code again.")
+  
+} else {
+  cat("\nPrediction for the new data set has been performed!\n")
+  cat("\n Results have been saved in a file named: \"! Results_Regression_Predictions.csv\"\n")
+  cat(" You can find this file in the same folder as your data files, which is here:\n ")
+  cat(as.character(getwd()))
+  cat(" \n\n ")
+  cat(" If you see any warnings below, simply disregard them.\n\n ")
+  
+}
+}
 
 }
