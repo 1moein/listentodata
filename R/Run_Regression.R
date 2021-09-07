@@ -25,8 +25,8 @@
 
 Run_Regression = function(mydata,myformula) {
 
-mydata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats.csv")
-myformula = "Sales ~ ."
+# mydata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats.csv")
+# myformula = "Sales ~ ."
 d1 = mydata
 
 ds = summary(d1)
