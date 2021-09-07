@@ -1,89 +1,3 @@
-###########################################################
-#      Regression and Logistic Regression Analysis        #
-###########################################################
-#    R Codes for Marketing Analytics                      #
-#    Author: Moein Khanlari, PhD                          #
-#    Version 1.0                                          #
-#    Copyright© 2019, Moein Khanlari All rights reserved. #
-#    This software is provided to students at the         #
-#    University of New Hampshire on an "AS IS" BASIS,     #
-#    WITH ABSOLUTELY NO WARRANTIES either expressed or    #
-#    implied. The software may not be redistributed       #
-#    in whole or part without the express written         #
-#    permission of the author.                            #
-###########################################################
-
-# 
-# ##############   Attention    ##############
-# # In this code, you will find the regression
-# # tables in the Console only, but the plots
-# # will be be generated in a PDF file and
-# # in the Plots pane.
-# ############################################
-# 
-# firstrun = function ()
-# {
-#   remove.packages("rlang")
-#   install.packages("rlang")
-# }
-# 
-# ####### First Run #############
-# # If this is the first time
-# # that you run this code
-# # on THIS computer/laptop,
-# # type firstrun()
-# # in the Console below
-# # after the > sign
-# # and press Enter/Return
-# # Select YES If asked:
-# # Do you want to Restart R...?
-# ###############################
-
-
-# # Have you read the "First Run" Section above?
-# 
-# if (!require(broom)) install.packages("broom")
-# library(broom)
-
-# # Remove all variables from memory to start fresh
-# rm(list=ls())
-# # If there are plots, delete them to start fresh
-# if (length(dev.list())!= 0) dev.off()
-
-
-
-# ####################################################
-# #######      Setting the Working Directory   #######
-# # The working directory is the folder in which
-# # we will place our R code and data files.
-# 
-# # Here, I automatically set the working directory
-# # to the folder that contains THIS R Script
-# if (!require(rstudioapi)) install.packages("rstudioapi")
-# setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-# 
-# # If the above code fails, uncomment the setwd() line below
-# # and type the path of the data file in the quotation marks:
-# # setwd("Folder_path_goes_here")
-# 
-# ####################################################
-
-
-# Additional Preparation
-
-# # Install and/or load some needed libraries
-# if (!require(jtools)) install.packages("jtools") # Ignore the RTools required message
-# if (!require(ggstance)) install.packages("ggstance")
-# if (!require(corrplot)) install.packages("corrplot")
-# if (!require(kableExtra)) install.packages("kableExtra") #to format the table in Rmd
-# if (!require(broom.mixed)) install.packages("broom.mixed")
-# if (!require(sjPlot)) install.packages("sjPlot")
-# library(corrplot)
-# library(jtools)
-# library(ggstance)
-# library(kableExtra)
-# library(sjPlot)
-
 #' Regression Analysis
 #' 
 #' This function conducts a regression analysis and provides the results in a pdf file.
@@ -111,8 +25,8 @@
 
 Run_Regression = function(mydata,myformula) {
 
-# mydata = getdata()  
 mydata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats.csv")
+myformula = "Sales ~ ."
 d1 = mydata
 
 ds = summary(d1)
@@ -177,14 +91,30 @@ m6 = stats::lm(myformula, data=d1)
 # Display the results
 
 # summary of results from the full model
-summary(m6)
-regsum1 = jtools::summ(m6)
-gridExtra::grid.table(gridExtra::tableGrob(round(regsum1$coeftable,3), theme=mytheme))
-gridExtra::grid.table(regsum1)
+# summary(m6)
+rez1 = jtools::summ(m6)
 
 
-gridExtra::grid.arrange(top="\n Regression Results", gridExtra::tableGrob(round(regsum1$coeftable,3), theme=mytheme))
-gridExtra::grid.arrange(top="\n Regression Results", gridExtra::tableGrob(regsum1$model, theme=mytheme))
+rez1_details =t(data.frame(analysistype= "Regression Analysis",
+                           Dependent.Var=attributes(rez1)$dv,
+                           Observations=attributes(rez1)$n,
+                           R_Squared=round(attributes(rez1)$rsq,2),
+                           Adj_R_Squared=round(attributes(rez1)$arsq,2),
+                           Missing_Values=attributes(rez1)$missing,
+                           F_Stat=round(attributes(rez1)$fstat,2),
+                           Model_P_Value = round(attributes(rez1)$modpval,2)))
+
+
+
+metrics = c("Analysis:", "Dependent Variable:", "Observations:","R-Squared:", "Adjusted R-Squared:","Missing Values:", "Model F-stat:", "Model P-Value:"  )
+rez1_deets = data.frame(metrics, rez1_details)
+row.names(rez1_deets) = NULL
+names(rez1_deets) = c("  ", "  ")
+
+coeftable1 = round(rez1$coeftable,2)
+attributes(coeftable1)$dimnames[[2]] = c("Estimate", "Std. error", "t-statistic", "p-value")
+
+
 
 # # Comparative table of all models
 # jtools::export_summs(m1, m2, m3, m4, m5, m6)
@@ -262,13 +192,9 @@ larger =  1
 suppressWarnings(res0 <- try(grDevices::pdf(filename, height=larger*8.5, width=larger*11), silent = TRUE))
 
 
-
-gridExtra::grid.arrange(top="\n\n\n\n\n\n The ananlyzed data set:\n A look at the first 6 rows of the data", gridExtra::tableGrob(d1[,1:10], theme=mytheme))
-
-gridExtra::grid.arrange()
-
-gridExtra::grid.arrange(gridExtra::tableGrob(ds[,1:firsthalf], theme=mytheme))
-gridExtra::grid.arrange(gridExtra::tableGrob(ds[,(secondhalf:fullcols)], theme=mytheme))
+gridExtra::grid.arrange(top="\n\n\n\n\n\n View the first 10 rows of the data set \n a max. of 14 columns can be shown here.", gridExtra::tableGrob(dsample, theme=mytheme))
+gridExtra::grid.arrange(top="\n\n\n\n\n\n Summary Statistics for the variables \n Page 1 of 2", gridExtra::tableGrob(ds[,1:firsthalf], theme=mytheme))
+gridExtra::grid.arrange(top="\n\n\n\n\n\n Summary Statistics for the variables \n Page 2 of 2", gridExtra::tableGrob(ds[,(secondhalf:fullcols)], theme=mytheme))
 
 
 
@@ -280,10 +206,15 @@ correlations = stats::cor(numcols)
 corrplot::corrplot(correlations, method="pie")
 corrplot::corrplot(correlations, method="number")
 
-summary(m6)
-jtools::summ(m6)
+
+
+gridExtra::grid.arrange(top="\n Regression Results: 1 of 2\n\n Analysis Details", gridExtra::tableGrob(rez1_deets, theme=mytheme, rows = rep("",nrow(rez1_deets))))
+gridExtra::grid.arrange(top="\n Regression Results: 2 of 2\n\n Coefficient Estiamtes", gridExtra::tableGrob(coeftable1, theme=mytheme))
+
+
 # jtools::export_summs(m1, m2, m3, m4, m5, m6)
 jtools::plot_summs(m6, scale = TRUE, plot.distributions = TRUE, inner_ci_level = .95)
+
 
 # Display the best model
 jtools::summ(selected_model)
@@ -302,9 +233,10 @@ graphics::plot(selected_model, main  = "Diagnostics for the Best Model")
 graphics::par(mfrow=c(1,1))
 
 # # Relative impact of variables
+# # not included because of the challenges of standardizing data set for new ones. needs more coding.
 # jtools::summ(selected_model_s)
 
-# # Individual effect plots
+# # Individual effect plots; not implemented here, because depends on data set
 # effect_plot(m6, pred = CompPrice, interval = TRUE, plot.points = TRUE)
 # effect_plot(m6, pred = Income, interval = TRUE, plot.points = TRUE)
 # effect_plot(m6, pred = Advertising, interval = TRUE, plot.points = TRUE)
