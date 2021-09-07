@@ -4,12 +4,14 @@
 \alias{Run_Regression}
 \title{Regression Analysis}
 \usage{
-Run_Regression(mydata, myformula)
+Run_Regression(mydata, myformula, newdata)
 }
 \arguments{
 \item{mydata}{csv data file}
 
 \item{myformula}{formula for the lm() model}
+
+\item{newdata}{csv data file without DV intended for prediction}
 }
 \description{
 This function conducts a regression analysis and provides the results in a pdf file.

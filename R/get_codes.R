@@ -7,7 +7,7 @@
 #' 
 #' @example
 #' get_codes()
-#' }
+#' 
 get_codes = function(){
   
 clear_console()
@@ -18,7 +18,7 @@ clear_console()
   cat("#    R Codes for Marketing Analytics                     #\n")
   cat("#    Author: Moein Khanlari, PhD                         #\n")
   cat("#    Version 1.1                                         #\n")
-  cat("#    Copyright© 2021, Moein Khanlari All rights reserved.#\n")
+  cat("#    Copyright 2021, Moein Khanlari All rights reserved. #\n")
   cat("#    The listentodata R package and this accompanying    #\n")
   cat("#    R Script are provided to the students at the        #\n")
   cat("#    University of New Hampshire on an 'AS IS' BASIS,    #\n")
@@ -308,8 +308,9 @@ clear_console()
   cat("str(mydata)\n")
   cat("myformula = 'Sales ~ .'\n")
   cat("Run_Regression(mydata, myformula)\n")
+  cat("# If you have data for prediction:\n")
   cat("newdata = load_csv_data()\n")
-  cat("Run_Regression_Prediction(mydata, newdata, myformula)\n")
+  cat("Run_Regression_Prediction(mydata, myformula, newdata)\n")
   cat("\n")
   cat("print('Analysis Complete!')\n")
   cat("\n")

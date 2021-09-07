@@ -4,6 +4,7 @@
 #'
 #' @param mydata csv data file
 #' @param myformula formula for the lm() model
+#' @param newdata csv data file without DV intended for prediction
 #'
 #' @export
 #' 
@@ -23,10 +24,13 @@
 #' Run_Regression(mydata, myformula)
 #' }
 
-Run_Regression = function(mydata,myformula) {
+Run_Regression = function(mydata,myformula, newdata) {
 
 # mydata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats.csv")
 # myformula = "Sales ~ ."
+# 
+# newdata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats_predict.csv")
+
 d1 = mydata
 
 ds = summary(d1)
@@ -174,12 +178,12 @@ utils::capture.output({
 # jtools::effect_plot(m6, pred = ShelfLoc, interval = TRUE, plot.points = TRUE)
 
 
-# # Prediction with multiple regression
-# newdata = read.csv(file="carseats_salesprediction.csv", header = TRUE)
+# Prediction with multiple regression
+# if 
 # predictedSales = predict(selected_model, newdata)
 # predictions = cbind(newdata, predictedSales)
-# newdata
-# predictions
+# suppressWarnings(res001 <- try(utils::write.csv(predictions, file ="! Results_Regression_Predictions.csv", row.names = FALSE), silent = TRUE))
+
 
 
 ################# save results in a pdf file ############
@@ -268,6 +272,7 @@ if (!is.null(res0)){
   
 }
 
+if (is.null(newdata)) print("nothing here")
 
 
 }
