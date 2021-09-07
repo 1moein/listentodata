@@ -14,7 +14,7 @@ Run_Regression(mydata, myformula, newdata = 0)
 \item{myformula}{formula for the lm() model}
 
 \item{newdata}{csv data file without the DV variable; intended for prediction. 
-The default value set at 0 tells the function that no prediction data set has been provided.}
+The default value set at 0 tells the function that no prediction data set has been provided by the user.}
 }
 \description{
 This function conducts a Logistic regression analysis and provides the results in a pdf file. 
