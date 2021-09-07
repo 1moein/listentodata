@@ -3,6 +3,7 @@
 export(Run_CLV_Analysis)
 export(Run_Conjoint_Analysis)
 export(Run_Conjoint_Study_Design)
+export(Run_Logistic)
 export(Run_Optimal_Pricing)
 export(Run_Positioning_Analysis)
 export(Run_RFM_Analysis)

@@ -25,7 +25,7 @@
 #' Run_Logistic(mydata, myformula, newdata)
 #' }
 
-Run_Regression = function(mydata,myformula, newdata=0) {
+Run_Logistic = function(mydata,myformula, newdata=0) {
   # Companies constantly send out promotional emails to their customers hoping
   # to get them to click a link within these emails and visit their websites.
   # Such visits can engage customers with the company's website and potentially
