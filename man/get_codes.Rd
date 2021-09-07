@@ -10,3 +10,8 @@ get_codes()
 Copy the code after ## Not Run in the Examples below and paste it into a new R Script and save the file as AnalysisHub.R
 You can then use this R script to run all of your analyses for this course.
 }
+\examples{
+\dontrun{
+get_codes()
+}
+}

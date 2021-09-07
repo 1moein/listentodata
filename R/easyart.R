@@ -16,10 +16,11 @@
 #' @export
 #' 
 #' @examples
+#' \dontrun{
 #' easyart(n=51)
 #' easyart(n=0)
-#' easyart(m=15)
-#' 
+#' easyart(m=5)
+#' }
 easyart <- function(n=2,mycolor="deeppink", m=0){
   
   drawit = function(n=2,mycolor="black", m=0){

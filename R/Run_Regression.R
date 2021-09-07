@@ -1,11 +1,12 @@
 #' Regression Analysis
 #' 
-#' This function conducts a regression analysis and provides the results in a pdf file.
+#' This function conducts a regression analysis and provides the results in a pdf file. 
+#' It can also perform predictions on a new csv data file and provide the results in a csv file.
 #'
 #' @param mydata csv data file
 #' @param myformula formula for the lm() model
-#' @param newdata csv data file without DV intended for prediction, defaults to 0, 
-#' to indicate that no prediction data set is needed as default.
+#' @param newdata csv data file without the DV variable; intended for prediction. 
+#' The default value set at 0 tells the function that no prediction data set has been provided.
 #'
 #' @export
 #' 
@@ -14,22 +15,21 @@
 #' # This is the sample code to be copied and used in a new R Script:
 #' library(listentodata)
 #' clear_console()
-#' library(listentodata)
-#' clear_console()
 #' mydata = load_csv_data()
 #' head(mydata)
 #' str(mydata)
 #' myformula = "Sales ~ ."
-#' or
-#' myformula = "Sales ~ Compprice + Income + Advertising + Population + Price + Age + Education + Urban + US + ShelfLoc"
 #' Run_Regression(mydata, myformula)
+#' # If you have data for prediction:
+#' newdata = load_csv_data()
+#' Run_Regression(mydata, myformula, newdata)
 #' }
 
 Run_Regression = function(mydata,myformula, newdata=0) {
 
- # mydata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats.csv")
+# # For testing purposes
+# mydata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats.csv")
 # myformula = "Sales ~ ."
-# 
 # newdata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats_predict.csv")
 
 d1 = mydata
@@ -181,7 +181,7 @@ utils::capture.output({
 
 # Prediction with multiple regression
 if (typeof(newdata)!="double"){
-predictedSales = predict(selected_model, newdata)
+predictedSales = stats::predict(selected_model, newdata)
 predictions = cbind(newdata, predictedSales)
 suppressWarnings(res001 <- try(utils::write.csv(predictions, file ="! Results_Regression_Predictions.csv", row.names = FALSE), silent = TRUE))
 }
@@ -259,7 +259,7 @@ grDevices::dev.off()
 
 
 if (!is.null(res0)){
-  cat("\n ERROR:\n Rgression analysis was performed, but we were not able to\n save the results in \"! Results_Positioning_Analysis.pdf\"")
+  cat("\n ERROR:\n Rgression analysis was performed, but we were not able to\n save the results in \"! Results_Regression_Analysis.pdf\"")
   cat(" \n This is probably due to a PDF file with the same name being open.\n")
   cat(" Make sure you close that file, and then run the previous line of code again.")
   

@@ -5,9 +5,10 @@
 #' 
 #' @export
 #' 
-#' @example
+#' @examples
+#' \dontrun{
 #' get_codes()
-#' 
+#' }
 get_codes = function(){
   
 clear_console()
@@ -310,7 +311,7 @@ clear_console()
   cat("Run_Regression(mydata, myformula)\n")
   cat("# If you have data for prediction:\n")
   cat("newdata = load_csv_data()\n")
-  cat("Run_Regression_Prediction(mydata, myformula, newdata)\n")
+  cat("Run_Regression(mydata, myformula, newdata)\n")
   cat("\n")
   cat("print('Analysis Complete!')\n")
   cat("\n")
@@ -348,8 +349,9 @@ clear_console()
   cat("str(mydata)\n")
   cat("myformula = 'visited ~ .'\n")
   cat("Run_Logistic(mydata, myformula)\n")
+  cat("# If you have data for prediction:\n")
   cat("newdata = load_csv_data()\n")
-  cat("Run_Logistic_Prediction(mydata, newdata, myformula)\n")
+  cat("Run_Logistic(mydata, myformula, newdata)\n")
   cat("\n")
   cat("print('Analysis Complete!')\n")
   cat("\n")

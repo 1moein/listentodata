@@ -22,8 +22,9 @@ that for every n, n+200 will generate an identical pattern.
 For the math behind these patterns, watch this video on YouTube: https://youtu.be/qhbuKbxJsk8
 }
 \examples{
+\dontrun{
 easyart(n=51)
 easyart(n=0)
-easyart(m=15)
-
+easyart(m=5)
+}
 }

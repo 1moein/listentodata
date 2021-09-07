@@ -69,7 +69,12 @@
 #' new_customers = 0
 #' more_customers = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 #' resizepaper = 1.2
-#' Run_CLV_Analysis(profitgroups_data, transitionmatrix_data, discount_rate, new_customers, more_customers, resizepaper)
+#' Run_CLV_Analysis(profitgroups_data,
+#'                  transitionmatrix_data,
+#'                  discount_rate,
+#'                  new_customers,
+#'                  more_customers,
+#'                  resizepaper)
 #' }
 
 Run_CLV_Analysis = function(profitgroups_data, transitionmatrix_data, discount_rate, new_customers, more_customers, resizepaper=1.2) {
