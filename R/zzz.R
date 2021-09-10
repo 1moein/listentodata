@@ -25,7 +25,10 @@
   # packageStartupMessage("                  ")
   # # packageStartupMessage(runtimequote())
   # packageStartupMessage("                  ")
-  packageStartupMessage("--------------------------------------------")
-  packageStartupMessage("                  ")
-
+  packageStartupMessage("---------------------------------------------------")
+  packageStartupMessage(" To get the codes needed for Analysis_Hub.R,\n type get_codes() in the Console and press Enter/Return\n")
+  packageStartupMessage(" To get some general tips on functions,\n type tips() in the Console and press Enter/Return.")
+  packageStartupMessage("---------------------------------------------------\n")
+  
 }
+

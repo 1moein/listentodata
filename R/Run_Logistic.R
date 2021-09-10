@@ -41,10 +41,10 @@ Run_Logistic = function(mydata,myformula, newdata=0) {
   # website or not.
   
 
-# For testing purposes
-mydata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\emailclickdata.csv")
-myformula = "visited ~ ."
-newdata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\newemails.csv")
+# # For testing purposes
+# mydata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\emailclickdata.csv")
+# myformula = "visited ~ ."
+# newdata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\newemails.csv")
 
 
 d = mydata
@@ -162,7 +162,7 @@ suppressWarnings(jtools::plot_summs(selected_model, scale = TRUE, plot.distribut
 ## Predict the probability of visiting
 if (typeof(df)!="double"){
   clickprobability = stats::predict(logit1, df, type="response")
-  cbind(df,predicted_probability = round(clickprobability,2))
+  predictions = cbind(df,predicted_probability = round(clickprobability,2))
   suppressWarnings(res002 <- try(utils::write.csv(predictions, file ="! Results_Logistic_Predictions.csv", row.names = FALSE), silent = TRUE))
 }
 
