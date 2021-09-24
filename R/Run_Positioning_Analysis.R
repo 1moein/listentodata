@@ -302,6 +302,9 @@ gridExtra::grid.arrange(top="Brand Coordinates",gridExtra::tableGrob(dimensions_
 
 
 
+# if (as.character(Sys.info()['sysname'])=="Windows"){
+#   if (!require(pca3d)) install.packages("pca3d")
+  
 # # Interact with the 3-D plot of the dimensions
 # 
 # ###################################################################
