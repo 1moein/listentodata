@@ -74,7 +74,7 @@
 #' }
 
 Run_Optimal_Pricing = function(survey_data, prices, probabilities, marketsize =10000, resizepaper=1.2) {
-  
+ 
 s = survey_data
 p = prices
 app = probabilities
@@ -177,13 +177,13 @@ summary(selected_model)
 
 # Use the parameters of the selected model
 temp = selected_model$coefficients
-temp2 = round(temp,2)
 
 b = rep(0,4)
 try(b[1] <- temp[which(names(temp)=="(Intercept)")], silent = TRUE)
 try(b[2] <- temp[which(names(temp)=="p")], silent = TRUE)
 try(b[3] <- temp[which(names(temp)=="log(p)")], silent = TRUE)
 try(b[4] <- temp[which(names(temp)=="sqrt(p)")], silent = TRUE)
+temp2 = round(b,2)
 
 predicted_y = function(x) b[1] + b[2]*x + b[3]*log(x) +b[4]*sqrt(x)
 
