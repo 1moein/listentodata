@@ -19,6 +19,7 @@
   packageStartupMessage("                  ")
   packageStartupMessage(" Welcome to listentodata v.1.1 - Fall 2021 (Sep. 6)")
   packageStartupMessage(" An R Package for MKTG763 by: Dr. M.K. ")
+  packageStartupMessage(" Last updated: 11:00pm on 10/04/2021 ")
   # packageStartupMessage("                  ")
   # packageStartupMessage("                  ")
   # packageStartupMessage("----- A Small Dose of Inspiration before We Start -----")
