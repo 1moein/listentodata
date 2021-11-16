@@ -5,7 +5,7 @@
 #'
 #' @param mydata csv data file
 #' @param myformula formula for the lm() model
-#' @param newdata csv data file without the DV variable; intended for prediction. 
+#' @param prediction_data csv data file with the same set of variable names as those in the mydata data set; intended for prediction. The da
 #' The default value set at 0 tells the function that no prediction data set has been provided by the user.
 #'
 #' @export
@@ -21,16 +21,16 @@
 #' myformula = "Sales ~ ."
 #' Run_Regression(mydata, myformula)
 #' # If you have data for prediction:
-#' newdata = load_csv_data()
-#' Run_Regression(mydata, myformula, newdata)
+#' prediction_data = load_csv_data()
+#' Run_Regression(mydata, myformula, prediction_data)
 #' }
 
-Run_Regression = function(mydata,myformula, newdata=0) {
+Run_Regression = function(mydata,myformula, prediction_data=0) {
 
 # # For testing purposes
 # mydata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats.csv")
 # myformula = "Sales ~ ."
-# newdata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats_predict.csv")
+# prediction_data = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats_predict.csv")
 
 d1 = mydata
 
@@ -60,9 +60,9 @@ fullcols = dim(ds)[2]
 firsthalf = ceiling(fullcols/2)
 secondhalf = firsthalf + 1
 
-gridExtra::grid.arrange(top="\n\n\n\n\n\n View the first 10 rows of the data set \n a max. of 14 columns can be shown here.", gridExtra::tableGrob(dsample, theme=mytheme))
-gridExtra::grid.arrange(top="\n\n\n\n\n\n Summary Statistics for the variables \n Page 1 of 2", gridExtra::tableGrob(ds[,1:firsthalf], theme=mytheme))
-gridExtra::grid.arrange(top="\n\n\n\n\n\n Summary Statistics for the variables \n Page 2 of 2", gridExtra::tableGrob(ds[,(secondhalf:fullcols)], theme=mytheme))
+# gridExtra::grid.arrange(top="\n\n\n\n\n\n View the first 10 rows of the data set \n a max. of 14 columns can be shown here.", gridExtra::tableGrob(dsample, theme=mytheme))
+# gridExtra::grid.arrange(top="\n\n\n\n\n\n Summary Statistics for the variables \n Page 1 of 2", gridExtra::tableGrob(ds[,1:firsthalf], theme=mytheme))
+# gridExtra::grid.arrange(top="\n\n\n\n\n\n Summary Statistics for the variables \n Page 2 of 2", gridExtra::tableGrob(ds[,(secondhalf:fullcols)], theme=mytheme))
 
 
 # Regression Analysis
@@ -75,12 +75,12 @@ nums <- unlist(lapply(d1, is.numeric))
 numcols <- d1[ , nums]
 
 
-graphics::pairs(numcols, lower.panel = NULL, pch=16,cex=0.3)
+# graphics::pairs(numcols, lower.panel = NULL, pch=16,cex=0.3)
 
 #Visualize the correlations among numeric variables as numbers or pie charts
 correlations = stats::cor(numcols)
-corrplot::corrplot(correlations, method="pie")
-corrplot::corrplot(correlations, method="number")
+# corrplot::corrplot(correlations, method="pie")
+# corrplot::corrplot(correlations, method="number")
 
 # Estimate regression models
 # # Start with simple regression in model m1 and move on to
@@ -134,7 +134,6 @@ attributes(coeftable1)$dimnames[[2]] = c("Estimate", "Std. error", "t-statistic"
 # Visual summary
 suppressWarnings(jtools::plot_summs(m6, scale = TRUE, plot.distributions = TRUE, inner_ci_level = .95))
 
-
 # Find the best model using stepwise regression.
 # What variables should remain and what variables should be deleted
 # from the equation?\
@@ -180,9 +179,9 @@ utils::capture.output({
 
 
 # Prediction with multiple regression
-if (typeof(newdata)!="double"){
-predictedSales = stats::predict(selected_model, newdata)
-predictions = cbind(newdata, predictedSales)
+if (typeof(prediction_data)!="double"){
+predictedSales = stats::predict(selected_model, prediction_data)
+predictions = cbind(prediction_data, predictedSales)
 suppressWarnings(res001 <- try(utils::write.csv(predictions, file ="! Results_Regression_Predictions.csv", row.names = FALSE), silent = TRUE))
 }
 
@@ -273,7 +272,7 @@ if (!is.null(res0)){
   
 }
 
-if (typeof(newdata)!="double"){
+if (typeof(prediction_data)!="double"){
   if (!is.null(res001)){
   cat("\n ERROR:\n Prediction for the new data set was also performed,\n but we were not able to save the results in:\n \"! Results_Regression_Predictions.csv\"")
   cat(" \n This is probably due to a CSV file with the same name being open.\n")

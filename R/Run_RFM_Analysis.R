@@ -205,11 +205,10 @@ Run_RFM_Analysis <- function(mydata){
     # clear()
     # cat("\n")
     
-    suppressWarnings(res <- try(utils::write.csv(df, file ="RFM_Analysis_Results.csv", row.names = FALSE), silent = TRUE))
+    suppressWarnings(res <- try(utils::write.csv(df, file ="! Results_RFM_Analysis.csv", row.names = FALSE), silent = TRUE))
     
     
-    cat("\nRFM analysis has been performed on these data!\n")
-    
+
     if (!is.null(res)){
         cat("\n ERROR:\n The analysis was performed, but we were not able to\n save the results in \"! Results_RFM_Analysis.csv\"")
         cat(" \n This is probably due to a CSV file with the same name being open.\n")
@@ -217,7 +216,7 @@ Run_RFM_Analysis <- function(mydata){
         
     } else {
         cat("\n RFM analysis has been performed on these data!\n")
-        cat("\n Results are displayed below and also saved in a file named: \"! Results_RFM_Analysis.csv\"\n")
+        cat("\n Results have been saved in a file named: \"! Results_RFM_Analysis.csv\"\n")
         cat(" You can find this file in the same folder as your data files, which is here:\n ")
         cat(as.character(getwd()))
         cat(" \n\n ")
@@ -228,11 +227,11 @@ Run_RFM_Analysis <- function(mydata){
     
     
     
-    cat("                    RFM Analysis Results \n")
-    
-    
-    
-    print(df, quote = FALSE, row.names = FALSE)
+    # cat("                    RFM Analysis Results \n")
+    # 
+    # 
+    # 
+    # print(df, quote = FALSE, row.names = FALSE)
     
     #--------- How to use the calculated RFM scores----------
     
