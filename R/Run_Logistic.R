@@ -7,6 +7,7 @@
 #' @param myformula formula for the glm() model
 #' @param prediction_data csv data file with the same set of variable names as those in the mydata data set; intended for prediction. The da
 #' The default value set at 0 tells the function that no prediction data set has been provided.
+#' @param resizepaper How much larger should the pdf paper size be to fit everything? 
 #' 
 #' @export
 #' 
@@ -19,13 +20,14 @@
 #' head(mydata)
 #' str(mydata)
 #' myformula = "visited ~ ."
+#' resizepaper = 1
 #' Run_Logistics(mydata, myformula)
 #' # If you have data for prediction:
 #' prediction_data = load_csv_data()
 #' Run_Logistic(mydata, myformula, prediction_data)
 #' }
 
-Run_Logistic = function(mydata,myformula, prediction_data=0) {
+Run_Logistic = function(mydata,myformula, prediction_data=0, resizepaper = 1) {
   # Companies constantly send out promotional emails to their customers hoping
   # to get them to click a link within these emails and visit their websites.
   # Such visits can engage customers with the company's website and potentially
@@ -54,6 +56,7 @@ Run_Logistic = function(mydata,myformula, prediction_data=0) {
   #   } else {
   #     stop("The value of datafortraining represents \n the percentage of the data you will use for\n training your model. It must be between 0.2 and 0.9.\n Analysis was aborted; Please chage that value and try again!\n We suggest using 0.75")
   #   }
+  larger = resizepaper
   
   d = mydata
   ds = summary(d)

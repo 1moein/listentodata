@@ -7,6 +7,7 @@
 #' @param myformula formula for the lm() model
 #' @param prediction_data csv data file with the same set of variable names as those in the mydata data set; intended for prediction. The da
 #' The default value set at 0 tells the function that no prediction data set has been provided by the user.
+#' @param resizepaper How much larger should the pdf paper size be to fit everything? 
 #'
 #' @export
 #' 
@@ -19,13 +20,14 @@
 #' head(mydata)
 #' str(mydata)
 #' myformula = "Sales ~ ."
-#' Run_Regression(mydata, myformula)
+#' resizepaper = 1
+#' Run_Regression(mydata, myformula, resizepaper)
 #' # If you have data for prediction:
 #' prediction_data = load_csv_data()
-#' Run_Regression(mydata, myformula, prediction_data)
+#' Run_Regression(mydata, myformula, prediction_data, resizepaper)
 #' }
 
-Run_Regression = function(mydata,myformula, prediction_data=0) {
+Run_Regression = function(mydata,myformula, prediction_data=0, resizepaper = 1) {
 
 # # For testing purposes
 # mydata = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats.csv")
@@ -33,7 +35,7 @@ Run_Regression = function(mydata,myformula, prediction_data=0) {
 # prediction_data = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats_predict.csv")
 
 d1 = mydata
-
+larger = resizepaper
 ds = summary(d1)
 showable = dim(d1)[2]
 if (showable>14){
