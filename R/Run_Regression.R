@@ -35,7 +35,6 @@ Run_Regression = function(mydata,myformula, prediction_data=0, resizepaper = 1) 
 # prediction_data = read.csv("T:\\MarketingAnalytics\\marketing_analytics\\Data for regression\\carseats_predict.csv")
 
 d1 = mydata
-larger = resizepaper
 ds = summary(d1)
 showable = dim(d1)[2]
 if (showable>14){
@@ -193,7 +192,7 @@ suppressWarnings(res001 <- try(utils::write.csv(predictions, file ="! Results_Re
 # Set up some parameters
 # Decide what to call your file name; make sure to put .pdf at the end of the name
 filename =  "! Results_Regression_Analysis.pdf"
-larger =  1
+larger = resizepaper
 # grDevices::pdf(filename, height=larger*8.5, width=larger*11)
 suppressWarnings(res0 <- try(grDevices::pdf(filename, height=larger*8.5, width=larger*11), silent = TRUE))
 

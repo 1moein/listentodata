@@ -56,8 +56,7 @@ Run_Logistic = function(mydata,myformula, prediction_data=0, resizepaper = 1) {
   #   } else {
   #     stop("The value of datafortraining represents \n the percentage of the data you will use for\n training your model. It must be between 0.2 and 0.9.\n Analysis was aborted; Please chage that value and try again!\n We suggest using 0.75")
   #   }
-  larger = resizepaper
-  
+
   d = mydata
   ds = summary(d)
   showable = dim(d)[2]
@@ -215,7 +214,7 @@ Run_Logistic = function(mydata,myformula, prediction_data=0, resizepaper = 1) {
   # Set up some parameters
   # Decide what to call your file name; make sure to put .pdf at the end of the name
   filename =  "! Results_Logistic_Analysis.pdf"
-  larger =  1
+  larger =  resizepaper
   # grDevices::pdf(filename, height=larger*8.5, width=larger*11)
   suppressWarnings(res00 <- try(grDevices::pdf(filename, height=larger*8.5, width=larger*11), silent = TRUE))
   
