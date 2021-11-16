@@ -66,7 +66,7 @@ Run_Logistic = function(mydata,myformula, prediction_data=0) {
   options(scipen=999) # to prevent the use of scientific notation in results
   
   
-  # # Create a theme for formatting our tables
+  # # Create a theme for formatting our tables 
   # if (!require(gridExtra)) install.packages("gridExtra")
   # library(gridExtra)
   mytablecolors = c("#e5f5e0","#fff7dc")

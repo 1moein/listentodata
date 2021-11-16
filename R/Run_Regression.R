@@ -41,7 +41,7 @@ if (showable>14){
 }
 dsample = d1[1:10,1:showable]
 
-options(scipen=999) # to prevent the use of scientific notation in results
+options(scipen=999) # to  prevent the use of scientific notation in results
   
 
 # # Create a theme for formatting our tables
