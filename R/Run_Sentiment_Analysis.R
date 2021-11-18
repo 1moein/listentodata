@@ -116,6 +116,13 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
           # ylab = "Word frequencies",
           horiz = TRUE)
   
+  resetPar <- function() {
+    dev.new()
+    op <- par(no.readonly = TRUE)
+    dev.off()
+    op
+  }
+  resetPar()
   # #generate word cloud
   set.seed(1234)
   wordcloud::wordcloud(words = dtm_d$word, freq = dtm_d$freq, min.freq = wcmf,
@@ -232,6 +239,14 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
                     horiz = TRUE)
   
   # #generate word cloud
+  resetPar <- function() {
+    dev.new()
+    op <- par(no.readonly = TRUE)
+    dev.off()
+    op
+  }
+  resetPar()
+  
   set.seed(1234)
   wordcloud::wordcloud(words = dtm_d$word, freq = dtm_d$freq, min.freq = wcmf,
                        max.words=100, random.order=FALSE, rot.per=0.40,
