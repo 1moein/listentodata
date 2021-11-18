@@ -19,7 +19,7 @@ Run_Sentiment_Analysis(
 
 \item{stemthis}{To stem the documents or not to stem: default = FALSE, you can set it to TRUE}
 
-\item{wcmf}{Word Cloud Minimum Frequency: default = 10. Words with frequencies lower than this amount will not be displayed in the word cloud}
+\item{wcmf}{Word Cloud Minimum Frequency: default = 5. Words with frequencies lower than this amount will not be displayed in the word cloud}
 
 \item{mostfrequent}{Number of most frequent words to display, default = 25}
 }
@@ -34,8 +34,8 @@ clear_console()
 textdata = load_text_data()
 words2remove = c("toremvoe1", "toremove2")
 stemthis = FALSE
-wcmf = 5
+wcmf = 5 # Word Cloud Minimum Frequency: default = 5
 mostfrequent = 25
-Run_Sentiment_Analysis(mydata, stemthis, wcmf, mostfrequent)
+Run_Sentiment_Analysis(textdata, stemthis, wcmf, mostfrequent)
 }
 }
