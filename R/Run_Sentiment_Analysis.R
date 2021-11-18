@@ -111,18 +111,18 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
   
  
   # #generate word cloud
-  set.seed(1234)
-  wordcloud::wordcloud(words = dtm_d$word, freq = dtm_d$freq, min.freq = wcmf,
-                       max.words=100, random.order=FALSE, rot.per=0.40,
-                       colors=RColorBrewer::brewer.pal(8, "Dark2"))
-  
+  # set.seed(1234)
+  # wordcloud::wordcloud(words = dtm_d$word, freq = dtm_d$freq, min.freq = wcmf,
+  #                      max.words=100, random.order=FALSE, rot.per=0.40,
+  #                      colors=RColorBrewer::brewer.pal(8, "Dark2"))
+  # 
    # NEXT part moved to pdf
-  graphics::par(oma=c(3,3,3,3)) # all sides have 3 lines of space
-  graphics::barplot(myx, las = 2, names.arg = myy,
-          col =grDevices::rainbow(50), main =paste("Top", mfwords, "most frequent words"),
-          # ylab = "Word frequencies",
-          horiz = TRUE)
-  
+  # graphics::par(oma=c(3,3,3,3)) # all sides have 3 lines of space
+  # graphics::barplot(myx, las = 2, names.arg = myy,
+  #         col =grDevices::rainbow(50), main =paste("Top", mfwords, "most frequent words"),
+  #         # ylab = "Word frequencies",
+  #         horiz = TRUE)
+  # 
 
   
   # # Find associations 
