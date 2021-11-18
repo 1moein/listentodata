@@ -110,18 +110,18 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
   myy = oursubset$word
   
   # NEXT part moved to pdf
-  # graphics::par(oma=c(3,3,3,3)) # all sides have 3 lines of space
-  # graphics::barplot(myx, las = 2, names.arg = myy, 
-  #         col =grDevices::rainbow(50), main =paste("Top", mfwords, "most frequent words"),
-  #         # ylab = "Word frequencies",
-  #         horiz = TRUE)
+  graphics::par(oma=c(3,3,3,3)) # all sides have 3 lines of space
+  graphics::barplot(myx, las = 2, names.arg = myy,
+          col =grDevices::rainbow(50), main =paste("Top", mfwords, "most frequent words"),
+          # ylab = "Word frequencies",
+          horiz = TRUE)
   
   # #generate word cloud
-  # set.seed(1234)
-  # wordcloud::wordcloud(words = dtm_d$word, freq = dtm_d$freq, min.freq = wcmf,
-  #           max.words=100, random.order=FALSE, rot.per=0.40,
-  #           colors=RColorBrewer::brewer.pal(8, "Dark2"))
-  
+  set.seed(1234)
+  wordcloud::wordcloud(words = dtm_d$word, freq = dtm_d$freq, min.freq = wcmf,
+            max.words=100, random.order=FALSE, rot.per=0.40,
+            colors=RColorBrewer::brewer.pal(8, "Dark2"))
+
   
   # # Find associations 
   # tm::findAssocs(TextDoc_dtm, terms = c("film","story"), corlimit = 0.3)			
@@ -235,8 +235,9 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
   set.seed(1234)
   wordcloud::wordcloud(words = dtm_d$word, freq = dtm_d$freq, min.freq = wcmf,
                        max.words=100, random.order=FALSE, rot.per=0.40,
-                       colors=RColorBrewer::brewer.pal(8, "Dark2"))
-  
+                       colors=RColorBrewer::brewer.pal(9))
+  # colors=RColorBrewer::brewer.pal(8, "Dark2"))
+
   
   #Plot One - count of words associated with each sentiment
   ggplot2::quickplot(sentiment, data=td_new2, weight=count, geom="bar", fill=sentiment, ylab="Count")
@@ -266,6 +267,9 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
     cat("\n 1. Main results have been saved in a file named: \"! Results_Sentiment_Analysis.pdf\"\n")
     cat("\n 2. Cleaned documents have been saved in a file named: \"! Results_cleaned_documents.csv\"\n")
     cat("\n 3. Cleaned documents have been saved in a file named: \"! Results_sentiment_scores.csv\"\n")
+    
+    cat("\n NOTE: The full wordcloud can only be seen in the Plots section of RStudio\"\n")
+    
     
     cat(" You can find these files in the same folder as your data file, which is here:\n ")
     cat(as.character(getwd()))
