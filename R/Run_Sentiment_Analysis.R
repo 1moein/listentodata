@@ -86,7 +86,7 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
   suppressWarnings(TextDoc <- tm::tm_map(TextDoc, tm::stripWhitespace))
   # Text stemming - which reduces words to their root form
   
-  if (stemthis) {
+  if (stemthis==TRUE) {
     suppressWarnings(TextDoc <- tm::tm_map(TextDoc, tm::stemDocument))
   }
   
@@ -237,6 +237,10 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
                        max.words=100, random.order=FALSE, rot.per=0.40,
                        colors=RColorBrewer::brewer.pal(8, "Dark2"))
   
+  
+  # #Plot One - count of words associated with each sentiment
+  ggplot2::quickplot(sentiment, data=td_new2, weight=count, geom="bar", fill=sentiment, ylab="Count")
+  
   #Plot two - count of words associated with each sentiment, expressed as a percentage
   graphics::barplot(
     sort(colSums(prop.table(d[, 1:10]))), 
@@ -244,7 +248,7 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
     cex.names = 0.7, 
     las = 1, 
     col = grDevices::rainbow(10), 
-    main = "Emotions in Text", xlab="Percentage"
+    main = "Percentage of Emotions in the Documents", xlab="Percentage"
   )
   
   
