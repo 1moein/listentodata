@@ -23,7 +23,12 @@ Imports:
     broom.mixed,
     sjPlot,
     easycsv,
-    neuralnet
+    neuralnet,
+    tm,
+    wordcloud,
+    SnowballC,
+    RColorBrewer,
+    syuzhet
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
