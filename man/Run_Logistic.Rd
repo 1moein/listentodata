@@ -4,15 +4,17 @@
 \alias{Run_Logistic}
 \title{Logistic Regression Analysis}
 \usage{
-Run_Logistic(mydata, myformula, newdata = 0)
+Run_Logistic(mydata, myformula, prediction_data = 0, resizepaper = 1)
 }
 \arguments{
 \item{mydata}{csv data file}
 
-\item{myformula}{formula for the lm() model}
+\item{myformula}{formula for the glm() model}
 
-\item{newdata}{csv data file without the DV variable; intended for prediction. 
+\item{prediction_data}{csv data file with the same set of variable names as those in the mydata data set; intended for prediction. The da
 The default value set at 0 tells the function that no prediction data set has been provided.}
+
+\item{resizepaper}{How much larger should the pdf paper size be to fit everything?}
 }
 \description{
 This function conducts a Logistic regression analysis and provides the results in a pdf file. 
@@ -27,9 +29,10 @@ mydata = load_csv_data()
 head(mydata)
 str(mydata)
 myformula = "visited ~ ."
+resizepaper = 1
 Run_Logistics(mydata, myformula)
 # If you have data for prediction:
-newdata = load_csv_data()
-Run_Logistic(mydata, myformula, newdata)
+prediction_data = load_csv_data()
+Run_Logistic(mydata, myformula, prediction_data)
 }
 }
