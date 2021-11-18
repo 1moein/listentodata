@@ -238,7 +238,7 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
                        colors=RColorBrewer::brewer.pal(8, "Dark2"))
   
   
-  # #Plot One - count of words associated with each sentiment
+  #Plot One - count of words associated with each sentiment
   ggplot2::quickplot(sentiment, data=td_new2, weight=count, geom="bar", fill=sentiment, ylab="Count")
   
   #Plot two - count of words associated with each sentiment, expressed as a percentage
