@@ -7,9 +7,9 @@
 #' 
 #' @examples
 #' \dontrun{
-#' get_codes()
+#' getcodes()
 #' }
-get_codes = function(){
+getcodes = function(){
   
 clear_console()
 
@@ -54,6 +54,7 @@ clear_console()
   cat("?Run_Optimal_Pricing\n")
   cat("?Run_Regression\n")
   cat("?Run_Logistic\n")
+  cat("?Run_Sentiment_Analysis\n")
   cat("?Run_Conjoint_Study_Design\n")
   cat("?Run_Conjoint_Analysis\n")
   cat("\n")
@@ -62,6 +63,10 @@ clear_console()
   cat("tips()\n")
   cat("# To get the original copy of this script run this line:\n")
   cat("getcodes()\n")
+  cat("\n")
+  cat("# To see if you have the most up-to-date version\n")
+  cat("# run this line to see the release date for your installed version:\n")
+  cat("releaseinfo()\n")
   cat("\n")
   cat("print('Analysis Complete!')\n")
   cat("\n")
