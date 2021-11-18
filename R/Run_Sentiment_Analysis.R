@@ -196,7 +196,7 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
   rownames(td_new) <- NULL
   td_new2<-td_new[1:nrow(td_new),]
   # #Plot One - count of words associated with each sentiment
-  # ggplot2::quickplot(sentiment, data=td_new2, weight=count, geom="bar", fill=sentiment, ylab="Count")
+  ggplot2::quickplot(sentiment, data=td_new2, weight=count, geom="bar", fill=sentiment, ylab="Count")
   
   DocumentNumber = paste("document_", seq(1:ncol(td)), sep='')
   tosave = data.frame(DocumentNumber,d)
@@ -241,6 +241,7 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
   #Plot One - count of words associated with each sentiment
   ggplot2::quickplot(sentiment, data=td_new2, weight=count, geom="bar", fill=sentiment, ylab="Count")
   
+
   #Plot two - count of words associated with each sentiment, expressed as a percentage
   graphics::barplot(
     sort(colSums(prop.table(d[, 1:10]))), 
