@@ -32,7 +32,7 @@
 #' @param textdata A .txt Text file to be analyzed. Each line must be an independent text: a tweet, review, or document.
 #' @param words2remove A vector of words to remove from the analysis because of their irrelevance.
 #' @param stemthis  To stem the documents or not to stem: default = FALSE, you can set it to TRUE
-#' @param wcmf Word Cloud Minimum Frequency: default = 10. Words with frequencies lower than this amount will not be displayed in the word cloud
+#' @param wcmf Word Cloud Minimum Frequency: default = 5. Words with frequencies lower than this amount will not be displayed in the word cloud
 #' @param mostfrequent Number of most frequent words to display, default = 25
 #' @export
 #' 
@@ -44,9 +44,9 @@
 #' textdata = load_text_data()
 #' words2remove = c("toremvoe1", "toremove2")
 #' stemthis = FALSE
-#' wcmf = 5
+#' wcmf = 5 # Word Cloud Minimum Frequency: default = 5
 #' mostfrequent = 25
-#' Run_Sentiment_Analysis(mydata, stemthis, wcmf, mostfrequent)
+#' Run_Sentiment_Analysis(textdata, stemthis, wcmf, mostfrequent)
 #' }
 Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=5, mostfrequent = 25) {
   
