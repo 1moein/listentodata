@@ -189,14 +189,14 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
   
   
   #The function rowSums computes column sums across rows for each level of a grouping variable.
-  (td_new <- data.frame(rowSums(td)))
+  td_new <- data.frame(rowSums(td))
   #Transformation and cleaning
   names(td_new)[1] <- "count"
   td_new <- cbind("sentiment" = rownames(td_new), td_new)
   rownames(td_new) <- NULL
   td_new2<-td_new[1:nrow(td_new),]
-  #Plot One - count of words associated with each sentiment
-  ggplot2::quickplot(sentiment, data=td_new2, weight=count, geom="bar", fill=sentiment, ylab="Count")
+  # #Plot One - count of words associated with each sentiment
+  # ggplot2::quickplot(sentiment, data=td_new2, weight=count, geom="bar", fill=sentiment, ylab="Count")
   
   DocumentNumber = paste("document_", seq(1:ncol(td)), sep='')
   tosave = data.frame(DocumentNumber,d)
@@ -220,7 +220,7 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
   # Set up some parameters
   # Decide what to call your file name; make sure to put .pdf at the end of the name
   pdffilename =  "! Results_Sentiment_Analysis.pdf"
-  # larger =  1.2
+  larger =  1.2
   # pdf(filename, height=larger*8.5, width=larger*11)
   
   suppressWarnings(res03 <- try(grDevices::pdf(pdffilename, height=larger*8.5, width=larger*11), silent = TRUE))
