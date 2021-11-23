@@ -5,7 +5,7 @@
 \title{Sentiment Analysis}
 \usage{
 Run_Sentiment_Analysis(
-  textdata,
+  mydata,
   words2remove,
   stemthis = FALSE,
   wcmf = 5,
@@ -13,8 +13,6 @@ Run_Sentiment_Analysis(
 )
 }
 \arguments{
-\item{textdata}{A .txt Text file to be analyzed. Each line must be an independent text: a tweet, review, or document.}
-
 \item{words2remove}{A vector of words to remove from the analysis because of their irrelevance.}
 
 \item{stemthis}{To stem the documents or not to stem: default = FALSE, you can set it to TRUE}
@@ -22,6 +20,8 @@ Run_Sentiment_Analysis(
 \item{wcmf}{Word Cloud Minimum Frequency: default = 5. Words with frequencies lower than this amount will not be displayed in the word cloud}
 
 \item{mostfrequent}{Number of most frequent words to display, default = 25}
+
+\item{textdata}{A .txt Text file to be analyzed. Each line must be an independent text: a tweet, review, or document.}
 }
 \description{
 This function conducts a Sentiment analysis on data from a text file. Each row must be an independent tweet, review, or document.
@@ -38,11 +38,11 @@ This function conducts a Sentiment analysis on data from a text file. Each row m
 # This is the sample code to be copied and used in a new R Script:
 library(listentodata)
 clear_console()
-textdata = load_csv_data()
+mydata = load_csv_data()
 words2remove = c("toremvoe1", "toremove2")
 stemthis = FALSE
 wcmf = 5 # Word Cloud Minimum Frequency: default = 5
 mostfrequent = 25
-Run_Sentiment_Analysis(textdata, stemthis, wcmf, mostfrequent)
+Run_Sentiment_Analysis(mydata, stemthis, wcmf, mostfrequent)
 }
 }

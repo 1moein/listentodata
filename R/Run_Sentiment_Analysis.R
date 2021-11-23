@@ -48,24 +48,34 @@
 #' # This is the sample code to be copied and used in a new R Script:
 #' library(listentodata)
 #' clear_console()
-#' textdata = load_csv_data()
+#' mydata = load_csv_data()
 #' words2remove = c("toremvoe1", "toremove2")
 #' stemthis = FALSE
 #' wcmf = 5 # Word Cloud Minimum Frequency: default = 5
 #' mostfrequent = 25
-#' Run_Sentiment_Analysis(textdata, stemthis, wcmf, mostfrequent)
+#' Run_Sentiment_Analysis(mydata, stemthis, wcmf, mostfrequent)
 #' }
-Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=5, mostfrequent = 25) {
+Run_Sentiment_Analysis = function(mydata, words2remove, stemthis= FALSE, wcmf=5, mostfrequent = 25) {
   
   
   # Read the text file from local machine , choose file interactively
   # T:\MarketingAnalytics\marketing_analytics - Copy\data for sentiment
+  
+  # # filename = file.choose(new = FALSE)
+  # # test <- readLines(filename)
+  # 
   # textdata <- load_csv_data()
-# 
-#   words2remove = c("toremvoe1", "toremove2")
-#   stemthis = FALSE
-#   wcmf = 5 # Word Cloud Minimum Frequency: default = 5
-#   mostfrequent = 25
+  textdata = mydata
+  firstone = as.vector(names(textdata))
+  firstone = gsub("\\.", " ", firstone)
+  textdata = as.vector(unlist(textdata))
+  textdata = c(firstone, textdata)
+
+
+  # words2remove = c("toremvoe1", "toremove2")
+  # stemthis = FALSE
+  # wcmf = 5 # Word Cloud Minimum Frequency: default = 5
+  # mostfrequent = 25
 
   
   mfwords = mostfrequent
