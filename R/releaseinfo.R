@@ -19,7 +19,7 @@ clear_console()
   cat("#________________________________________________________\n")
   cat("\n")
   cat("Your installation of Listentodata has a release date of:\n")
-  cat("               11/18/2021, 12:10pm EST                   \n")
+  cat("               11/23/2021, 1:10pm EST                   \n")
   
   
    

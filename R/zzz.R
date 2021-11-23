@@ -19,7 +19,7 @@
   packageStartupMessage("                  ")
   packageStartupMessage(" Welcome to listentodata v.1.2 - Fall 2021")
   packageStartupMessage(" An R Package for MKTG763 by: Dr. M.K. ")
-  packageStartupMessage(" Last updated: 1:00pm on 11/18/2021 ")
+  packageStartupMessage(" Last updated: 1:00pm on 11/23/2021 ")
   # packageStartupMessage("                  ")
   # packageStartupMessage("                  ")
   # packageStartupMessage("----- A Small Dose of Inspiration before We Start -----")
@@ -27,8 +27,8 @@
   # # packageStartupMessage(runtimequote())
   # packageStartupMessage("                  ")
   packageStartupMessage("---------------------------------------------------")
-  packageStartupMessage(" To get the codes needed for Analysis_Hub.R,\n type get_codes() in the Console and press Enter/Return\n")
-  packageStartupMessage(" To get some general tips on functions,\n type tips() in the Console and press Enter/Return.")
+  packageStartupMessage(" To get the codes needed for Analysis_Hub.R,\n type listentodata::getcodes() in the Console and press Enter/Return\n")
+  packageStartupMessage(" To get some general tips on functions,\n type listentodata::tips() in the Console and press Enter/Return.")
   packageStartupMessage("---------------------------------------------------\n")
   
 }

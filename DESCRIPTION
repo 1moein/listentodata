@@ -29,7 +29,8 @@ Imports:
     SnowballC,
     RColorBrewer,
     syuzhet,
-    stringi
+    stringi,
+    caret
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

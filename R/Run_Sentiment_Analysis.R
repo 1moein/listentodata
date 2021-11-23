@@ -1,35 +1,15 @@
-# https://www.red-gate.com/simple-talk/databases/sql-server/bi-sql-server/text-mining-and-sentiment-analysis-with-r/
-# Install
-# if (!require(tm)) install.packages("tm")  # for text mining
-# if (!require(SnowballC)) install.packages("SnowballC") # for text stemming
-# if (!require(wordcloud)) install.packages("wordcloud") # word-cloud generator 
-# if (!require(RColorBrewer)) install.packages("RColorBrewer") # color palettes
-# if (!require(syuzhet)) install.packages("syuzhet") # for sentiment analysis
-# if (!require(ggplot2)) install.packages("ggplot2") # for plotting graphs
-# # Load
-# library("tm")
-# library("SnowballC")
-# library("wordcloud")
-# library("RColorBrewer")
-# library("syuzhet")
-# library("ggplot2")
-
-
-
-
-
 ####################################################
 #        Sentiment Analysis                         #
 ####################################################
-#    Last updated: 2/13/2021                       #
+#    Last updated: 11/23/2021                       #
 ####################################################
 
 
 #' Sentiment Analysis
 #'
-#' This function conducts a Sentiment analysis on data from a text file. Each row must be an independent tweet, review, or document.
+#' This function conducts a Sentiment analysis on data from a csv file, comprised of one column of text. Each cell in that column  must be an independent tweet, review, or document.
 #' 
-#' @param textdata A .txt Text file to be analyzed. Each line must be an independent text: a tweet, review, or document.
+#' @param mydata A .csv file to be analyzed. Each line must be a separate text: a tweet, review, or document.
 #' @param words2remove A vector of words to remove from the analysis because of their irrelevance.
 #' @param stemthis  To stem the documents or not to stem: default = FALSE, you can set it to TRUE
 #' @param wcmf Word Cloud Minimum Frequency: default = 5. Words with frequencies lower than this amount will not be displayed in the word cloud
