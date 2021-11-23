@@ -38,10 +38,17 @@
 #' 
 #' @examples
 #' \dontrun{
+#' # You need to have one csv file containing one columne of text.
+#' # Each cell in this file will be a tweet, review, or document...
+#' # In Excel, press CTRL/Command H, to open the search and replace diaglog.
+#' # With your cursor in the Find What box, press CTRL/Command J, then click Replace All.
+#' # The above steps search for and replace all line breaks in your document which is
+#' # necessary as a preparation step for this analysis.
+#' # The next few lines prepare and run the analysis.
 #' # This is the sample code to be copied and used in a new R Script:
 #' library(listentodata)
 #' clear_console()
-#' textdata = load_text_data()
+#' textdata = load_csv_data()
 #' words2remove = c("toremvoe1", "toremove2")
 #' stemthis = FALSE
 #' wcmf = 5 # Word Cloud Minimum Frequency: default = 5
@@ -51,13 +58,17 @@
 Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=5, mostfrequent = 25) {
   
   
-  mfwords = mostfrequent
-  
   # Read the text file from local machine , choose file interactively
   # T:\MarketingAnalytics\marketing_analytics - Copy\data for sentiment
-  # textdata <- load_text_data()
+  textdata <- load_csv_data()
+
+  words2remove = c("toremvoe1", "toremove2")
+  stemthis = FALSE
+  wcmf = 5 # Word Cloud Minimum Frequency: default = 5
+  mostfrequent = 25
+
   
-  
+  mfwords = mostfrequent
   # Load the data as a corpus
   TextDoc <- tm::Corpus(tm::VectorSource(textdata))
   
@@ -133,7 +144,8 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
   # # Find associations for words that occur at least 50 times
   # tm::findAssocs(TextDoc_dtm, terms = tm::findFreqTerms(TextDoc_dtm, lowfreq = 100), corlimit = 0.4)
   
-  
+  test = stringi::stri_trans_general(TextDoc$content, "latin-ascii")
+  TextDoc$content = test
   cleanedText = data.frame(TextDoc$content)
   names(cleanedText) ="Cleaned Documents"
   
@@ -193,12 +205,13 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
   #The function rowSums computes column sums across rows for each level of a grouping variable.
   td_new <- data.frame(rowSums(td))
   #Transformation and cleaning
-  names(td_new)[1] <- "count"
-  td_new <- cbind("sentiment" = rownames(td_new), td_new)
+  names(td_new) <- "counts"
+  sentiment = rownames(td_new)
+  td_new <- cbind(sentiment, td_new)
   rownames(td_new) <- NULL
   td_new2<-td_new[1:nrow(td_new),]
   # #Plot One - count of words associated with each sentiment
-  ggplot2::quickplot(sentiment, data=td_new2, weight=count, geom="bar", fill=sentiment, ylab="Count")
+  ggplot2::quickplot(sentiment, data=td_new2, weight=td_new2$counts, geom="bar", fill=sentiment, ylab="Count")
   
   DocumentNumber = paste("document_", seq(1:ncol(td)), sep='')
   tosave = data.frame(DocumentNumber,d)
@@ -241,7 +254,7 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
   
   
   #Plot One - count of words associated with each sentiment
-  ggplot2::quickplot(sentiment, data=td_new2, weight=count, geom="bar", fill=sentiment, ylab="Count")
+  ggplot2::quickplot(sentiment, data=td_new2, weight=td_new2$counts, geom="bar", fill=sentiment, ylab="Count")
   
 
   #Plot two - count of words associated with each sentiment, expressed as a percentage

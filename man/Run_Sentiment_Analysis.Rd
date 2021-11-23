@@ -28,10 +28,17 @@ This function conducts a Sentiment analysis on data from a text file. Each row m
 }
 \examples{
 \dontrun{
+# You need to have one csv file containing one columne of text.
+# Each cell in this file will be a tweet, review, or document...
+# In Excel, press CTRL/Command H, to open the search and replace diaglog.
+# With your cursor in the Find What box, press CTRL/Command J, then click Replace All.
+# The above steps search for and replace all line breaks in your document which is
+# necessary as a preparation step for this analysis.
+# The next few lines prepare and run the analysis.
 # This is the sample code to be copied and used in a new R Script:
 library(listentodata)
 clear_console()
-textdata = load_text_data()
+textdata = load_csv_data()
 words2remove = c("toremvoe1", "toremove2")
 stemthis = FALSE
 wcmf = 5 # Word Cloud Minimum Frequency: default = 5
