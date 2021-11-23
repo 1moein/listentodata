@@ -60,12 +60,12 @@ Run_Sentiment_Analysis = function(textdata, words2remove, stemthis= FALSE, wcmf=
   
   # Read the text file from local machine , choose file interactively
   # T:\MarketingAnalytics\marketing_analytics - Copy\data for sentiment
-  textdata <- load_csv_data()
-
-  words2remove = c("toremvoe1", "toremove2")
-  stemthis = FALSE
-  wcmf = 5 # Word Cloud Minimum Frequency: default = 5
-  mostfrequent = 25
+  # textdata <- load_csv_data()
+# 
+#   words2remove = c("toremvoe1", "toremove2")
+#   stemthis = FALSE
+#   wcmf = 5 # Word Cloud Minimum Frequency: default = 5
+#   mostfrequent = 25
 
   
   mfwords = mostfrequent
