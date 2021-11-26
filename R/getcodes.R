@@ -507,6 +507,19 @@ clear_console()
   cat("\n")
   cat("\n")
   cat("print('Analysis Complete!')\n")
+  cat("\n")
+  cat("\n")
+  cat("# ============================================================\n")
+  cat("#                             Attention!               \n")
+  cat("# ============================================================\n")
+  cat("# Right Click in this panel, then click Select All\n")
+  cat("# This will select everything here, including these instructions.\n")
+  cat("# Then, Right Click any where here again and click Copy\n")
+  cat("# Create a new R Script by going to File > New File > R Script \n")
+  cat("# Right click in the blank Editor panel that pops up and click Paste\n")
+  cat("# Go to File > Save as, and save the script as Analysis_Hub.R\n")
+  cat("# All our RStudio analyses will be carried out from within Analysis_Hub.R\n")
+
   
   
   
