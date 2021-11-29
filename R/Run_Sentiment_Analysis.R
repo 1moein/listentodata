@@ -47,7 +47,7 @@ Run_Sentiment_Analysis = function(mydata, words2remove, stemthis= FALSE, wcmf=5,
   # textdata <- load_csv_data()
   textdata = mydata
   firstone = as.vector(names(textdata))
-  firstone = gsub("\\.", " ", firstone)
+  firstone = gsub("\\.", " ", firstone) 
   textdata = as.vector(unlist(textdata))
   textdata = c(firstone, textdata)
   
