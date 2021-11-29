@@ -50,7 +50,13 @@ Run_Sentiment_Analysis = function(mydata, words2remove, stemthis= FALSE, wcmf=5,
   firstone = gsub("\\.", " ", firstone)
   textdata = as.vector(unlist(textdata))
   textdata = c(firstone, textdata)
+  
+  # replace line breaks
 
+    for (i in 1:length(textdata)){
+    textdata[i] = gsub("\r?\n|\r", " ", textdata[i])
+    
+  }
 
   # words2remove = c("toremvoe1", "toremove2")
   # stemthis = FALSE
