@@ -91,7 +91,7 @@ Run_SegmentTarget <- function(df_seg, df_targ, segments, resizepaper = 1) {
 # str(df_targ)
 # summary(df_targ)
 
-# copy the segmentation data frame into df
+# copy the segmentation data frame into df_orig
 df_orig = df_seg
 # Standardize the segmentation data in the df data set
 # Note that using scale() on a data frame converts it into a matrix.
@@ -114,20 +114,22 @@ d = stats::dist(df, method = "euclidean")
 # Ward's method is most appropriate for numeric variables, but not for binary variables.
 hc = stats::hclust(d, method = "ward.D" )
 
-# Plot the dendogram
-# The \n in the x and y labels below, writes what comes next, on a new line.
-plot(hc, cex = 0.6, hang = -1, labels = FALSE,
-     xlab= "Each vertical line is a segment and\n segments are being merged into fewer segments\n as we move up the dendogram.",
-     ylab="Measure of Within-Cluster Sum of Squared Errors (SSE)"
-)
+# # Plot Outputs commented out for the function
+# # Plot the dendogram
+# # The \n in the x and y labels below, writes what comes next, on a new line.
+# plot(hc, cex = 0.6, hang = -1, labels = FALSE,
+#      xlab= "Each vertical line is a segment and\n segments are being merged into fewer segments\n as we move up the dendogram.",
+#      ylab="Measure of Within-Cluster Sum of Squared Errors (SSE)"
+# )
 
 # Plot the scree plot for 1- to 20-cluster solutions using the heights of the dendogram
 # First, we get the dendogram heights from the hc object and reverse its order and call it x. Then we plot it.
 x = rev(hc$height)
-plot(x[1:20], type="b", col="navy",
-     main="Scree Plot for Hierarchical Clustering",
-      ylab="Measure of Within-Cluster Sum of Squared Errors (SSE)",
-     xlab="Number of clusters")
+# # Plot Outputs commented out for the function
+# plot(x[1:20], type="b", col="navy",
+#      main="Scree Plot for Hierarchical Clustering",
+#       ylab="Measure of Within-Cluster Sum of Squared Errors (SSE)",
+#      xlab="Number of clusters")
 
 #--------Set the number of clusters by setting k, and determine cluster membership for each Observation-----
 # Set the value of HowManySegments equal to the number of clusters you have decided after examining the scree plot
@@ -135,11 +137,14 @@ plot(x[1:20], type="b", col="navy",
 
 ######################################################
 # Plot the dendogram and show the clusters
-plot(hc, cex = 0.6, hang = -1, labels = FALSE,
-     xlab= "Each vertical line is a segment and\n segments are being merged into fewer segments\n as we move up the dendogram.",
-     ylab="Measure of Within-Cluster Sum of Squared Errors (SSE)"
-)
-stats::rect.hclust(hc, k = HowManySegments, border = grDevices::rainbow(HowManySegments))
+# # Plot Outputs commented out for the function
+
+# # Plot Outputs commented out for the function
+# plot(hc, cex = 0.6, hang = -1, labels = FALSE,
+#      xlab= "Each vertical line is a segment and\n segments are being merged into fewer segments\n as we move up the dendogram.",
+#      ylab="Measure of Within-Cluster Sum of Squared Errors (SSE)"
+# )
+# stats::rect.hclust(hc, k = HowManySegments, border = grDevices::rainbow(HowManySegments))
 
 # Create a variable to determine which cluster each observation belongs to
 Assigned_Segment = stats::cutree(hc, k = HowManySegments)
@@ -153,7 +158,8 @@ df_targ$segment = Assigned_Segment
 
 segmentmap = factoextra::fviz_cluster(list(data = df, cluster = Assigned_Segment), ellipse.type = "norm")
 
-plot(segmentmap)
+# # Plot Outputs commented out for the function
+# plot(segmentmap)
 
 #########################################################################
 # ##testing something from this source
@@ -179,11 +185,6 @@ plot(segmentmap)
 # # use repel = TRUE to avoid overplotting
 # fviz_cluster(km.res, df, ellipse.type = "norm")
 #####################################################
-
-
-
-
-
 
 #---------- Find Segment Sizes---------------
 x = table(Assigned_Segment)
@@ -217,7 +218,8 @@ mytheme = gridExtra::ttheme_minimal(
 # (Optional) In the above theme, we can use fill = hsv(0.61,seq(0.1,1,length.out = 25), 0.99,0.6) to paint the table with shades of blue
 
 # Show the segment sizes table with the new formatting
-gridExtra::grid.arrange(gridExtra::tableGrob(segment_sizes, theme=mytheme))
+# # Plot Outputs commented out for the function
+# gridExtra::grid.arrange(gridExtra::tableGrob(segment_sizes, theme=mytheme))
 
 
 #----- Calculate the means of segmentation variables for each segment--------
@@ -227,7 +229,8 @@ gridExtra::grid.arrange(gridExtra::tableGrob(segment_sizes, theme=mytheme))
 # This is the original segmentation data set that now contains a new variable
 # called segment at the end that shows segment membership for each individual.
 
-gridExtra::grid.arrange(top="Segmentation Analysis: Main Results", gridExtra::tableGrob(calculate_segment_means(df_seg)[[2]], theme=mytheme))
+# # Plot Outputs commented out for the function
+# gridExtra::grid.arrange(top="Segmentation Analysis: Main Results", gridExtra::tableGrob(calculate_segment_means(df_seg)[[2]], theme=mytheme))
 
 
 # # Visualizing the means of segmentation variable for each segment
@@ -239,7 +242,8 @@ seg_Results = flexclust::barchart(hc, df, k = HowManySegments,
          main = "Plot of Segmentation Variable Means \n Dots show population* means standardized at 0. \n Bars show segment means for each variable. \n Differences between population and segment means can help us describe each segment \n relative to each other and the population. \n *Population refers to: All respondents in our dataset",
          xlab = paste("Segment ", as.character(rep(1:HowManySegments)))
 )
-plot(seg_Results)
+# # Plot Outputs commented out for the function
+# plot(seg_Results)
 
 #--------- Targeting Analysis --------------
 # For targeting analysis, we only calculate the mean of the targeting variables

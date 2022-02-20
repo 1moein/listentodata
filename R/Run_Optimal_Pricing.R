@@ -123,14 +123,15 @@ for (i in 1:m){
 
 # Plot observed demand
 Likelihood = q/number_of_respondents
-plot(p, q, pch=19, cex=1.1, cex.axis=1.1, cex.lab=1.1,
-     cex.main=1.1, xlab = "Unit Price (P)",
-     ylab = "Observed Demand (Q)",
-     main="Observed Demand and Purchase likelihood\n at each tested price point",
-     col="darkgreen", xlim=c(0, 1.2*max(p)), ylim=c(0, 1.2*max(q)))
-graphics::xspline(p, q, shape=-0.5, lwd=2)
-graphics::text(p, q, paste("Likelihood is ",round(Likelihood,2),"\n @ $",p, sep = ""),
-     cex=1, pos=3, offset = 1, col="navyblue")
+# # Plot Outputs commented out for the function
+# plot(p, q, pch=19, cex=1.1, cex.axis=1.1, cex.lab=1.1,
+#      cex.main=1.1, xlab = "Unit Price (P)",
+#      ylab = "Observed Demand (Q)",
+#      main="Observed Demand and Purchase likelihood\n at each tested price point",
+#      col="darkgreen", xlim=c(0, 1.2*max(p)), ylim=c(0, 1.2*max(q)))
+# graphics::xspline(p, q, shape=-0.5, lwd=2)
+# graphics::text(p, q, paste("Likelihood is ",round(Likelihood,2),"\n @ $",p, sep = ""),
+#      cex=1, pos=3, offset = 1, col="navyblue")
 
 
 ######################################
@@ -211,24 +212,26 @@ op_demand = predicted_demand(op)*(C/number_of_respondents)
 
 
 # Plot the estimated demand curve
-plot(x,z, type="l", lwd=2, cex.main = 1, cex=1.1, cex.axis=1.1, cex.lab=1.1, xlab="Unit Price (P)", ylab="Quantity Demanded (Q)", main=paste("Estimated Demand Curve at different price levels\n based on specified market size(i.e., C=",C,")",sep=""), col="navy")
-graphics::abline(v=op, col="darkgreen", lwd=2)
-graphics::text(op, 0.9*max(z), cex=1, pos=4, offset = 0.2, col="darkgreen", paste("Optimal Price = $",round(op,2)))
-graphics::text(0.6*max(p), 0.9*op_demand, col="#000000", cex=1,
-     bquote(bolditalic(Q(P) ==
-                         .(C) * (1 - frac(1, 1 + paste(e^- (paste(.(temp2[1]), " ", .(getsign(temp2[2])), " ", .(abs(temp2[2])),"P ", .(getsign(temp2[3])), " ", .(abs(temp2[3])),log(P), " ", .(getsign(temp2[4])), " ", .(abs(temp2[4])),sqrt(P)))))
-                         ))))
+# # Plot Outputs commented out for the function
+# plot(x,z, type="l", lwd=2, cex.main = 1, cex=1.1, cex.axis=1.1, cex.lab=1.1, xlab="Unit Price (P)", ylab="Quantity Demanded (Q)", main=paste("Estimated Demand Curve at different price levels\n based on specified market size(i.e., C=",C,")",sep=""), col="navy")
+# graphics::abline(v=op, col="darkgreen", lwd=2)
+# graphics::text(op, 0.9*max(z), cex=1, pos=4, offset = 0.2, col="darkgreen", paste("Optimal Price = $",round(op,2)))
+# graphics::text(0.6*max(p), 0.9*op_demand, col="#000000", cex=1,
+#      bquote(bolditalic(Q(P) ==
+#                          .(C) * (1 - frac(1, 1 + paste(e^- (paste(.(temp2[1]), " ", .(getsign(temp2[2])), " ", .(abs(temp2[2])),"P ", .(getsign(temp2[3])), " ", .(abs(temp2[3])),log(P), " ", .(getsign(temp2[4])), " ", .(abs(temp2[4])),sqrt(P)))))
+#                          ))))
 
 # Plot the revenue curve
-plot(x,y, cex.main=1, type="l", lwd=2, cex=1.1, cex.axis=1.1, cex.lab=1.1, xlab="Unit Price", ylab="Revenue", main="Revenue at different price levels\n from 100 customers", col="navy")
-graphics::abline(v=op, col="darkgreen", lwd=2)
-graphics::text(1.1*op, maxrev, cex=1, pos=4, offset = 0.2, col="darkgreen", paste("Optimal Price = $",round(op,2)))
-
-graphics::text(op, maxrev/2, paste("Purchase likelihood at $", round(op,2)," is ",
-                         round(predicted_demand(op)/number_of_respondents,2),
-                         ".\nMaximum revenue from ",number_of_respondents," customers\nwill be: $",
-                         round(maxrev,2)," which is calculated from: \noptimal price x \npurcahse likelihood x \nnumber of customers)",
-                         sep = ""), cex=1, pos=4, offset = 0.2, col="darkgreen")
+# # Plot Outputs commented out for the function
+# plot(x,y, cex.main=1, type="l", lwd=2, cex=1.1, cex.axis=1.1, cex.lab=1.1, xlab="Unit Price", ylab="Revenue", main="Revenue at different price levels\n from 100 customers", col="navy")
+# graphics::abline(v=op, col="darkgreen", lwd=2)
+# graphics::text(1.1*op, maxrev, cex=1, pos=4, offset = 0.2, col="darkgreen", paste("Optimal Price = $",round(op,2)))
+# 
+# graphics::text(op, maxrev/2, paste("Purchase likelihood at $", round(op,2)," is ",
+#                          round(predicted_demand(op)/number_of_respondents,2),
+#                          ".\nMaximum revenue from ",number_of_respondents," customers\nwill be: $",
+#                          round(maxrev,2)," which is calculated from: \noptimal price x \npurcahse likelihood x \nnumber of customers)",
+#                          sep = ""), cex=1, pos=4, offset = 0.2, col="darkgreen")
 
 
 ################# save results in a pdf file ############

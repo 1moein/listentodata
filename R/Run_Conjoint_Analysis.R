@@ -201,9 +201,11 @@ ourMarketShares0
 #Plot_MS_rule1() calculates market shares using First Choice Rule
 #Plot_MS_rule2() calculates market shares using Preference Share Rule
 #Plot_MS_rule3() calculates market shares using Logit Choice Rule
-Plot_MS_rule1(ourMarketShares0, "Only for our alternatives in the absence of competition")
-Plot_MS_rule2(ourMarketShares0, "Only for our alternatives in the absence of competition")
-Plot_MS_rule3(ourMarketShares0, "Only for our alternatives in the absence of competition")
+
+# # Plotting commented out for the function
+# Plot_MS_rule1(ourMarketShares0, "Only for our alternatives in the absence of competition")
+# Plot_MS_rule2(ourMarketShares0, "Only for our alternatives in the absence of competition")
+# Plot_MS_rule3(ourMarketShares0, "Only for our alternatives in the absence of competition")
 
 cat("Done!\n")
 
@@ -223,7 +225,8 @@ row.names(competitorShares) = names(competitionset)
 # print and plot the results
 competitorShares
 
-Plot_MS_rule3(competitorShares, "Only for our competitors before we enter the market")
+# # Plotting commented out for the function
+# Plot_MS_rule3(competitorShares, "Only for our competitors before we enter the market")
 cat("Done!\n")
 cat("5. Estimating MS for alternatives among competitors...")
 # Now Add the new product alternatives to the mix of competitors one by one and estimate their market share
@@ -234,17 +237,18 @@ cat("5. Estimating MS for alternatives among competitors...")
 # the market shares using the first two choice rules and only display the results from the
 # Logit choice rule.
 
-for (j in 1:ncol(alternatives)){
-  competitionset = cbind(competitors,alternatives[,j])
-  names(competitionset)[dim(competitionset)[2]] = names(alternatives)[j]
-  ourMarketShares = Estimate_Market_Shares(competitionset,pws)
-  row.names(ourMarketShares) = names(competitionset)
-  ourMarketShares
-  # Plot_MS_rule1(ourMarketShares)
-  # Plot_MS_rule2(ourMarketShares)
-  Plot_MS_rule3(ourMarketShares, paste("when we launch Alternative", j ," \n against the current competitors"))
-  # readline(prompt="Press [enter] to see the next Market Share Chart")
-}
+# # Plotting commented out for the function
+# for (j in 1:ncol(alternatives)){
+#   competitionset = cbind(competitors,alternatives[,j])
+#   names(competitionset)[dim(competitionset)[2]] = names(alternatives)[j]
+#   ourMarketShares = Estimate_Market_Shares(competitionset,pws)
+#   row.names(ourMarketShares) = names(competitionset)
+#   ourMarketShares
+#   # Plot_MS_rule1(ourMarketShares)
+#   # Plot_MS_rule2(ourMarketShares)
+#   Plot_MS_rule3(ourMarketShares, paste("when we launch Alternative", j ," \n against the current competitors"))
+#   # readline(prompt="Press [enter] to see the next Market Share Chart")
+# }
 cat("Done!\n")
 
 cat("6. Estimating MS for all potential products...")
@@ -255,7 +259,8 @@ cat("6. Estimating MS for all potential products...")
 
 Attributes = list()
 for (i in 1:(ncol(DesignTable)-1)){
-  Attributes[[i]] = (stats::na.omit(DesignTable[,i+1]))
+  xxx = DesignTable[,i+1]
+  Attributes[[i]] = xxx[xxx !=""]
 }
 
 All_combinations = expand.grid(Attributes)
@@ -290,15 +295,19 @@ MS3 = MS3[1:5,]
 
 # Plot market shares for best products and identify them
 
-Plot_MS_rule3(MS3_50, paste("For the top 50 products in the design space \n when all",dim(All_products)[2],"products are launched."))
+# # Plotting commented out for the function
+# Plot_MS_rule3(MS3_50, paste("For the top 50 products in the design space \n when all",dim(All_products)[2],"products are launched."))
 
-Plot_MS_rule1(MS1, paste("For the top 5 products in the design space \n when all",dim(All_products)[2],"products are launched."))
+# # Plotting commented out for the function
+# Plot_MS_rule1(MS1, paste("For the top 5 products in the design space \n when all",dim(All_products)[2],"products are launched."))
 All_products[,which(colnames(All_products) %in% row.names(MS1))]
 
-Plot_MS_rule2(MS2, paste("For the top 5 products in the design space \n when all",dim(All_products)[2],"products are launched."))
+# # Plotting commented out for the function
+# Plot_MS_rule2(MS2, paste("For the top 5 products in the design space \n when all",dim(All_products)[2],"products are launched."))
 All_products[,which(colnames(All_products) %in% row.names(MS2))]
 
-Plot_MS_rule3(MS3, paste("For the top 5 products in the design space \n when all",dim(All_products)[2],"products are launched."))
+# # Plotting commented out for the function
+# Plot_MS_rule3(MS3, paste("For the top 5 products in the design space \n when all",dim(All_products)[2],"products are launched."))
 All_products[,which(colnames(All_products) %in% row.names(MS3))]
 
 
@@ -314,6 +323,11 @@ All_products[,which(MS$MS_PreferenceShare==max(MS$MS_PreferenceShare))]
 which(MS$MS_Logit==max(MS$MS_Logit))
 # What are its attribute levels or features?
 All_products[,which(MS$MS_Logit==max(MS$MS_Logit))]
+
+winners = c(which(MS$MS_FirstChoice==max(MS$MS_FirstChoice)), which(MS$MS_PreferenceShare==max(MS$MS_PreferenceShare)), which(MS$MS_Logit==max(MS$MS_Logit)))
+winners = unique(winners)
+finalists=All_products[, winners]
+row.names(finalists) = colnames(DesignTable)[-1]
 
 cat("Done!\n")
 
@@ -364,11 +378,23 @@ cat("9. Saving results in a pdf file...")
 # Plot the results: Which product is the single strongest potential product
 # against the current competitors?
 
-Plot_MS_rule1(bestproductMS, paste("For the STRONGEST potential product out of all",dim(All_products)[2],"products \n against the current competitors"))
+# # Plotting commented out for the function
+# Plot_MS_rule1(bestproductMS, paste("For the STRONGEST potential product out of all",dim(All_products)[2],"products \n against the current competitors"))
+# Plot_MS_rule2(bestproductMS, paste("For the STRONGEST potential product out of all",dim(All_products)[2],"products \n against the current competitors"))
+# Plot_MS_rule3(bestproductMS, paste("For the STRONGEST potential product out of all",dim(All_products)[2],"products \n against the current competitors"))
 
-Plot_MS_rule2(bestproductMS, paste("For the STRONGEST potential product out of all",dim(All_products)[2],"products \n against the current competitors"))
+mytablecolors = c("#e5f5e0","#fff7dc")
+mytheme = gridExtra::ttheme_minimal(
+  core=list(bg_params = list(fill =  mytablecolors, col=NA),
+            fg_params=list(fontface=3)),
+  colhead=list(fg_params=list(col="navyblue", fontface=4L)),
+  rowhead=list(fg_params=list(col="black", fontface=3L)))
+# (Optional) In the above theme, we can use fill = hsv(0.61,seq(0.1,1,length.out = 25), 0.99,0.6) to paint the table with shades of blue
 
-Plot_MS_rule3(bestproductMS, paste("For the STRONGEST potential product out of all",dim(All_products)[2],"products \n against the current competitors"))
+# Show the segment sizes table with the new formatting
+# # Plot Outputs commented out for the function
+# gridExtra::grid.arrange(gridExtra::tableGrob(finalists, theme=mytheme))
+
 
 ################# save results in a pdf file ############
 
@@ -440,6 +466,7 @@ Plot_MS_rule2(bestproductMS, paste("For the STRONGEST potential product out of a
 
 Plot_MS_rule3(bestproductMS, paste("For the STRONGEST potential product out of all",dim(All_products)[2],"products \n against the current competitors"))
 
+gridExtra::grid.arrange(gridExtra::tableGrob(finalists, theme=mytheme))
 
 grDevices::dev.off()
 if (!is.null(res7)) cat(" ***Failed!*** :\"-( \n")

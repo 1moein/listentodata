@@ -4,10 +4,10 @@
 \alias{Run_Positioning_Analysis}
 \title{Positioning Analysis}
 \usage{
-Run_Positioning_Analysis(percetpions_data, preferences_data)
+Run_Positioning_Analysis(perceptions_data, preferences_data)
 }
 \arguments{
-\item{percetpions_data}{Perceptual data csv file}
+\item{perceptions_data}{Perceptual data csv file}
 
 \item{preferences_data}{Preferences data csv file}
 }

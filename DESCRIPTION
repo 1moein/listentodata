@@ -1,10 +1,10 @@
 Package: listentodata
 Type: Package
-Title: A package for mktg763
-Version: 0.1.0
+Title: A package for Marketing Analytics
+Version: 1.2
 Author: Dr. Moein Khanlari <khanlari@ualberta.ca>
 Maintainer: Dr. Moein Khanlari <khanlari@ualberta.ca>
-Description: Provides the functions needed for the mktg763 course at Paul College.  
+Description: Provides the functions needed for my Marketing Analytics course.  
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

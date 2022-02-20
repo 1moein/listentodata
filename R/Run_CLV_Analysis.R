@@ -169,8 +169,9 @@ for (i in 2:(periods+1)){
 
 
 # Plot of the Number of Customers in each period for each customer group
-graphics::matplot(evolve[1:displayperiods,], col=grDevices::rainbow(ncol(tm)), lwd=2, type = c("b"),pch=19, main="Number of customers in each period", ylab="Number of Customers", xlab="Periods")
-graphics::legend("topleft", legend = names(tm), col=grDevices::rainbow(ncol(tm)), pch=19)
+# # Plot Outputs commented out for the function
+# graphics::matplot(evolve[1:displayperiods,], col=grDevices::rainbow(ncol(tm)), lwd=2, type = c("b"),pch=19, main="Number of customers in each period", ylab="Number of Customers", xlab="Periods")
+# graphics::legend("topleft", legend = names(tm), col=grDevices::rainbow(ncol(tm)), pch=19)
 
 
 # Beautify evolve
@@ -314,20 +315,21 @@ group_clv = rev(group_clv)
 group_clv = group_clv[-1]
 
 # Plot a graph of CLV values
-myplot = graphics::barplot(group_clv, horiz=FALSE,
-                 col = grDevices::rainbow(length(group_clv), alpha=0.45),
-                 main = paste("CLV value for each customer group",
-                              "\nDiscount Rate = ", discount_rate, sep=""),
-                 ylab = "Customer Lifetime Value (dollars)",
-                 xlab = "Profit Groups"
-)
-graphics::legend("topleft", inset =0.03, legend = rev(names(group_clv)), fill = rev(grDevices::rainbow(length(group_clv), alpha=0.45)))
-graphics::text(x=myplot, y=0.5*group_clv,
-     labels=paste(rep("$",length(group_clv)), round(group_clv,1), sep=""))
-graphics::abline(h=AvgCLV, col="deeppink4", lwd=3)
-graphics::text(x=(length(group_clv)/2 - 1), y=1.1*AvgCLV,
-     labels=paste("Average CLV (weighted) = $",round(AvgCLV,1), sep=""),
-     col = "deeppink4")
+# # Plot Outputs commented out for the function
+# myplot = graphics::barplot(group_clv, horiz=FALSE,
+#                  col = grDevices::rainbow(length(group_clv), alpha=0.45),
+#                  main = paste("CLV value for each customer group",
+#                               "\nDiscount Rate = ", discount_rate, sep=""),
+#                  ylab = "Customer Lifetime Value (dollars)",
+#                  xlab = "Profit Groups"
+# )
+# graphics::legend("topleft", inset =0.03, legend = rev(names(group_clv)), fill = rev(grDevices::rainbow(length(group_clv), alpha=0.45)))
+# graphics::text(x=myplot, y=0.5*group_clv,
+#      labels=paste(rep("$",length(group_clv)), round(group_clv,1), sep=""))
+# graphics::abline(h=AvgCLV, col="deeppink4", lwd=3)
+# graphics::text(x=(length(group_clv)/2 - 1), y=1.1*AvgCLV,
+#      labels=paste("Average CLV (weighted) = $",round(AvgCLV,1), sep=""),
+#      col = "deeppink4")
 
 ################# save results in a pdf file ############
 

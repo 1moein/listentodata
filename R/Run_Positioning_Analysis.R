@@ -57,7 +57,7 @@
 #' This function conducts a positioning analysis using two data sets 
 #' of perceptual and preferences data
 #'
-#' @param percetpions_data Perceptual data csv file
+#' @param perceptions_data Perceptual data csv file
 #' @param preferences_data Preferences data csv file
 #'
 #' @export
@@ -72,10 +72,10 @@
 #' Run_Positioning_Analysis(perceptions_data,preferences_data)
 #' }
 
-Run_Positioning_Analysis = function(percetpions_data, preferences_data) {
+Run_Positioning_Analysis = function(perceptions_data, preferences_data) {
 
 
-df = percetpions_data
+df = perceptions_data
 d1 = preferences_data
 
 # View the perceptual data
@@ -101,15 +101,17 @@ df = t(df)
 # Visualize average preference ratings for each brand
 AvP = data.frame(Brands=names(d1[,-1]), Avg=round(colMeans(d1[,-1]),2))
 AvP = AvP[order(AvP$Avg, decreasing=TRUE),]
-bp = graphics::barplot(height = AvP$Avg,
-              ylim=c(0,max(ceiling(AvP$Avg))+2),
-              names.arg=AvP$Brands,
-              col=grDevices::topo.colors(length(AvP$Brands), alpha = 1),
-              main="Average Preferences for Brands",
-              ylab="Average Preference Rating",
-              axisnames = FALSE)
-graphics::text(x=bp, y = AvP$Avg+0.2 , labels=as.character(AvP$Avg))
-graphics::text(bp, graphics::par("usr")[3], labels = AvP$Brands, srt = 25, adj = c(1.1,1.1), xpd = TRUE, cex=.9)
+
+# # Plot Outputs commented out for the function
+# bp = graphics::barplot(height = AvP$Avg,
+#               ylim=c(0,max(ceiling(AvP$Avg))+2),
+#               names.arg=AvP$Brands,
+#               col=grDevices::topo.colors(length(AvP$Brands), alpha = 1),
+#               main="Average Preferences for Brands",
+#               ylab="Average Preference Rating",
+#               axisnames = FALSE)
+# graphics::text(x=bp, y = AvP$Avg+0.2 , labels=as.character(AvP$Avg))
+# graphics::text(bp, graphics::par("usr")[3], labels = AvP$Brands, srt = 25, adj = c(1.1,1.1), xpd = TRUE, cex=.9)
 
 
 # Do a principal component analysis on the perceptions data
@@ -119,7 +121,9 @@ pca = stats::prcomp(df, scale = TRUE)
 # if (!require(factoextra)) install.packages("factoextra")
 # library(factoextra)
 var_explained = factoextra::fviz_eig(pca, main = "PCA Percentage of Explained Variances", addlabels = TRUE, barfill = "deepskyblue")
-plot(var_explained)
+
+# # Plot Outputs commented out for the function
+# plot(var_explained)
 
 # Map Preference data into the PCA coordinate system
 comp1 = as.matrix(d1[,-1])%*%(pca$x[,1])
@@ -146,7 +150,8 @@ biplot1 = factoextra::fviz_pca_biplot(pca, axes = c(1, 2),
                 col.var = "darkblue",
                 col.ind = "deeppink3",
                 title = "Perceptual Map of Dimensions 1 and 2")
-plot(biplot1)
+# # Plot Outputs commented out for the function
+# plot(biplot1)
 
 # If the 3rd component explains a large amount of variance
 # we keep 3 components in the analysis and will have to check
@@ -157,14 +162,16 @@ biplot2 = factoextra::fviz_pca_biplot(pca, axes = c(1, 3),
                 col.var = "darkblue",
                 col.ind = "deeppink3",
                 title = "Perceptual Map of Dimensions 1 and 3")
-plot(biplot2)
+# # Plot Outputs commented out for the function
+# plot(biplot2)
 
 biplot3 = factoextra::fviz_pca_biplot(pca, axes = c(2, 3),
                 repel = TRUE,
                 col.var = "darkblue",
                 col.ind = "deeppink3",
                 title = "Perceptual Map of Dimensions 2 and 3")
-plot(biplot3)
+# # Plot Outputs commented out for the function
+# plot(biplot3)
 
 # # Create a theme for formatting our tables
 # # This block of code is merely for beautifying our tables
@@ -183,7 +190,9 @@ con = data.frame(round(var$contrib,2)[,1:3])
 con2 = con
 con2[nrow(con)+1,] = apply(con,2,sum)
 row.names(con2)[nrow(con2)] = "Total"
-gridExtra::grid.arrange(top="Contribution of variables to Dimensions",gridExtra::tableGrob(con2, theme=mytheme))
+
+# # Plot Outputs commented out for the function
+# gridExtra::grid.arrange(top="Contribution of variables to Dimensions",gridExtra::tableGrob(con2, theme=mytheme))
 
 
 # Contribution of variables to Dimension 1
@@ -191,15 +200,17 @@ con = con[order(con$Dim.1, decreasing = TRUE),]
 slices = con[,1]
 lbls = row.names(con)
 pct = round(slices/sum(slices)*100)
-p1 = graphics::barplot(height = slices,
-              ylim=c(0,max(ceiling(slices))+2),
-              names.arg=lbls,
-              col=grDevices::rainbow(length(pct), alpha = 0.5),
-              main="Contribution of variables to\n Dimension 1",
-              ylab="Contributions (%)",
-              axisnames=FALSE)
-graphics::text(x=p1, y = slices+0.5 , labels=paste(pct,"%", sep=""))
-graphics::text(x=p1, graphics::par("usr")[3], labels = lbls, srt = 25, adj = c(1.1,1.1), xpd = TRUE, cex=.9)
+
+# # Plot Outputs commented out for the function
+# p1 = graphics::barplot(height = slices,
+#               ylim=c(0,max(ceiling(slices))+2),
+#               names.arg=lbls,
+#               col=grDevices::rainbow(length(pct), alpha = 0.5),
+#               main="Contribution of variables to\n Dimension 1",
+#               ylab="Contributions (%)",
+#               axisnames=FALSE)
+# graphics::text(x=p1, y = slices+0.5 , labels=paste(pct,"%", sep=""))
+# graphics::text(x=p1, graphics::par("usr")[3], labels = lbls, srt = 25, adj = c(1.1,1.1), xpd = TRUE, cex=.9)
 
 
 # Contribution of variables to Dimension 2
@@ -207,30 +218,34 @@ con = con[order(con$Dim.2, decreasing = TRUE),]
 slices = con[,2]
 lbls = row.names(con)
 pct = round(slices/sum(slices)*100)
-p2 = graphics::barplot(height = slices,
-              ylim=c(0,max(ceiling(slices))+2),
-              names.arg=lbls,
-              col=grDevices::rainbow(length(pct), alpha = 0.5),
-              main="Contribution of variables to\n Dimension 2",
-              ylab="Contributions (%)",
-              axisnames=FALSE)
-graphics::text(x=p2, y = slices+0.5 , labels=paste(pct,"%", sep=""))
-graphics::text(x=p2, graphics::par("usr")[3], labels = lbls, srt = 25, adj = c(1.1,1.1), xpd = TRUE, cex=.9)
+
+# # Plot Outputs commented out for the function
+# p2 = graphics::barplot(height = slices,
+#               ylim=c(0,max(ceiling(slices))+2),
+#               names.arg=lbls,
+#               col=grDevices::rainbow(length(pct), alpha = 0.5),
+#               main="Contribution of variables to\n Dimension 2",
+#               ylab="Contributions (%)",
+#               axisnames=FALSE)
+# graphics::text(x=p2, y = slices+0.5 , labels=paste(pct,"%", sep=""))
+# graphics::text(x=p2, graphics::par("usr")[3], labels = lbls, srt = 25, adj = c(1.1,1.1), xpd = TRUE, cex=.9)
 
 # Contribution of variables to Dimension 3
 con = con[order(con$Dim.3, decreasing = TRUE),]
 slices = con[,3]
 lbls = row.names(con)
 pct = round(slices/sum(slices)*100)
-p3 = graphics::barplot(height = slices,
-              ylim=c(0,max(ceiling(slices))+2),
-              names.arg=lbls,
-              col=grDevices::rainbow(length(pct), alpha = 0.5),
-              main="Contribution of variables to\n Dimension 3",
-              ylab="Contributions (%)",
-              axisname=FALSE)
-graphics::text(x=p3, y = slices+0.5 , labels=paste(pct,"%", sep=""))
-graphics::text(x=p3, graphics::par("usr")[3], labels = lbls, srt = 25, adj = c(1.1,1.1), xpd = TRUE, cex=.9)
+
+# # Plot Outputs commented out for the function
+# p3 = graphics::barplot(height = slices,
+#               ylim=c(0,max(ceiling(slices))+2),
+#               names.arg=lbls,
+#               col=grDevices::rainbow(length(pct), alpha = 0.5),
+#               main="Contribution of variables to\n Dimension 3",
+#               ylab="Contributions (%)",
+#               axisname=FALSE)
+# graphics::text(x=p3, y = slices+0.5 , labels=paste(pct,"%", sep=""))
+# graphics::text(x=p3, graphics::par("usr")[3], labels = lbls, srt = 25, adj = c(1.1,1.1), xpd = TRUE, cex=.9)
 
 
 
@@ -244,7 +259,9 @@ p1 = factoextra::fviz_pca_biplot(pca, axes = c(1, 2),
                       title = "Perceptual Map of Dimensions 1 and 2 with Preferences")
 
 p1_full = p1 + ggplot2::geom_segment(ggplot2::aes(x = 0, y = 0, xend = c1, yend = c2, color = "pink"), data = map1)
-plot(p1_full)
+
+# # Plot Outputs commented out for the function
+# plot(p1_full)
 
 p2 = factoextra::fviz_pca_biplot(pca, axes = c(1, 3),
                       repel = TRUE,
@@ -252,7 +269,9 @@ p2 = factoextra::fviz_pca_biplot(pca, axes = c(1, 3),
                       col.ind = "deeppink3",
                       title = "Perceptual Map of Dimensions 1 and 3 with Preferences")
 p2_full = p2 + ggplot2::geom_segment(ggplot2::aes(x = 0, y = 0, xend = c1, yend = c3, colour = "blue"), data = map2)
-plot(p2_full)
+
+# # Plot Outputs commented out for the function
+# plot(p2_full)
 
 p3 = factoextra::fviz_pca_biplot(pca, axes = c(2, 3),
                       repel = TRUE,
@@ -260,7 +279,9 @@ p3 = factoextra::fviz_pca_biplot(pca, axes = c(2, 3),
                       col.ind = "deeppink3",
                       title = "Perceptual Map of Dimensions 2 and 3 with Preferences")
 p3_full = p3 + ggplot2::geom_segment(ggplot2::aes(x = 0, y = 0, xend = c2, yend = c3, colour = "blue"), data = map3)
-plot(p3_full)
+
+# # Plot Outputs commented out for the function
+# plot(p3_full)
 
 
 
@@ -272,7 +293,8 @@ biplot1s = factoextra::fviz_pca_biplot(pca, axes = c(1, 2),
                 col.var = "darkblue",
                 col.ind = "deeppink3",
                 title = "Perceptual Map of Dimensions 1 and 2")
-plot(biplot1s)
+# # Plot Outputs commented out for the function
+# plot(biplot1s)
 
 biplot2s = factoextra::fviz_pca_biplot(pca, axes = c(1, 3),
                 repel = TRUE,
@@ -280,7 +302,9 @@ biplot2s = factoextra::fviz_pca_biplot(pca, axes = c(1, 3),
                 col.var = "darkblue",
                 col.ind = "deeppink3",
                 title = "Perceptual Map of Dimensions 1 and 3")
-plot(biplot2s)
+
+# # Plot Outputs commented out for the function
+# plot(biplot2s)
 
 biplot3s = factoextra::fviz_pca_biplot(pca, axes = c(2, 3),
                 repel = TRUE,
@@ -288,12 +312,16 @@ biplot3s = factoextra::fviz_pca_biplot(pca, axes = c(2, 3),
                 col.var = "darkblue",
                 col.ind = "deeppink3",
                 title = "Perceptual Map of Dimensions 2 and 3")
-plot(biplot3s)
+
+# # Plot Outputs commented out for the function
+# plot(biplot3s)
 
 # Table of brand coordinates
 dimensions_data = round(pca$x[,1:3],2)
 colnames(dimensions_data) = c("Dim.1","Dim.2","Dim.3")
-gridExtra::grid.arrange(top="Brand Coordinates",gridExtra::tableGrob(dimensions_data, theme=mytheme))
+
+# # Plot Outputs commented out for the function
+# gridExtra::grid.arrange(top="Brand Coordinates",gridExtra::tableGrob(dimensions_data, theme=mytheme))
 
 # The above table  shows the coordinates of each brand on the plots.
 # It is useful when you cannot visually compare the location of the brands.

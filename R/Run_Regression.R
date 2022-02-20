@@ -132,18 +132,21 @@ attributes(coeftable1)$dimnames[[2]] = c("Estimate", "Std. error", "t-statistic"
 # ## in the the Plots tab
 # # tab_model(m1, m2, m3, m4, m5, m6)
 
-# Visual summary
-suppressWarnings(jtools::plot_summs(m6, scale = TRUE, plot.distributions = TRUE, inner_ci_level = .95))
+# # Visual summary
+# # plot commented for this function only
+# suppressWarnings(jtools::plot_summs(m6, scale = TRUE, plot.distributions = TRUE, inner_ci_level = .95))
 
 # Find the best model using stepwise regression.
 # What variables should remain and what variables should be deleted
 # from the equation?\
 
 # selected_model = stats::step(m6)
+# # plot commented for this function
+# utils::capture.output({
+#   selected_model = stats::step(m6)
+# })
 
-utils::capture.output({
-  selected_model = stats::step(m6)
-})
+
 # # Display the best model
 # jtools::summ(selected_model)
 
@@ -224,8 +227,8 @@ jtools::plot_summs(m6, scale = TRUE, plot.distributions = TRUE, inner_ci_level =
 # Display the best model
 jtools::summ(selected_model)
 
-# Display the best model visually
-jtools::plot_summs(selected_model, scale = TRUE, plot.distributions = TRUE, inner_ci_level = .95)
+# # Display the best model visually
+# jtools::plot_summs(selected_model, scale = TRUE, plot.distributions = TRUE, inner_ci_level = .95)
 
 # Model Diagnostics for the Best model
 # selected_model = stats::step(m6)

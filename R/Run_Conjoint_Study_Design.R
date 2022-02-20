@@ -151,18 +151,20 @@ if (!is.null(res6)){
   cat(" Make sure you close that file, and then run the previous line of code again.")
   
 } else {
-  cat("\n Conjoint study was designed based on your design parameters!\n")
-  cat("\n Results are displayed below and also saved in a file named: \"! Results_Conjoint_Study.csv\"\n")
-  cat(" You can find the result file in this folder:\n ")
-  cat(as.character(getwd()))
-  cat(" \n\n ")
-  
   cat("           Conjoint Study Design for a Conjoint Survey \n")
   
   print(profiles)
   cat(" \n ")
+
+  cat("\n Conjoint study was designed based on your design parameters!\n")
+  cat("\n Results are displayed above. But they are also saved in a file named: \"! Results_Conjoint_Study.csv\"\n")
+  cat(" You can find the result file in this folder:\n ")
+  cat(as.character(getwd()))
+  cat(" \n\n ")
   
 }
+
+
 
 
 }
