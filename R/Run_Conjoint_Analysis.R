@@ -260,7 +260,9 @@ cat("6. Estimating MS for all potential products...")
 Attributes = list()
 for (i in 1:(ncol(DesignTable)-1)){
   xxx = DesignTable[,i+1]
-  Attributes[[i]] = xxx[xxx !=""]
+  xxx = xxx[xxx !=""]
+  xxx = xxx[!is.na(xxx)]
+  Attributes[[i]] = xxx
 }
 
 All_combinations = expand.grid(Attributes)
