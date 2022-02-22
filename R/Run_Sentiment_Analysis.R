@@ -240,7 +240,7 @@ Run_Sentiment_Analysis = function(mydata, words2remove, stemthis= FALSE, wcmf=5,
   
   graphics::par(oma=c(3,3,3,3)) # all sides have 3 lines of space
   graphics::barplot(myx, las = 2, names.arg = myy, 
-                    col =grDevices::rainbow(50), main =paste("Top", mfwords, "most fffffff words"),
+                    col =grDevices::rainbow(50), main =paste("Top", mfwords, "most frequent words"),
                     # ylab = "Word frequencies",
                     horiz = TRUE)
   
