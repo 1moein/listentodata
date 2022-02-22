@@ -239,10 +239,12 @@ Run_Sentiment_Analysis = function(mydata, words2remove, stemthis= FALSE, wcmf=5,
   suppressWarnings(res03 <- try(grDevices::pdf(pdffilename, height=larger*8.5, width=larger*11), silent = TRUE))
   
   graphics::par(oma=c(3,3,3,3)) # all sides have 3 lines of space
-  graphics::barplot(myx, las = 2, names.arg = myy, 
+  graphics::barplot(oursubset[,2], las = 2, names.arg = oursubset[,1], 
                     col =grDevices::rainbow(50), main =paste("Top", mfwords, "most fffffff words"),
                     # ylab = "Word frequencies",
                     horiz = TRUE)
+  
+  grDevices::dev.off()
   
   # #generate word cloud
   set.seed(1234)
@@ -266,7 +268,7 @@ Run_Sentiment_Analysis = function(mydata, words2remove, stemthis= FALSE, wcmf=5,
   )
   
   
-  grDevices::dev.off()
+
   
   
   if (!is.null(res01) | !is.null(res02) | !is.null(res03)){
