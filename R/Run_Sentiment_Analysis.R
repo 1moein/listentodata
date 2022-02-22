@@ -45,6 +45,7 @@ Run_Sentiment_Analysis = function(mydata, words2remove, stemthis= FALSE, wcmf=5,
   # # test <- readLines(filename)
   # 
   # textdata <- load_csv_data()
+  larger = 1.2
   textdata = mydata
   firstone = as.vector(names(textdata))
   firstone = gsub("\\.", " ", firstone) 
@@ -232,7 +233,7 @@ Run_Sentiment_Analysis = function(mydata, words2remove, stemthis= FALSE, wcmf=5,
   # Set up some parameters
   # Decide what to call your file name; make sure to put .pdf at the end of the name
   pdffilename =  "! Results_Sentiment_Analysis.pdf"
-  larger =  1.2
+  # larger =  resizepaper
   # pdf(filename, height=larger*8.5, width=larger*11)
   
   suppressWarnings(res03 <- try(grDevices::pdf(pdffilename, height=larger*8.5, width=larger*11), silent = TRUE))
