@@ -142,9 +142,8 @@ attributes(coeftable1)$dimnames[[2]] = c("Estimate", "Std. error", "t-statistic"
 
 # selected_model = stats::step(m6)
 # # plot commented for this function
-# utils::capture.output({
-#   selected_model = stats::step(m6)
-# })
+
+   selected_model = stats::step(m6)
 
 
 # # Display the best model

@@ -103,7 +103,7 @@ Run_Sentiment_Analysis = function(mydata, words2remove, stemthis= FALSE, wcmf=5,
   # Build a term-document matrix
   TextDoc_dtm <- tm::TermDocumentMatrix(TextDoc)
   dtm_m <- as.matrix(TextDoc_dtm)
-  # Sort by descearing value of frequency
+  # Sort by descending value of frequency
   dtm_v <- sort(rowSums(dtm_m),decreasing=TRUE)
   dtm_d <- data.frame(word = names(dtm_v),freq=dtm_v)
   # Display the top 5 most frequent words
