@@ -354,26 +354,17 @@ suppressWarnings(res3d <- try(pca3d::pca3d(pca,
                                            labels.col = "blue",
                                            bg = "white",
                                            radius = 1.5), silent = TRUE))
-  
-  
-  if (!is.null(res3d)){
-    cat("------------------------------------------")
-    cat("***** ERROR in generating 3D map *****\n")
-    cat("You have set your map3D=1 to generate a 3D perceptual map.\n")
-    cat("\n But the map could not be generated.")
-    cat("\n Note that if you are a Mac User, you need to install XQuraz\n")
-    cat("Generating the 3D map is optional. Either set map3D=0 or \n")
-    cat("install XQuartz from:  https://www.xquartz.org/ \n")
-    cat("------------------------------------------")
-    
-  } else {
-    cat("------------------------------------------")
-    cat("You have set your map3D=1 to generate a 3D perceptual map.\n")
-    cat("If you can't see the map, it might be hidden behind other windows.")
-    cat("Remember to close the 3D map window when you are done with it.\n ")
 
-  }
-  
+    cat("\n")
+    cat("------------------------------------------")
+    cat("You have set your map3D=1 to generate a 3D perceptual map.\n")
+    cat("\n Note that if you are on a Mac, you need to install XQuratz for the 3D map to work\n")
+    cat("Mac users can get and install XQuartz from:  https://www.xquartz.org/ \n")
+    cat("Alternatively, you can set map3D=0 to skip 3D map generation. \n")
+    cat("Remember to close the 3D map window when you are done with it.\n ")
+    cat("------------------------------------------")
+    cat("\n\n")
+    
 }
 
 
