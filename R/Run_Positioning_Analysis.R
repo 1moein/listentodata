@@ -356,7 +356,7 @@ suppressWarnings(res3d <- try(pca3d::pca3d(pca,
                                            radius = 1.5), silent = TRUE))
 
     cat("\n")
-    cat("------------------------------------------")
+    cat("------------------------------------------\n")
     cat("You have set your map3D=1 to generate a 3D perceptual map.\n")
     cat("\n Note that if you are on a Mac, you need to install XQuratz for the 3D map to work\n")
     cat("Mac users can get and install XQuartz from:  https://www.xquartz.org/ \n")
