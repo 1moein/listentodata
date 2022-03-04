@@ -30,7 +30,9 @@ Imports:
     RColorBrewer,
     syuzhet,
     stringi,
-    caret
+    caret,
+    fastmap,
+    pca3d
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

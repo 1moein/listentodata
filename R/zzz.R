@@ -17,9 +17,9 @@
 
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage("                  ")
-  packageStartupMessage(" Welcome to listentodata v.1.2 - Spring 2022")
+  packageStartupMessage(" Welcome to listentodata v.1.3 - Spring 2022")
   packageStartupMessage(" An R Package for Marketing Analytics by: Dr. M.K. ")
-  packageStartupMessage(" Last updated: 2/20/2022 ")
+  packageStartupMessage(" Last updated: 03/04/2022 ")
   # packageStartupMessage("                  ")
   # packageStartupMessage("                  ")
   # packageStartupMessage("----- A Small Dose of Inspiration before We Start -----")

@@ -4,12 +4,14 @@
 \alias{Run_Positioning_Analysis}
 \title{Positioning Analysis}
 \usage{
-Run_Positioning_Analysis(perceptions_data, preferences_data)
+Run_Positioning_Analysis(perceptions_data, preferences_data, map3D = FALSE)
 }
 \arguments{
 \item{perceptions_data}{Perceptual data csv file}
 
 \item{preferences_data}{Preferences data csv file}
+
+\item{map3D}{Should a 3D map be drawn? map3D can be 0 or 1. The default value is 0 and no 3D map will be displayed. The 3D map works on PCs with Windows OS. To get it to work on a Mac, you need to install XQuartz from https://www.xquartz.org/}
 }
 \description{
 This function conducts a positioning analysis using two data sets 
