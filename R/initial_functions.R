@@ -39,7 +39,7 @@ getsign = function(x){
 is.sig <- function(x,y){
   # This functions takes vectors x, and y; then itreturns 0 when there's NOT a significant difference between means of x and y
   temp <- stats::t.test(x, y, alternative = "two.sided", conf.level=0.95, var.equal = FALSE)
-  if (temp$p.value >= 0.05) return(0) else return(1)
+  if (temp$p.value >= 0.05 | is.na(temp$p.value) | is.nan(temp$p.value)) return(0) else return(1)
 }
 
 
