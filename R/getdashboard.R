@@ -85,5 +85,9 @@ getdashboard = function(){
   cat("# Practice with easyart()\n")
   cat("library(listentodata)\n")
   cat("?easyart\n")
+  cat("\n")
+  cat("# Get this dashboard\n")
+  cat("getdashboard()\n")
+  
 
 }
