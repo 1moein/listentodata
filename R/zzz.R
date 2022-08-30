@@ -22,7 +22,7 @@ runtimequote <- function(){
   packageStartupMessage(" An R Package for Marketing Analytics by: Dr. M.K. ")
   packageStartupMessage(" Last updated: 08/30/2022 ")
   packageStartupMessage("                  ")
-  packageStartupMessage("-------------random inspirational Quote------------")
+  packageStartupMessage("-------------Random Inspirational Quote------------")
   packageStartupMessage(runtimequote())
   packageStartupMessage("---------------------------------------------------")
   packageStartupMessage("                  ")

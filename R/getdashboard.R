@@ -54,6 +54,7 @@ getdashboard = function(){
   cat("\n")
   cat("\n")
   cat("\n")
+  cat("print('Curser catcher: No need to run this line!')\n")
   cat("########    END New Analysis       ########    \n")
   cat("\n")
   cat("\n")
