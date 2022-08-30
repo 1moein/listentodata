@@ -4,7 +4,7 @@
 \alias{easyart}
 \title{Create patterns on a circle using the times table}
 \usage{
-easyart(n = 2, mycolor = "deeppink", m = 0)
+easyart(n = 2, mycolor = "deeppink", m = 0, printall = 0)
 }
 \arguments{
 \item{n}{Can be a positive integer, or even a real number - defaults to n = 2.
@@ -14,6 +14,8 @@ Choosing n=0 shows a demo of 23 interesting patterns ant their n values.}
 defaults to mycolor = "deeppink"}
 
 \item{m}{optional argument that defaults to 0. If a positive non-zero value is provided for m, all patterns from n=1 upto n=m will be displayed. For example, setting m=10 displays all the patterns from n=1 to n=10, effectively ignoring the values for n and mycolor.")}
+
+\item{printall}{optional argument that defaults to 0. If printall=1, all patterns from n=1 upto n=200 will be saved in a pdf file and the details will be shared in the Console.")}
 }
 \description{
 This function draws a circle, places 1000 equi-distanced dots on it

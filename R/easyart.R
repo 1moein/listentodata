@@ -13,6 +13,8 @@
 #'
 #' @param m optional argument that defaults to 0. If a positive non-zero value is provided for m, all patterns from n=1 upto n=m will be displayed. For example, setting m=10 displays all the patterns from n=1 to n=10, effectively ignoring the values for n and mycolor.")
 #' 
+#' @param printall optional argument that defaults to 0. If printall=1, all patterns from n=1 upto n=200 will be saved in a pdf file and the details will be shared in the Console.")
+#' 
 #' @export
 #' 
 #' @examples
@@ -21,9 +23,9 @@
 #' easyart(n=0)
 #' easyart(m=5)
 #' }
-easyart <- function(n=2,mycolor="deeppink", m=0){
+easyart <- function(n=2,mycolor="deeppink", m=0, printall=0){
   
-  drawit = function(n=2,mycolor="black", m=0){
+  drawit = function(n=2,mycolor="black", m=0, printall=0){
     
   # set plot area (parameter: pty) equal to square
   graphics::par(pty="s")
@@ -68,7 +70,7 @@ easyart <- function(n=2,mycolor="deeppink", m=0){
       cat("\nYou can always click the red stop sign at the top right\n corner of this panel to stop code execution.")
       
     drawit(interesting[i], allcolors[sample(1:12,1)])
-    Sys.sleep(0.5)
+    Sys.sleep(0.75)
     }
     cat("\nEnd of Show!\n")
     } else if (n<0)  {
@@ -79,13 +81,13 @@ easyart <- function(n=2,mycolor="deeppink", m=0){
       # if (length(dev.list())!= 0) dev.off()
       for (i in 1:m){
         cat("\014")
-        cat(paste0("Now showing for n= 1 to ", m))
+        cat(paste0("Now showing results in the Plots tab for n= 1 to ", m))
         cat("\nif the images are not changing, your computer\n can't handle the graphical load.")
         cat("\nYou can click the red stop sign at the top right\n corner of this pane to stop code execution.")
         # cat("Now showing you 1 - 60! ")
         # readline(prompt="Press [enter] to continue")
         drawit(i, allcolors[sample(1:12,1)])
-        Sys.sleep(0.5)
+        Sys.sleep(0.75)
       }
       cat("\nEnd of Show!\n")
       
@@ -97,6 +99,9 @@ easyart <- function(n=2,mycolor="deeppink", m=0){
   
   
   ################# save results in a pdf file ############
+if (!is.numeric(printall)) printall = 0
+if (is.numeric(printall)) printall = floor(printall)
+if (printall==1){
   larger = 1
   suppressWarnings(resres <- try(grDevices::pdf("! Results_easyart200.pdf", height=larger*8.5, width=larger*11), silent = TRUE))
 
@@ -120,6 +125,7 @@ easyart <- function(n=2,mycolor="deeppink", m=0){
 
   }
   
+}
 }
 
 
