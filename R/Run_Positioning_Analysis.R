@@ -60,6 +60,7 @@
 #' @param perceptions_data Perceptual data csv file
 #' @param preferences_data Preferences data csv file
 #' @param map3D Should a 3D map be drawn? map3D can be 0 or 1. The default value is 0 and no 3D map will be displayed. The 3D map works on PCs with Windows OS. To get it to work on a Mac, you need to install XQuartz from https://www.xquartz.org/ 
+#' @param resizepaper How much larger should the pdf paper size be to fit everything? Default value is 1.2
 #'
 #' @export
 #' 
@@ -70,15 +71,17 @@
 #' clear_console()
 #' perceptions_data = load_csv_data()
 #' preferences_data = load_csv_data()
-#' Run_Positioning_Analysis(perceptions_data,preferences_data)
+#' map3D = 0
+#' resizepaper = 1.2
+#' Run_Positioning_Analysis(perceptions_data,preferences_data, map3D, resizepaper)
 #' }
 
-Run_Positioning_Analysis = function(perceptions_data, preferences_data, map3D=FALSE) {
+Run_Positioning_Analysis = function(perceptions_data, preferences_data, map3D=0, resizepaper=1.2) {
 
 
 df = perceptions_data
 d1 = preferences_data
-
+larger = resizepaper
 # View the perceptual data
 df
 
@@ -393,7 +396,7 @@ filename =  "! Results_Positioning_Analysis.pdf"
 
 
 # pdf(filename, paper="USr", height=7, width=7)
-suppressWarnings(res3 <- try(grDevices::pdf(filename, paper="USr", height=7, width=7), silent = TRUE))
+suppressWarnings(res3 <- try(grDevices::pdf(filename, paper="USr", height=larger*8.5, width=larger*11), silent = TRUE))
 
 
 bp = graphics::barplot(height = AvP$Avg,
