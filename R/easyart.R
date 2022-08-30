@@ -117,7 +117,7 @@ if (printall==1){
     cat(" Make sure you close that file, and then run the previous line of code again.")
     
   } else {
-    cat("\n\n easyart() generated the patterns you wanted to see in the Plots area!\n")
+    cat("\n\n easyart() generates the patterns in the Plots tab (lower right pane).\n")
     cat("\n But we also saved all patterns from n=1 to n=200 in a pdf file named: \"! Results_easyart200.pdf\"\n")
     cat(" You can find this file in this folder on your computer:\n ")
     cat(as.character(getwd()))
