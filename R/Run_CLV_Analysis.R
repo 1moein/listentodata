@@ -205,7 +205,7 @@ for (i in 1:groups){
   netmargins[[i]] = c(0,rep(0, periods))
 }
 
-# This loop was not working in package **************** added as.nuemeric() and it's fixed.
+# This loop was not working in package ***************** added as.nuemeric() and it's fixed.
 # Calculate transitions and net margins
 for (i in 1:groups){
   for (j in 1:(periods)){
