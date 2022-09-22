@@ -205,12 +205,12 @@ for (i in 1:groups){
   netmargins[[i]] = c(0,rep(0, periods))
 }
 
-# This loop not working in package ***************************************************************
+# This loop was not working in package **************** added as.nuemeric() and it's fixed.
 # Calculate transitions and net margins
 for (i in 1:groups){
   for (j in 1:(periods)){
     temp1 = rep(0,groups)
-    for (k in 1:groups) temp1 = temp1 + transitions[[i]][j,k]*as.vector(tm[k,])
+    for (k in 1:groups) temp1 = temp1 + transitions[[i]][j,k]*as.vector(as.numeric(tm[k,]))
     transitions[[i]][j+1,] = temp1
     temp2 = 0
     temp3 = 0
