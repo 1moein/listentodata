@@ -30,7 +30,7 @@ head(mydata)
 str(mydata)
 myformula = "visited ~ ."
 resizepaper = 1
-Run_Logistics(mydata, myformula)
+Run_Logistic(mydata, myformula)
 # If you have data for prediction:
 prediction_data = load_csv_data()
 Run_Logistic(mydata, myformula, prediction_data)
