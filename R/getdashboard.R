@@ -1,4 +1,4 @@
-#' Get Analysis Hub Codes
+#' Get the Dashboard
 #'
 #' Copy the code after ## Not Run in the Examples below and paste it into a new R Script and save the file as AnalysisHub.R
 #' You can then use this R script to run all of your analyses for this course.
@@ -111,7 +111,7 @@ getdashboard = function(){
   cat("# Run the next few lines to install/update listentodata package:\n")
   cat("if(!'devtools' %in% rownames(installed.packages())) install.packages('devtools', dependencies = TRUE)\n")
   cat("if('listentodata' %in% (.packages())) detach('package:listentodata', unload=TRUE)\n")
-  cat("suppressMessages(if('listentodata' %in% rownames(installed.packages())) remove.packages('listentodata'))\n")
+  cat("#suppressMessages(if('listentodata' %in% rownames(installed.packages())) remove.packages('listentodata')) #run if you need to remove the package\n")
   cat("devtools::install_github('1moein/listentodata', force=TRUE, quiet=TRUE, dependencies=TRUE)\n")
   cat("library(listentodata)\n")
   cat("\n")

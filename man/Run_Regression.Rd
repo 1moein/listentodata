@@ -26,8 +26,8 @@ It can also perform predictions on a new csv data file and provide the results i
 library(listentodata)
 clear_console()
 mydata = load_csv_data()
-head(mydata)
-str(mydata)
+head(mydata) #shows top rows in the Console
+str(mydata) #shows structure of the data
 myformula = "Sales ~ ."
 resizepaper = 1
 Run_Regression(mydata, myformula, resizepaper)

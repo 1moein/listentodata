@@ -21,10 +21,10 @@
 #' str(mydata)
 #' myformula = "visited ~ ."
 #' resizepaper = 1
-#' Run_Logistic(mydata, myformula)
+#' Run_Logistic(mydata, myformula, resizepaper)
 #' # If you have data for prediction:
 #' prediction_data = load_csv_data()
-#' Run_Logistic(mydata, myformula, prediction_data)
+#' Run_Logistic(mydata, myformula, prediction_data, resizepaper)
 #' }
 
 Run_Logistic = function(mydata,myformula, prediction_data=0, resizepaper = 1) {

@@ -18,19 +18,12 @@ Imports:
     corrplot,
     jtools,
     graphics,
-    lattice,
-    ggstance,
-    broom.mixed,
-    sjPlot,
     easycsv,
     tm,
     wordcloud,
-    SnowballC,
     RColorBrewer,
     syuzhet,
     stringi,
-    caret,
-    fastmap,
     pca3d
 Suggests: 
     testthat (>= 3.0.0)

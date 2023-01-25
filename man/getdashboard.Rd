@@ -2,7 +2,7 @@
 % Please edit documentation in R/getdashboard.R
 \name{getdashboard}
 \alias{getdashboard}
-\title{Get Analysis Hub Codes}
+\title{Get the Dashboard}
 \usage{
 getdashboard()
 }
