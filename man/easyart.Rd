@@ -25,8 +25,8 @@ For the math behind these patterns, watch this video on YouTube: https://youtu.b
 }
 \examples{
 \dontrun{
-easyart(n=0)
 easyart(n=51)
+easyart(n=0)
 easyart(m=5)
 }
 }
