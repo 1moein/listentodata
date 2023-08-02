@@ -33,6 +33,7 @@ clear_console <- function(){
   # rm(list=ls())
   # # If there are plots, delete them to start fresh
   # if (length(dev.list())!= 0) dev.off()
+  # 
 
 }
 

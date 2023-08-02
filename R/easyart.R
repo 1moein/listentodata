@@ -19,8 +19,8 @@
 #' 
 #' @examples
 #' \dontrun{
-#' easyart(n=51)
 #' easyart(n=0)
+#' easyart(n=51)
 #' easyart(m=5)
 #' }
 easyart <- function(n=2,mycolor="deeppink", m=0, printall=0){
