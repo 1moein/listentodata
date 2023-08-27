@@ -27,9 +27,9 @@ cat("# implied. The package and this script may not be    #\n")
 cat("# redistributed in whole or part without the express #\n")
 cat("# written permission of the author.                  #\n")
 cat("#                    ------------                    #\n")
-cat("# This R script allows you to run the analyses       #\n")
-cat("# taught in Marketing Analytics, ONLY IF you have    #\n")
-cat("# prepared the data as taught in this course.        #\n")
+cat("# This script can run the analyses without error     #\n")
+cat("# ONLY IF the required data has been prepared as     #\n")
+cat("# instructed in your marketing analytics course.     #\n")
 cat("######################################################\n")
 cat("\n")
 cat("\n")
@@ -357,7 +357,4 @@ cat("#     Copy and save this code!   \n")
 cat("# =================================\n")
 
   
-  
-  
-   
 }
