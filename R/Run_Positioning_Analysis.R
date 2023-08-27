@@ -59,7 +59,6 @@
 #'
 #' @param perceptions_data Perceptual data csv file
 #' @param preferences_data Preferences data csv file
-#' @param map3D Should a 3D map be drawn? map3D can be 0 or 1. The default value is 0 and no 3D map will be displayed. The 3D map works on PCs with Windows OS. To get it to work on a Mac, you need to install XQuartz from https://www.xquartz.org/ 
 #' @param resizepaper How much larger should the pdf paper size be to fit everything? Default value is 1.2
 #'
 #' @export
@@ -71,12 +70,11 @@
 #' clear_console()
 #' perceptions_data = load_csv_data()
 #' preferences_data = load_csv_data()
-#' map3D = 0
 #' resizepaper = 1.2
-#' Run_Positioning_Analysis(perceptions_data,preferences_data, map3D, resizepaper)
+#' Run_Positioning_Analysis(perceptions_data,preferences_data, resizepaper)
 #' }
 
-Run_Positioning_Analysis = function(perceptions_data, preferences_data, map3D=0, resizepaper=1.2) {
+Run_Positioning_Analysis = function(perceptions_data, preferences_data, resizepaper=1.2) {
 
 
 df = perceptions_data
@@ -346,33 +344,33 @@ colnames(dimensions_data) = c("Dim.1","Dim.2","Dim.3")
 # # See the XQuartz installation page on Canvas.
 ###################################################################
  # if (!require(pca3d)) install.packages("pca3d")
-
-if (map3D==1){
-  
-suppressWarnings(res3d <- try(pca3d::pca3d(pca,
-                                           biplot = TRUE,
-                                           show.labels = TRUE,
-                                           axes.color = "black",
-                                           show.plane = TRUE,
-                                           labels.col = "blue",
-                                           bg = "white",
-                                           radius = 1.5), silent = TRUE))
-
-    cat("\n")
-    cat("------------------------------------------\n")
-    cat("You have set your map3D=1 to generate a 3D perceptual map.\n")
-    cat("The map will be in a separate interactive window.\n")
-    cat("You can resize the 3D map window and click on the map and drag to rotate it.\n")
-    cat("If you don't see the map, the map window might be hiding behind your other open windows.\n")
-    cat("\n")
-    cat("If you are on a Mac, you need to install XQuratz for the 3D map to work.\n")
-    cat("Mac users can get and install XQuartz from:  https://www.xquartz.org/ \n")
-    cat("Alternatively, you can set map3D=0 to skip 3D map generation. \n")
-    cat("Remember to close the 3D map window when you are done with it.\n ")
-    cat("------------------------------------------")
-    cat("\n\n")
-    
-}
+# 
+# if (map3D==1){
+#   
+# suppressWarnings(res3d <- try(pca3d::pca3d(pca,
+#                                            biplot = TRUE,
+#                                            show.labels = TRUE,
+#                                            axes.color = "black",
+#                                            show.plane = TRUE,
+#                                            labels.col = "blue",
+#                                            bg = "white",
+#                                            radius = 1.5), silent = TRUE))
+# 
+#     cat("\n")
+#     cat("------------------------------------------\n")
+#     cat("You have set your map3D=1 to generate a 3D perceptual map.\n")
+#     cat("The map will be in a separate interactive window.\n")
+#     cat("You can resize the 3D map window and click on the map and drag to rotate it.\n")
+#     cat("If you don't see the map, the map window might be hiding behind your other open windows.\n")
+#     cat("\n")
+#     cat("If you are on a Mac, you need to install XQuratz for the 3D map to work.\n")
+#     cat("Mac users can get and install XQuartz from:  https://www.xquartz.org/ \n")
+#     cat("Alternatively, you can set map3D=0 to skip 3D map generation. \n")
+#     cat("Remember to close the 3D map window when you are done with it.\n ")
+#     cat("------------------------------------------")
+#     cat("\n\n")
+#     
+# }
 
 
   # library(pca3d)
