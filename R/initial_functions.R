@@ -379,8 +379,18 @@ Find_Optimal_Products <- function (MS,rule,n){
   #Rule can only be 1, 2, or 3
   Max_No_of_products_to_return <- n
   if ((!is.numeric(rule)) | (is.numeric(rule) & rule!=1 & rule!=2 & rule!=3)) stop("The 2nd argument of the function can be either 1, 2, or 3 \n These represent First Choice rule (1), PreferenceShare rule (2) and Logit choice rule (3)")
-  tms <- data.frame(t(MS))
-  mm=sort(tms[rule,], decreasing = TRUE)
+  
+  # To be deleted after refactoring test
+  # tms <- data.frame(t(MS))
+  # mm=sort(tms[rule,], decreasing = TRUE)
+
+  sorted_indices <- order(MS[, rule], decreasing = TRUE)
+  sorted_output <- data.frame(MS[sorted_indices, rule])
+  outputRowname <- colnames(MS)[rule]
+  outputColnames <- row.names(MS[sorted_indices,])
+  colnames(sorted_output) <- outputRowname
+  row.names(sorted_output) <- outputColnames
+  mm <- data.frame(t(sorted_output))
   optimalp <- mm[which(mm>0)]
   howmany <- min(Max_No_of_products_to_return,length(optimalp))
   
