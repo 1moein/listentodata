@@ -36,6 +36,7 @@ Run_Regression = function(mydata,myformula, prediction_data=0, resizepaper = 1) 
 
 d1 = mydata
 ds = summary(d1)
+larger = resizepaper
 showable = dim(d1)[2]
 if (showable>14){
   showable = 14
@@ -194,7 +195,6 @@ suppressWarnings(res001 <- try(utils::write.csv(predictions, file ="! Results_Re
 # Set up some parameters
 # Decide what to call your file name; make sure to put .pdf at the end of the name
 filename =  "! Results_Regression_Analysis.pdf"
-larger = resizepaper
 # grDevices::pdf(filename, height=larger*8.5, width=larger*11)
 suppressWarnings(res0 <- try(grDevices::pdf(filename, height=larger*8.5, width=larger*11), silent = TRUE))
 
@@ -254,10 +254,10 @@ graphics::par(mfrow=c(1,1))
 # effect_plot(m6, pred = Urban, interval = TRUE, plot.points = TRUE)
 # effect_plot(m6, pred = US, interval = TRUE, plot.points = TRUE)
 # effect_plot(m6, pred = ShelfLoc, interval = TRUE, plot.points = TRUE)
-utils::capture.output({
-  
-grDevices::dev.off()
-})
+
+#utils::capture.output({grDevices::dev.off()})
+
+suppressWarnings(grDevices::dev.off())
 
 
 if (!is.null(res0)){
