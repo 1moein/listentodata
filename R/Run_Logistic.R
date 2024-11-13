@@ -59,11 +59,12 @@ Run_Logistic = function(mydata,myformula, prediction_data=0, resizepaper = 1) {
 
   d = mydata
   ds = summary(d)
-  showable = dim(d)[2]
-  if (showable>14){
-    showable = 14
-  }
-  dsample = d[1:10,1:showable]
+  larger = resizepaper
+  # showable = dim(d)[2]
+  # if (showable>14){
+  #   showable = 14
+  # }
+  # dsample = d[1:10,1:showable]
   
   options(scipen=999) # to prevent the use of scientific notation in results
   
@@ -214,12 +215,12 @@ Run_Logistic = function(mydata,myformula, prediction_data=0, resizepaper = 1) {
   # Set up some parameters
   # Decide what to call your file name; make sure to put .pdf at the end of the name
   filename =  "! Results_Logistic_Analysis.pdf"
-  larger =  resizepaper
+  
   # grDevices::pdf(filename, height=larger*8.5, width=larger*11)
   suppressWarnings(res00 <- try(grDevices::pdf(filename, height=larger*8.5, width=larger*11), silent = TRUE))
   
   
-  gridExtra::grid.arrange(top="\n\n\n\n\n\n View the first 10 rows of the data set \n a max. of 14 columns can be shown here.", gridExtra::tableGrob(dsample, theme=mytheme))
+  # gridExtra::grid.arrange(top="\n\n\n\n\n\n View the first 10 rows of the data set \n a max. of 14 columns can be shown here.", gridExtra::tableGrob(dsample, theme=mytheme))
   gridExtra::grid.arrange(top="\n\n\n\n\n\n Summary Statistics for the variables \n Page 1 of 2", gridExtra::tableGrob(ds[,1:firsthalf], theme=mytheme))
   gridExtra::grid.arrange(top="\n\n\n\n\n\n Summary Statistics for the variables \n Page 2 of 2", gridExtra::tableGrob(ds[,(secondhalf:fullcols)], theme=mytheme))
   # graphics::pairs(numcols, lower.panel = NULL, pch=16,cex=0.3)

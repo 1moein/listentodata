@@ -37,11 +37,12 @@ Run_Regression = function(mydata,myformula, prediction_data=0, resizepaper = 1) 
 d1 = mydata
 ds = summary(d1)
 larger = resizepaper
-showable = dim(d1)[2]
-if (showable>14){
-  showable = 14
-}
-dsample = d1[1:10,1:showable]
+
+# showable = dim(d1)[2]
+# if (showable>14){
+#   showable = 14
+# }
+# dsample = d1[1:10,1:showable]
 
 options(scipen=999) # to  prevent the use of scientific notation in results
   
@@ -199,7 +200,7 @@ filename =  "! Results_Regression_Analysis.pdf"
 suppressWarnings(res0 <- try(grDevices::pdf(filename, height=larger*8.5, width=larger*11), silent = TRUE))
 
 
-gridExtra::grid.arrange(top="\n\n\n\n\n\n View the first 10 rows of the data set \n a max. of 14 columns can be shown here.", gridExtra::tableGrob(dsample, theme=mytheme))
+#gridExtra::grid.arrange(top="\n\n\n\n\n\n View the first 10 rows of the data set \n a max. of 14 columns can be shown here.", gridExtra::tableGrob(dsample, theme=mytheme))
 gridExtra::grid.arrange(top="\n\n\n\n\n\n Summary Statistics for the variables \n Page 1 of 2", gridExtra::tableGrob(ds[,1:firsthalf], theme=mytheme))
 gridExtra::grid.arrange(top="\n\n\n\n\n\n Summary Statistics for the variables \n Page 2 of 2", gridExtra::tableGrob(ds[,(secondhalf:fullcols)], theme=mytheme))
 

@@ -22,9 +22,9 @@ runtimequote <- function(){
 
 .onAttach <- function(libname, pkgname) {
   packageStartupMessage("                  ")
-  packageStartupMessage(" Welcome to listentodata v.1.8 - Fall 2024")
+  packageStartupMessage(" Welcome to listentodata v.1.9 - Nov. 2024")
   packageStartupMessage(" An R Package for Marketing Analytics by: Dr. M.D. ")
-  packageStartupMessage(" Last updated: 8/29/2024 ")
+  packageStartupMessage(" Last updated: 11/13/2024 ")
   packageStartupMessage("                  ")
   packageStartupMessage("------------- Random Inspirational Quote------------")
   packageStartupMessage(runtimequote())
