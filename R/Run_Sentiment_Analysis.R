@@ -276,10 +276,12 @@ Run_Sentiment_Analysis = function(mydata, words2remove, stemthis= FALSE, wcmf=5,
     cat("\n Sentiment Analyis has been performed on these data!\n")
     cat("\n 1. Main results have been saved in a file named: \"! Results_Sentiment_Analysis.pdf\"\n")
     cat("\n 2. Cleaned documents have been saved in a file named: \"! Results_cleaned_documents.csv\"\n")
-    cat("\n 3. Cleaned documents have been saved in a file named: \"! Results_sentiment_scores.csv\"\n")
+    cat("\n 3. Document sentiment scores have been saved in a file named: \"! Results_sentiment_scores.csv\"\n")
     
     cat(" You can find these files in the same folder as your data file, which is here:\n ")
     cat(as.character(getwd()))
+    cat(" \n ")
+    cat("\n Remember that you willl need to download the csv files for viewing (Select the file in the lower right panel Files tab, then click the Gear icon and click Export)\n")
     cat(" \n\n ")
     cat(" If you see any warnings below, simply disregard them.\n\n ")
     
